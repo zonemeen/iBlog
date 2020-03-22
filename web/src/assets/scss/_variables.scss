@@ -1,0 +1,74 @@
+// colors
+$colors: ("blue": #6fa3ef,
+  "red": #eb5055,
+  "green": #34b686,
+  "green-1": #a7ce94,
+  "postcolor": #363938,
+  "orange": #986801,
+  "white": #fff,
+  "border": #f1f3f7,
+  "bgcolor": #1e2020,
+  "navcolor": #363938,
+  "codecolor": #9b9999,
+  "grey-1": #bbbbbb,
+  "grey-2": #767676,
+  "grey-3": #666666,
+  "grey": #5f5f5f,
+  "dark": #313131,
+  "dark-3": #333333,
+  "dark-1": #222222,
+  "dark-2": #444444,
+  "black": #000);
+$border-color: map-get($colors, "dark-2");
+// font size
+$base-font-size: 1rem;
+$font-sizes: (xs: 0.8571,
+  //12px
+  sm: 0.9286,
+  //13px
+  md: 1,
+  //14px
+  lg: 1.0714,
+  //15px
+  xl: 1.1429,
+  //16px
+  xxl: 1.2143,
+  //17px
+  xxxl: 1.2857,
+  //18px
+  xxxxl: 1.5,
+  //21px
+);
+
+//justify-content 主轴
+$flex-jc: (start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around);
+$flex-ai: (start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch);
+// spacing
+// 0-5: 0
+// .mt-1  => margin top  .pb-2
+$spacing-types: (m: margin,
+  p: padding);
+$spacing-directions: (t: top,
+  r: right,
+  b: bottom,
+  l: left);
+$spacing-base-size: 1rem;
+$spacing-sizes: (0: 0,
+  1: 0.15,
+  2: 0.35,
+  3: 0.5,
+  4: 0.714,
+  5: 1,
+  6: 1.5,
+  7: 1.8,
+  8: 2.14,
+  9: 3,
+  10: 4.5,
+  11: 6);
