@@ -21,15 +21,3 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount("#app");
-
-window.AV = require("leancloud-storage");
-import Valine from "valine";
-new Valine({
-  el: "#comment",
-  app_id: "gx1SngFstb33zG0O4dDEAoIi-gzGzoHsz",
-  app_key: "7WIr5ScNYiwC5JiV9e3KhguE",
-  // notify: true,
-  verify: true,
-  avatar: "monsterid", // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
-  placeholder: "大家请坐下，陈独秀同志要发言了。。。"
-});
