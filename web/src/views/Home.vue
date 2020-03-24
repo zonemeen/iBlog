@@ -30,7 +30,11 @@
               <i class="iconfont icon-xinzengyudingicon- pr-2"></i>
               <span class="fs-sm">{{ article.date }}</span>
               <i class="iconfont icon-inbox1 pl-9"></i>
-              <router-link tag="span" :to="`/archives`" class="fs-sm pl-2 mr-6 hand">文章</router-link>
+              <router-link
+                tag="span"
+                :to="`/archives`"
+                class="fs-sm pl-2 mr-6 hand"
+              >{{ article.categories[0].name }}</router-link>
               <i class="iconfont icon-love- text-red hand"></i>
             </div>
           </div>
@@ -117,8 +121,7 @@ export default {
 }
 .btn-prev,
 .btn-next {
-  background: map-get($colors, "bgcolor") !important;
-  color: red;
+  background: transparent !important;
 }
 .el-pagination__total {
   color: map-get($colors, "grey-1") !important;

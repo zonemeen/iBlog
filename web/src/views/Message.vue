@@ -20,7 +20,11 @@
       <div class="mb-7">
         <span class="fs-xxxl text-grey-1 text-center">Responses</span>
       </div>
-      <div id="comment" class="bg-postcolor p-8" style="width: 600px !important"></div>
+      <div
+        id="comment"
+        class="bg-postcolor p-8"
+        style="width: 600px !important"
+      ></div>
     </div>
   </div>
 </template>
@@ -46,6 +50,10 @@ export default {
 <style lang="scss">
 @import "../assets/scss/style.scss";
 /*评论样式*/
+div.info {
+  display: none;
+}
+
 div#comments.comments.v {
   margin-top: 0px !important;
   margin-left: 0px !important;

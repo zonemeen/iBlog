@@ -1,22 +1,23 @@
 <template>
-  <div class="page-article d-flex jc-center flex-wrap" v-if="model">
+  <div class="page-article d-flex flex-column ai-center flex-wrap" v-if="model">
     <div class="page">
       <div class="text-green fs-xxxxl mt-11">{{ model.title }}</div>
       <div class="text-grey-2 fs-sm mt-5">Published on {{ model.date }}</div>
+      <div>
+        <div class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand">
+          <span class>
+            <i class="iconfont icon-tag1"></i>
+          </span>
+          &nbsp;
+          <span class>{{ model.categories[0].name }}</span>
+        </div>
+      </div>
+
       <div class="mt-5 mb-6"></div>
       <div class="text-grey-2 fs-md mb-9 container">
         <div class="markdown-body">
-          <div class v-html="compiledMarkdown"></div>
+          <div id="content" v-html="compiledMarkdown"></div>
         </div>
-      </div>
-      <div class="list">
-        <div
-          class="h"
-          v-for="(h, i) in toc"
-          :is="'h' + h.level"
-          :key="i"
-          :title="'h' + h.level"
-        >{{ h.text }}</div>
       </div>
     </div>
   </div>
@@ -27,18 +28,19 @@ import marked from "marked";
 import hljs from "highlight.js";
 import "highlight.js/styles/tomorrow-night-eighties.css";
 
-var renderer = new marked.Renderer();
-var toc = [];
+const renderer = new marked.Renderer();
+const r = {
+  heading: renderer.heading.bind(renderer)
+};
+let toc = [];
 
-renderer.heading = function(text, level, raw) {
-  var anchor =
-    this.options.headerPrefix + raw.toLowerCase().replace(/[^\w]+/g, "-");
+renderer.heading = (text, level, raw, slugger) => {
   toc.push({
-    anchor: anchor,
     level: level,
     text: text
   });
-  return "<h" + level + ' id="' + anchor + '">' + text + "</h" + level + ">\n";
+
+  return r.heading(text, level, raw, slugger);
 };
 console.log(toc);
 
@@ -48,7 +50,7 @@ marked.setOptions({
   tables: true,
   breaks: true,
   pedantic: false,
-  // sanitize: false,
+  sanitize: false,
   smartLists: true,
   smartypants: false,
   highlight: function(code, lang) {
@@ -67,9 +69,6 @@ export default {
   },
   data() {
     return {
-      article: {
-        content: "加载中..."
-      },
       model: null
     };
   },
@@ -101,7 +100,13 @@ export default {
 .page {
   width: 46.4286rem;
 }
-
+.post-tags {
+  width: 60px;
+}
+.post-tags:hover {
+  background-color: map-get($colors, "border");
+  color: map-get($colors, "grey");
+}
 .page-article img {
   display: block;
   margin: 0 auto;

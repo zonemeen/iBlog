@@ -8,16 +8,16 @@
       </div>
       <div class="d-flex my-7 text-grey-1 hand">
         <router-link
+          exact
           tag="div"
           :to="item.link"
-          v-for="(item, i) in items"
-          @click="currentIndex = i"
-          :class="{ active: currentIndex === i }"
+          v-for="item in items"
           :key="item.text"
+          active-class="active"
           class="nav-item px-5 icon"
         >{{ item.text }}</router-link>
         <div class="nav-item px-5">
-          <router-link tag="div" to="/find" class="iconfont icon-findx"></router-link>
+          <router-link tag="div" to="/search" class="iconfont icon-findx"></router-link>
         </div>
       </div>
     </div>
@@ -91,8 +91,7 @@ export default {
         { text: "留言", link: "/message" },
         { text: "关于", link: "/about" }
       ],
-      model: [],
-      currentIndex: ""
+      model: []
     };
   },
   methods: {
@@ -109,11 +108,12 @@ export default {
 
 <style lang="scss">
 @import "../assets/scss/style.scss";
-.nav-item:hover {
+
+.nav-item.active {
   color: map-get($colors, "red");
 }
 
-.active {
+.nav-item:hover {
   color: map-get($colors, "red");
 }
 
