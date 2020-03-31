@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-7 hand">
+  <div class="mb-7">
     <div class="page-archive d-flex flex-column ai-center jc-center">
       <div class="mt-11 pr-11 mr-11">
         <div class="fs-xxxxl text-green">共计{{ model.length }}篇文章</div>
@@ -9,7 +9,7 @@
         <router-link
           tag="div"
           :to="`/article/${item._id}`"
-          class="show box"
+          class="show box hand"
           v-for="item in model"
           :key="item.title"
         >
@@ -44,6 +44,6 @@ export default {
 
 <style lang="scss">
 .box {
-  width: 375px;
+  min-width: 375px;
 }
 </style>

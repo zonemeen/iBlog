@@ -1,7 +1,6 @@
 module.exports = app => {
   const router = require("express").Router();
   const mongoose = require("mongoose");
-  const Category = mongoose.model("Category");
   const Article = mongoose.model("Article");
   const Link = mongoose.model("Link");
 
@@ -25,38 +24,6 @@ module.exports = app => {
     // // })
     res.send(cats);
   });
-
-
-  // // 文章列表接口
-  // router.get("/articles/tag", async (req, res) => {
-  //   const cats = await Article.find().lean();
-  //   const parent = await Category.findOne({
-  //     name: '文章'
-  //   })
-  //   const cats = await Category.aggregate([{
-  //       $match: {
-  //         parent: parent._id
-  //       }
-  //     },
-  //     {
-  //       $lookup: {
-  //         from: 'articles', //文章集合
-  //         localField: '_id',
-  //         foreignField: 'categories',
-  //         as: 'articlesList'
-  //       }
-  //     },
-  //   ])
-  //   cats.map(cat => {
-  //     cat.articlesList.map(articles => {
-  //       articles.categoryName = cat.name
-  //       return articles
-  //     })
-  //     return cat
-  //   })
-  //   res.send(cats);
-  // });
-
 
   // 最近
   router.get("/articles/recent", async (req, res) => {

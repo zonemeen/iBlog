@@ -101,8 +101,9 @@ export default {
   width: 46.4286rem;
 }
 .post-tags {
-  width: 60px;
+  max-width: 4.2857rem;
 }
+
 .post-tags:hover {
   background-color: map-get($colors, "border");
   color: map-get($colors, "grey");

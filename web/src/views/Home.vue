@@ -90,20 +90,14 @@ export default {
 <style lang="scss">
 @import "../assets/scss/_variables.scss";
 
-// .main-container {
-//   background: url("../assets/images/bg.png");
-//   background-repeat: no-repeat;
-//   // background-position: right top;
-// }
-
 .post-container {
   .top {
-    width: 19.2857rem;
-    height: 17.8571rem;
+    min-width: 19.2857rem;
+    min-height: 17.8571rem;
     // background: #f7f7f7 no-repeat top center;
     // background-size: auto 100%;
     &.title.title {
-      width: 19.2857rem;
+      min-width: 19.2857rem;
     }
   }
 }

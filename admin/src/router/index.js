@@ -1,15 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Main from "../views/Main.vue";
-import Login from "../views/Login.vue";
-import CategoryEdit from "../views/CategoryEdit.vue";
-import CategoryList from "../views/CategoryList.vue";
-import ArticleEdit from "../views/ArticleEdit.vue";
-import ArticleList from "../views/ArticleList.vue";
-import LinkEdit from "../views/LinkEdit.vue";
-import LinkList from "../views/LinkList.vue";
-import AdminUserEdit from "../views/AdminUserEdit.vue";
-import AdminUserList from "../views/AdminUserList.vue";
 
 Vue.use(VueRouter);
 
@@ -17,7 +7,7 @@ const router = new VueRouter({
   routes: [{
       path: "/login",
       name: "login",
-      component: Login,
+      component: resolve => require(['@/views/Login.vue'], resolve),
       meta: {
         isPublic: true
       }
@@ -25,58 +15,58 @@ const router = new VueRouter({
     {
       path: "/",
       name: "main",
-      component: Main,
+      component: resolve => require(['@/views/Main.vue'], resolve),
       children: [{
           path: "/categories/create",
-          component: CategoryEdit
+          component: resolve => require(['@/views/CategoryEdit.vue'], resolve),
         },
         {
           path: "/categories/edit/:id",
-          component: CategoryEdit,
+          component: resolve => require(['@/views/CategoryEdit.vue'], resolve),
           props: true
         },
         {
           path: "/categories/list",
-          component: CategoryList
+          component: resolve => require(['@/views/CategoryList.vue'], resolve),
         },
         {
           path: "/articles/create",
-          component: ArticleEdit
+          component: resolve => require(['@/views/ArticleEdit.vue'], resolve),
         },
         {
           path: "/articles/edit/:id",
-          component: ArticleEdit,
+          component: resolve => require(['@/views/ArticleEdit.vue'], resolve),
           props: true
         },
         {
           path: "/articles/list",
-          component: ArticleList
+          component: resolve => require(['@/views/ArticleList.vue'], resolve),
         },
         {
           path: "/links/create",
-          component: LinkEdit
+          component: resolve => require(['@/views/LinkEdit.vue'], resolve),
         },
         {
           path: "/links/edit/:id",
-          component: LinkEdit,
+          component: resolve => require(['@/views/LinkEdit.vue'], resolve),
           props: true
         },
         {
           path: "/links/list",
-          component: LinkList
+          component: resolve => require(['@/views/LinkList.vue'], resolve),
         },
         {
           path: "/admin_users/create",
-          component: AdminUserEdit
+          component: resolve => require(['@/views/AdminUserEdit.vue'], resolve),
         },
         {
           path: "/admin_users/edit/:id",
-          component: AdminUserEdit,
+          component: resolve => require(['@/views/AdminUserEdit.vue'], resolve),
           props: true
         },
         {
           path: "/admin_users/list",
-          component: AdminUserList
+          component: resolve => require(['@/views/AdminUserList.vue'], resolve),
         }
       ]
     }
