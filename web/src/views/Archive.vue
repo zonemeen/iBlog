@@ -42,8 +42,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .box {
-  min-width: 375px;
+  min-width: 380px !important;
 }
 </style>

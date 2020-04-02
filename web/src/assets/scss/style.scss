@@ -254,3 +254,120 @@ div.vcontrol {
 .v .vlist .vcard .vh .vmeta {
   float: right !important;
 }
+
+.show {
+  transition: transform 0.25s ease;
+  list-style: none;
+}
+
+.show:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.post-container {
+  .top {
+    min-width: 19.2857rem;
+    min-height: 17.8571rem;
+    // background: #f7f7f7 no-repeat top center;
+    // background-size: auto 100%;
+  }
+}
+
+.page {
+  width: 46.4286rem;
+}
+
+.post-tags {
+  max-width: 4.2857rem;
+}
+
+.post-tags:hover {
+  background-color: map-get($colors, "border");
+  color: map-get($colors, "grey");
+}
+
+.page-article img {
+  display: block;
+  margin: 0 auto;
+}
+
+h2,
+h3,
+h4 {
+  color: map-get($colors, "grey-1");
+}
+
+pre {
+  border-radius: 5px;
+  padding: 16px;
+  background: map-get($colors, "postcolor");
+  overflow: hidden;
+}
+
+code {
+  background: map-get($colors, "postcolor");
+  padding: 2px 6px;
+  color: map-get($colors, "codecolor");
+}
+
+.list {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 13px;
+    font-weight: normal;
+    display: flex;
+
+    &:before {
+      width: 20px;
+      min-width: 20px;
+      display: block;
+      opacity: 0.5;
+    }
+  }
+
+  h1 {
+    &:before {
+      content: "1\00a0 ";
+    }
+  }
+
+  h2 {
+    &:before {
+      content: "2\00a0 ";
+      margin-right: 1rem;
+    }
+  }
+
+  h3 {
+    &:before {
+      content: "3\00a0 ";
+      margin-right: 2rem;
+    }
+  }
+
+  h4 {
+    &:before {
+      content: "4\00a0 ";
+      margin-right: 3rem;
+    }
+  }
+
+  h5 {
+    &:before {
+      content: "5\00a0 ";
+      margin-right: 4rem;
+    }
+  }
+
+  h6 {
+    &:before {
+      content: "6\00a0 ";
+      margin-right: 5rem;
+    }
+  }
+}

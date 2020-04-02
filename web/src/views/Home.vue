@@ -6,17 +6,12 @@
       src="../assets/images/bg.png"
       style="position: fixed; left:0; top:0; z-index:-1;"
     />
-    <div
-      class="post-container d-flex flex-wrap jc-center"
-      :data="
-        articles.slice((currentPage - 1) * pagesize, currentPage * pagesize)
-      "
-    >
+    <div class="post-container d-flex flex-wrap jc-center">
       <div v-for="(article, i) in articles" :key="i">
         <div class="show">
           <router-link
             tag="div"
-            :to="`/article/${article._id}`"
+            :to="`/article/list/${article._id}`"
             class="top mt-10 mr-10 mb-0 ml-10 hand"
             :style="{ 'background-image': `url(${article.icon})` }"
           ></router-link>
@@ -25,35 +20,76 @@
               tag="span"
               :to="`/article/${article._id}`"
               class="fs-xxl jc-center d-flex flex-wrap hand text-grey-1"
-            >{{ article.title }}</router-link>
+              >{{ article.title }}</router-link
+            >
             <div class="d-flex mt-4 p-7 text-grey-1">
               <i class="iconfont icon-xinzengyudingicon- pr-2"></i>
-              <span class="fs-sm">{{ article.date }}</span>
+              <span class="fs-sm">{{
+                article.createdAt | date("YYYY-MM-DD")
+              }}</span>
               <i class="iconfont icon-inbox1 pl-9"></i>
               <router-link
                 tag="span"
                 :to="`/archives`"
                 class="fs-sm pl-2 mr-6 hand"
-              >{{ article.categories[0].name }}</router-link>
+                >{{ article.categories[0].name }}</router-link
+              >
               <i class="iconfont icon-love- text-red hand"></i>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="d-flex jc-center mt-10">
-      <el-pagination
-        background
-        class="text-white"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="currentPage"
-        :page-size="pagesize"
-        layout="total, prev, pager, next"
-        :total="articles.length"
-        prev-text="上一页"
-        next-text="下一页"
-      ></el-pagination>
+    <div class="my-10">
+      <div class="page-navigator d-flex jc-center">
+        <div
+          :class="{ current: 1 == pagination.currentPage }"
+          class="mx-4 hand fs-md"
+        >
+          <a @click="goToPage(1)" data-hover="首页">
+            <span class="text-grey-1">首页</span>
+          </a>
+        </div>
+        <div class="mx-4 hand fs-md">
+          <a @click="prev()">
+            <span class="text-grey-1">&laquo;</span>
+          </a>
+        </div>
+        <div
+          class="mx-4 hand fs-md"
+          :class="{ current: article == pagination.currentPage }"
+          v-for="article in pagination.totalPage"
+          :key="article"
+        >
+          <a
+            @click="goToPage(article)"
+            :data-hover="article"
+            class="text-grey-1"
+            >{{ article }}</a
+          >
+        </div>
+
+        <div class="mx-4 hand fs-md">
+          <a @click="next()">
+            <span class="text-grey-1">&raquo;</span>
+          </a>
+        </div>
+        <div
+          class="mx-4 hand fs-md"
+          :class="{ current: pagination.totalPage == pagination.currentPage }"
+        >
+          <a @click="goToPage(pagination.totalPage)" data-hover="末页">
+            <span class="text-grey-1">末页</span>
+          </a>
+        </div>
+        <div class="current mx-4 fs-md">
+          <span class="text-grey-1"
+            >第{{ pagination.currentPage }}页 / 共{{
+              pagination.totalPage
+            }}页</span
+          >
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -62,62 +98,47 @@
 export default {
   data() {
     return {
-      currentPage: 1,
-      pagesize: 6,
-      articles: []
+      articles: [],
+      pagination: {
+        totalPage: 1,
+        currentPage: 1
+      }
     };
   },
   methods: {
-    handleSizeChange: size => {
-      this.pagesize = size;
-      /*console.log(this.pagesize) */
+    async fetchData() {
+      const res = await this.$http.get(
+        `/articles/${this.pagination.currentPage}`
+      );
+      this.articles = res.data.list;
+      this.pagination.totalPage = res.data.totalPage;
+      this.pagination.currentPage = res.data.currentPage;
     },
-    handleCurrentChange: currentPage => {
-      this.currentPage = currentPage;
-      /*console.log(this.currentPage) */
+    async goToPage(pageNum) {
+      this.pagination.currentPage = pageNum;
+      this.fetchData();
     },
-    async fetchArticles() {
-      const res = await this.$http.get("articles/list");
-      this.articles = res.data;
+    prev() {
+      if (this.pagination.currentPage == 1) {
+        return;
+      }
+      this.pagination.currentPage--;
+      this.fetchData();
+    },
+    next() {
+      if (this.pagination.currentPage == this.pagination.totalPage) {
+        return;
+      }
+      this.pagination.currentPage++;
+      this.fetchData();
     }
   },
   created() {
-    this.fetchArticles();
+    this.fetchData();
   }
 };
 </script>
 
 <style lang="scss">
 @import "../assets/scss/_variables.scss";
-
-.post-container {
-  .top {
-    min-width: 19.2857rem;
-    min-height: 17.8571rem;
-    // background: #f7f7f7 no-repeat top center;
-    // background-size: auto 100%;
-    &.title.title {
-      min-width: 19.2857rem;
-    }
-  }
-}
-
-.post:hover {
-  box-shadow: 1px 1px 15px 2px rgba(0, 0, 0, 0.3);
-}
-
-.show {
-  transition: transform 0.25s ease;
-  list-style: none;
-}
-.show:hover {
-  transform: scale(1.1, 1.1);
-}
-.btn-prev,
-.btn-next {
-  background: transparent !important;
-}
-.el-pagination__total {
-  color: map-get($colors, "grey-1") !important;
-}
 </style>

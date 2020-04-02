@@ -15,9 +15,14 @@
           :key="item.text"
           active-class="active"
           class="nav-item px-5 icon"
-        >{{ item.text }}</router-link>
+          >{{ item.text }}</router-link
+        >
         <div class="nav-item px-5">
-          <router-link tag="div" to="/search" class="iconfont icon-findx"></router-link>
+          <router-link
+            tag="div"
+            to="/search"
+            class="iconfont icon-findx"
+          ></router-link>
         </div>
       </div>
     </div>
@@ -25,21 +30,28 @@
     <div class="border-bottom border-top bg-navcolor">
       <div class="d-flex py-6 jc-center">
         <div class="px-7 hand">
-          <a href="https://github.com/miqilin21" target="_blank" class="text-grey-1">GITHUB</a>
+          <a
+            href="https://github.com/miqilin21"
+            target="_blank"
+            class="text-grey-1"
+            >GITHUB</a
+          >
         </div>
         <div class="px-7 hand">
           <a
             href="https://www.zhihu.com/people/mi-qi-lin-60-52"
             target="_blank"
             class="text-grey-1"
-          >ZHIHU</a>
+            >ZHIHU</a
+          >
         </div>
         <div class="px-7 hand">
           <a
             href="https://www.weibo.com/p/1005052708035565"
             target="_blank"
             class="text-grey-1"
-          >WEIBO</a>
+            >WEIBO</a
+          >
         </div>
         <div class="px-7 hand">
           <a href="/" class="text-grey-1">TWITTER</a>
@@ -72,7 +84,8 @@
               v-for="item in model"
               :to="`/article/${item._id}`"
               :key="item._id"
-            >{{ item.title }}</router-link>
+              >{{ item.title }}</router-link
+            >
           </div>
         </div>
       </div>
@@ -87,6 +100,7 @@ export default {
       items: [
         { text: "首页", link: "/" },
         { text: "归档", link: "/archives" },
+        { text: "标签", link: "/tags" },
         { text: "友链", link: "/links" },
         { text: "留言", link: "/message" },
         { text: "关于", link: "/about" }
@@ -106,7 +120,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/scss/style.scss";
 
 .nav-item.active {
@@ -121,31 +135,5 @@ export default {
   position: sticky;
   top: 0;
   z-index: 999;
-}
-
-.load {
-  width: 13em;
-  white-space: nowrap;
-  border-right: 2px solid transparent;
-  animation: load 3.5s steps(15, end), blink-caret 0.75s step-end infinite;
-  overflow: hidden;
-}
-
-@keyframes load {
-  from {
-    width: 0;
-  }
-  // to {
-  //   width: 15em;
-  // }
-}
-
-@keyframes blink-caret {
-  to {
-    box-shadow: 1px 0 0 0 transparent;
-  }
-  50% {
-    box-shadow: 1px 0 0 0;
-  }
 }
 </style>

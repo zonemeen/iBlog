@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
+    "dayjs": "^1.8.23",
     "element-ui": "^2.13.0",
     "gitalk": "^1.6.2",
     "github-markdown-css": "^4.0.0",

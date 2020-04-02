@@ -4,24 +4,9 @@ module.exports = app => {
   const Article = mongoose.model("Article");
   const Link = mongoose.model("Link");
 
-  // 文章列表接口
+  // 文章列表
   router.get("/articles/list", async (req, res) => {
-    const cats = await Article.find().populate('categories').lean();
-    // const cats = await Category.aggregate([{
-    //   $lookup: {
-    //     from: 'articles', //文章集合
-    //     localField: 'name',
-    //     foreignField: 'categories',
-    //     as: 'articlesList'
-    //   }
-    // }, ])
-    // // cats.map(cat => {
-    // //   cat.articlesList.map(articles => {
-    // //     articles.categoryName = cat.name
-    // //     return articles
-    // //   })
-    // //   return cat
-    // // })
+    const cats = await Article.find();
     res.send(cats);
   });
 
@@ -33,9 +18,25 @@ module.exports = app => {
     res.send(cats);
   });
 
+  // 获取指定页码的文章
+  router.get('/articles/:pageNum', async (req, res) => {
+    const currentPage = req.params.pageNum;
+    const list = await Article.find().sort({
+      'createdAt': -1
+    }).skip((currentPage - 1) * 6).limit(6).populate('categories')
+    const count = await Article.find().lean().count()
+    const totalPage = Math.ceil(count / 6)
+    res.send({
+      list,
+      totalArticles: count,
+      totalPage,
+      currentPage
+    })
+  })
+
   // 文章详情
-  router.get("/articles/:id", async (req, res) => {
-    const data = await Article.findById(req.params.id).populate('categories').lean();
+  router.get("/articles/list/:id", async (req, res) => {
+    const data = await Article.findById(req.params.id).populate('categories');
     res.send(data);
   });
 

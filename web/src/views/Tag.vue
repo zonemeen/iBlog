@@ -20,10 +20,7 @@
         <span class="fs-xxl text-grey-1">关于博客</span>
       </div>
       <div class="pl-6 text-green-1">
-        <p>
-          •
-          该博客用Vue实现，express提供数据接口，mongoDB储存数据，部署在腾讯云的服务器上，博客的初衷是希望把自己平常工作学习总结的东西记录下来，以便不时之需可以查阅。
-        </p>
+        <p>• 该博客用Vue实现，express提供数据接口，mongoDB储存数据，部署在阿里云的服务器上，博客的初衷是希望把自己平常工作学习总结的东西记录下来，以便不时之需可以查阅。</p>
         <p>• 如有错误地方烦请指正</p>
       </div>
       <div class="py-4 mt-6">
@@ -33,19 +30,14 @@
       </div>
       <div class="pl-6 text-green-1 mb-9">
         <p>
-          <a
-            href="http://blog.miqilin21.cn"
-            class="text-green-1 bd-bottom-about"
-            >• CMS(本博客)</a
-          >
+          <a href="http://blog.miqilin21.cn" class="text-green-1 bd-bottom-about">• CMS(本博客)</a>
           - 基于NodeJs、Vue、MongoDB实现的一款CMS系统
         </p>
         <p>
           <a
             href="https://github.com/miqilin21/moba-mobile-site"
             class="text-green-1 bd-bottom-about"
-            >• Moba-Mobile-Site</a
-          >
+          >• Moba-Mobile-Site</a>
           - 仿王者荣耀官网移动端&后台管理系统，后端Node.js，前端Vue.js
         </p>
         <p>

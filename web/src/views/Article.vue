@@ -2,9 +2,17 @@
   <div class="page-article d-flex flex-column ai-center flex-wrap" v-if="model">
     <div class="page">
       <div class="text-green fs-xxxxl mt-11">{{ model.title }}</div>
-      <div class="text-grey-2 fs-sm mt-5">Published on {{ model.date }}</div>
+      <div class="text-grey-2 fs-sm mt-6">
+        <p>
+          发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }} | 更新于：{{
+            model.createdAt | date("YYYY-MM-DD HH:mm")
+          }}
+        </p>
+      </div>
       <div>
-        <div class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand">
+        <div
+          class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand"
+        >
           <span class>
             <i class="iconfont icon-tag1"></i>
           </span>
@@ -85,7 +93,7 @@ export default {
   },
   methods: {
     async fetch() {
-      const res = await this.$http.get(`articles/${this.id}`);
+      const res = await this.$http.get(`articles/list/${this.id}`);
       this.model = res.data;
     }
   },
@@ -94,100 +102,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-@import "../assets/scss/_variables.scss";
-.page {
-  width: 46.4286rem;
-}
-.post-tags {
-  max-width: 4.2857rem;
-}
-
-.post-tags:hover {
-  background-color: map-get($colors, "border");
-  color: map-get($colors, "grey");
-}
-.page-article img {
-  display: block;
-  margin: 0 auto;
-}
-
-h2,
-h3,
-h4 {
-  color: map-get($colors, "grey-1");
-}
-pre {
-  border-radius: 5px;
-  padding: 16px;
-  background: map-get($colors, "postcolor");
-  overflow: hidden;
-}
-code {
-  background: map-get($colors, "postcolor");
-  padding: 2px 6px;
-  color: map-get($colors, "codecolor");
-}
-
-.list {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-size: 13px;
-    font-weight: normal;
-    display: flex;
-
-    &:before {
-      width: 20px;
-      min-width: 20px;
-      display: block;
-      opacity: 0.5;
-    }
-  }
-
-  h1 {
-    &:before {
-      content: "1\00a0 ";
-    }
-  }
-
-  h2 {
-    &:before {
-      content: "2\00a0 ";
-      margin-right: 1rem;
-    }
-  }
-
-  h3 {
-    &:before {
-      content: "3\00a0 ";
-      margin-right: 2rem;
-    }
-  }
-
-  h4 {
-    &:before {
-      content: "4\00a0 ";
-      margin-right: 3rem;
-    }
-  }
-
-  h5 {
-    &:before {
-      content: "5\00a0 ";
-      margin-right: 4rem;
-    }
-  }
-
-  h6 {
-    &:before {
-      content: "6\00a0 ";
-      margin-right: 5rem;
-    }
-  }
-}
-</style>
