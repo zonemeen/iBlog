@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Main from '../views/Main.vue'
 import Archive from '../views/Archive.vue'
-import Tag from '../views/Tag.vue'
 import Link from '../views/Link.vue'
 import Message from '../views/Message.vue'
 import About from '../views/About.vue'
@@ -23,11 +22,6 @@ const routes = [{
         path: '/archives',
         name: '归档',
         component: Archive
-      },
-      {
-        path: '/tags',
-        name: '标签',
-        component: Tag
       },
       {
         path: '/links',

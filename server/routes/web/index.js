@@ -3,19 +3,23 @@ module.exports = app => {
   const mongoose = require("mongoose");
   const Article = mongoose.model("Article");
   const Link = mongoose.model("Link");
+  const Category = mongoose.model("Category");
 
   // 文章列表
   router.get("/articles/list", async (req, res) => {
-    const cats = await Article.find();
-    res.send(cats);
+    const data = await Article.find().sort({
+      'createdAt': -1
+    });
+    res.send(data);
   });
 
   // 最近
   router.get("/articles/recent", async (req, res) => {
-    const cats = await Article.find()
-      .limit(4)
-      .lean();
-    res.send(cats);
+    const data = await Article.find()
+      .sort({
+        'createdAt': -1
+      }).limit(4);
+    res.send(data);
   });
 
   // 获取指定页码的文章
@@ -34,6 +38,19 @@ module.exports = app => {
     })
   })
 
+  // 标签
+  router.get('/tags', async (req, res) => {
+    const data = await Category.aggregate([{
+      $lookup: {
+        from: 'articles',
+        localField: '_id',
+        foreignField: 'categories',
+        as: 'tagsList'
+      }
+    }])
+    res.send(data)
+  })
+
   // 文章详情
   router.get("/articles/list/:id", async (req, res) => {
     const data = await Article.findById(req.params.id).populate('categories');
@@ -42,8 +59,8 @@ module.exports = app => {
 
   // links
   router.get("/links/list", async (req, res) => {
-    const cats = await Link.find();
-    res.send(cats);
+    const data = await Link.find();
+    res.send(data);
   });
   app.use("/web/api", router);
 };

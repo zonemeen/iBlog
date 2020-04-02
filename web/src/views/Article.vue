@@ -5,14 +5,12 @@
       <div class="text-grey-2 fs-sm mt-6">
         <p>
           发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }} | 更新于：{{
-            model.createdAt | date("YYYY-MM-DD HH:mm")
+          model.createdAt | date("YYYY-MM-DD HH:mm")
           }}
         </p>
       </div>
       <div>
-        <div
-          class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand"
-        >
+        <div class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand">
           <span class>
             <i class="iconfont icon-tag1"></i>
           </span>
@@ -22,7 +20,7 @@
       </div>
 
       <div class="mt-5 mb-6"></div>
-      <div class="text-grey-2 fs-md mb-9 container">
+      <div class="text-grey-2 fs-md mb-10 container">
         <div class="markdown-body">
           <div id="content" v-html="compiledMarkdown"></div>
         </div>

@@ -17,13 +17,13 @@
           class="nav-item px-5 icon"
           >{{ item.text }}</router-link
         >
-        <div class="nav-item px-5">
+        <!-- <div class="nav-item px-5">
           <router-link
             tag="div"
             to="/search"
             class="iconfont icon-findx"
           ></router-link>
-        </div>
+        </div> -->
       </div>
     </div>
     <router-view></router-view>
@@ -60,7 +60,7 @@
     </div>
     <div class="footer pt-3 bg-navcolor">
       <div class="pt-9 d-flex jc-center">
-        <div class="me px-8">
+        <div class="px-8 mb-4">
           <router-link class="hand" tag="div" to="/">
             <img src="../assets/logo.png" height="32" />
           </router-link>
@@ -74,15 +74,20 @@
               © Copyright 2020
               <a href="https://github.com/miqilin21">miqilin21</a>
             </p>
+            <p>
+              <a href="http://www.beian.miit.gov.cn/" class="text-grey-2"
+                >浙ICP备20010345号</a
+              >
+            </p>
           </div>
         </div>
-        <div class="me px-8">
-          <div class="text-grey-1 fs-md">RECENT POSTS</div>
+        <div class="px-8">
+          <div class="text-grey-1 fs-md mt-6">RECENT POSTS</div>
           <div class="text-grey-2 fs-sm hand">
             <router-link
               tag="p"
               v-for="item in model"
-              :to="`/article/${item._id}`"
+              :to="`/article/list/${item._id}`"
               :key="item._id"
               >{{ item.title }}</router-link
             >
@@ -100,7 +105,6 @@ export default {
       items: [
         { text: "首页", link: "/" },
         { text: "归档", link: "/archives" },
-        { text: "标签", link: "/tags" },
         { text: "友链", link: "/links" },
         { text: "留言", link: "/message" },
         { text: "关于", link: "/about" }
