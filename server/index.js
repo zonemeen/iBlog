@@ -1,18 +1,20 @@
 const express = require("express")
-
+const cors = require('cors')
 const app = express()
 
 app.set('secret', 'i2u34y12oi3u4y8')
 
-app.use(require('cors')())
+app.use(cors())
 app.use(express.json())
 app.use('/uploads', express.static(__dirname + '/uploads'))
+app.use('/', express.static(__dirname + '/web'))
+app.use('/admin', express.static(__dirname + '/admin'))
 
 
 require('./plugins/db')(app)
-require('./routes/admin')(app)
-require('./routes/web')(app)
+require('./routers/admin/index')(app)
+require('./routers/web/index')(app)
 
-app.listen(3000, () => {
+app.listen(3000, async (req, res) => {
   console.log('http://localhost:3000');
 })
