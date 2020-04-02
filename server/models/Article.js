@@ -8,9 +8,6 @@ const schema = new mongoose.Schema({
   title: {
     type: String
   },
-  date: {
-    type: String
-  },
   icon: {
     type: String
   },

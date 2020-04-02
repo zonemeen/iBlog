@@ -1,9 +1,8 @@
 <template>
   <div>
     <h1>分类列表</h1>
-    <el-table :data="items">
-      <el-table-column prop="_id" label="ID" width="250"></el-table-column>
-      <el-table-column prop="parent.name" label="上级分类"></el-table-column>
+    <el-table :data="items" style="width: 100%">
+      <el-table-column prop="_id" label="ID" width="480"></el-table-column>
       <el-table-column prop="name" label="分类名称"></el-table-column>
       <el-table-column fixed="right" label="操作" width="180">
         <template slot-scope="scope">
@@ -12,15 +11,13 @@
             size="small"
             icon="el-icon-edit"
             @click="$router.push(`/categories/edit/${scope.row._id}`)"
-            >编辑</el-button
-          >
+          >编辑</el-button>
           <el-button
             type="danger"
             size="small"
             icon="el-icon-delete"
             @click="remove(scope.row._id)"
-            >删除</el-button
-          >
+          >删除</el-button>
         </template>
       </el-table-column>
     </el-table>

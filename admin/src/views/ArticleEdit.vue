@@ -15,9 +15,6 @@
       <el-form-item label="标题">
         <el-input v-model="model.title"></el-input>
       </el-form-item>
-      <el-form-item label="日期">
-        <el-input v-model="model.date"></el-input>
-      </el-form-item>
       <el-form-item label="缩略图">
         <el-upload
           class="avatar-uploader"

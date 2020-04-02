@@ -81,7 +81,8 @@ module.exports = app => {
       id: user._id
     }, app.get('secret'))
     res.send({
-      token
+      token,
+      username
     })
   })
 
