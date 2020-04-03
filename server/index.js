@@ -12,8 +12,8 @@ app.use('/admin', express.static(__dirname + '/admin'))
 
 
 require('./plugins/db')(app)
-require('./routers/admin/index')(app)
-require('./routers/web/index')(app)
+require('./routes/admin/index.js')(app)
+require('./routes/web/index.js')(app)
 
 app.listen(3000, async (req, res) => {
   console.log('http://localhost:3000');

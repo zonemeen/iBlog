@@ -60,7 +60,7 @@ module.exports = app => {
     upload.single("file"),
     async (req, res) => {
       const file = req.file;
-      file.url = `http://localhost:3000/uploads/${file.filename}`;
+      file.url = `http://www.miqilin21.cn/uploads/${file.filename}`;
       res.send(file);
     }
   );
@@ -75,7 +75,7 @@ module.exports = app => {
       username
     }).select('+password')
     assert(user, 422, '用户不存在')
-    const isValid = require('bcrypt').compareSync(password, user.password)
+    const isValid = require('bcryptjs').compareSync(password, user.password)
     assert(isValid, 422, '密码错误')
     const token = jwt.sign({
       id: user._id

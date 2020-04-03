@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
     "core-js": "^3.6.4",
     "dayjs": "^1.8.23",
     "element-ui": "^2.13.0",
