@@ -1,7 +1,9 @@
 <template>
   <div
     class="mb-7"
-    v-loading.fullscreen.lock="fullscreenLoading"
+    v-loading="loading"
+    element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
     element-loading-background="rgba(0, 0, 0, 0.8)"
   >
     <div class="page-archive d-flex flex-column ai-center jc-center">
@@ -31,16 +33,15 @@
 export default {
   data() {
     return {
-      model: [],
-      fullscreenLoading: false
+      model: []
     };
   },
   methods: {
     async fetchArticles() {
-      this.fullscreenLoading = true;
+      this.loading = true;
       const res = await this.$http.get("articles/list");
       this.model = res.data;
-      this.fullscreenLoading = false;
+      this.loading = false;
     }
   },
   created() {

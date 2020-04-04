@@ -2,7 +2,9 @@
   <div
     class="page-article d-flex flex-column ai-center flex-wrap"
     v-if="model"
-    v-loading.fullscreen.lock="fullscreenLoading"
+    v-loading="loading"
+    element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
     element-loading-background="rgba(0, 0, 0, 0.8)"
   >
     <div class="page">
@@ -83,8 +85,7 @@ export default {
   },
   data() {
     return {
-      model: null,
-      fullscreenLoading: false
+      model: null
     };
   },
   watch: {
@@ -100,10 +101,10 @@ export default {
   },
   methods: {
     async fetch() {
-      this.fullscreenLoading = true;
+      this.loading = true;
       const res = await this.$http.get(`articles/list/${this.id}`);
       this.model = res.data;
-      this.fullscreenLoading = false;
+      this.loading = false;
     }
   },
   created() {
