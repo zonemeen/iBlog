@@ -107,6 +107,6 @@ export default {
 
 <style lang="scss" scpoed>
 .show-link {
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0.0714rem 0.0714rem 0.3571rem 0.0714rem rgba(0, 0, 0, 0.2);
 }
 </style>

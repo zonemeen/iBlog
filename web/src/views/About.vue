@@ -62,7 +62,7 @@
 
 .bd-bottom-about,
 .bd-bottom-about:hover {
-  border-bottom: 1px solid grey;
+  border-bottom: 0.0714rem solid grey;
   color: map-get($colors, "red");
 }
 </style>

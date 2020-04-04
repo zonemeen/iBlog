@@ -38,7 +38,7 @@ $color in $colors {
 }
 
 .bdr {
-  border-radius: 10px;
+  border-radius: 0.7143rem;
 }
 
 // text align
@@ -209,15 +209,15 @@ h4 {
 }
 
 pre {
-  border-radius: 5px;
-  padding: 16px;
+  border-radius: 0.3571rem;
+  padding: 1.1429rem;
   background: map-get($colors, "postcolor");
   overflow: hidden;
 }
 
 code {
   background: map-get($colors, "postcolor");
-  padding: 2px 6px;
+  padding: 0.1429rem 0.4286rem;
   color: map-get($colors, "codecolor");
 }
 
@@ -229,13 +229,13 @@ code {
   h4,
   h5,
   h6 {
-    font-size: 13px;
+    font-size: 0.9286rem;
     font-weight: normal;
     display: flex;
 
     &:before {
-      width: 20px;
-      min-width: 20px;
+      width: 1.4286rem;
+      min-width: 1.4286rem;
       display: block;
       opacity: 0.5;
     }
