@@ -5,7 +5,7 @@
       <div class="text-grey-2 fs-sm mt-6">
         <p>
           发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }} | 更新于：{{
-          model.createdAt | date("YYYY-MM-DD HH:mm")
+          model.updateAt | date("YYYY-MM-DD HH:mm")
           }}
         </p>
       </div>
