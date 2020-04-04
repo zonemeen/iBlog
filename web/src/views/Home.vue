@@ -1,9 +1,7 @@
 <template>
   <div
     class="main-container mb-9 mt-8"
-    v-loading="loading"
-    element-loading-text="拼命加载中"
-    element-loading-spinner="el-icon-loading"
+    v-loading.fullscreen.lock="fullscreenLoading"
     element-loading-background="rgba(0, 0, 0, 0.8)"
   >
     <img
@@ -100,19 +98,19 @@ export default {
         totalPage: 1,
         currentPage: 1
       },
-      loading: false
+      fullscreenLoading: false
     };
   },
   methods: {
     async fetchData() {
-      this.loading = true;
+      this.fullscreenLoading = true;
       const res = await this.$http.get(
         `/articles/${this.pagination.currentPage}`
       );
       this.articles = res.data.list;
       this.pagination.totalPage = res.data.totalPage;
       this.pagination.currentPage = res.data.currentPage;
-      this.loading = false;
+      this.fullscreenLoading = false;
     },
     async goToPage(pageNum) {
       this.pagination.currentPage = pageNum;
