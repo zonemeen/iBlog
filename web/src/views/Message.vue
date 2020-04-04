@@ -22,6 +22,9 @@
       </div>
       <div id="comment" class="bg-postcolor p-8" style="width: 600px !important"></div>
     </div>
+    <div class="w-100 h-100">
+      <el-backtop :bottom="50"></el-backtop>
+    </div>
   </div>
 </template>
 

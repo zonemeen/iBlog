@@ -26,6 +26,9 @@
         </div>
       </div>
     </div>
+    <div class="w-100 h-100">
+      <el-backtop :bottom="50"></el-backtop>
+    </div>
   </div>
 </template>
 
