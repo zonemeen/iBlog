@@ -1,6 +1,6 @@
 <template>
-  <div v-loading="loading">
-    <div class="topbar nav jc-around bg-navcolor">
+  <div>
+    <div class="topbar nav jc-around bg-navcolor h-100">
       <div class="mt-4 hand">
         <router-link tag="div" to="/">
           <img src="../assets/logo.png" height="42" />
