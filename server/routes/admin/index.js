@@ -60,7 +60,7 @@ module.exports = app => {
     upload.single("file"),
     async (req, res) => {
       const file = req.file;
-      file.url = `http://www.miqilin21.cn/uploads/${file.filename}`;
+      file.url = `http://miqilin21.cn/uploads/${file.filename}`;
       res.send(file);
     }
   );
