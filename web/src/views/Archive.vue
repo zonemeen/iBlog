@@ -1,5 +1,11 @@
 <template>
-  <div class="mb-7">
+  <div
+    class="mb-7"
+    v-loading="loading"
+    element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.8)"
+  >
     <div class="page-archive d-flex flex-column ai-center jc-center">
       <div class="mt-11 pr-11 mr-11">
         <div class="fs-xxxxl text-green">共计{{ model.length }}篇文章</div>
@@ -32,8 +38,10 @@ export default {
   },
   methods: {
     async fetchArticles() {
+      this.loading = true;
       const res = await this.$http.get("articles/list");
       this.model = res.data;
+      this.loading = false;
     }
   },
   created() {

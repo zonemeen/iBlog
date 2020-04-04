@@ -1,5 +1,12 @@
 <template>
-  <div class="page-article d-flex flex-column ai-center flex-wrap" v-if="model">
+  <div
+    class="page-article d-flex flex-column ai-center flex-wrap"
+    v-if="model"
+    v-loading="loading"
+    element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.8)"
+  >
     <div class="page">
       <div class="text-green fs-xxxxl mt-11">{{ model.title }}</div>
       <div class="text-grey-2 fs-sm mt-6">
@@ -94,8 +101,10 @@ export default {
   },
   methods: {
     async fetch() {
+      this.loading = true;
       const res = await this.$http.get(`articles/list/${this.id}`);
       this.model = res.data;
+      this.loading = false;
     }
   },
   created() {

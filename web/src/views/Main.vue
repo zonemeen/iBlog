@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-loading="loading">
     <div class="topbar nav jc-around bg-navcolor">
       <div class="mt-4 hand">
         <router-link tag="div" to="/">

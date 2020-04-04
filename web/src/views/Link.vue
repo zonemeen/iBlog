@@ -1,5 +1,11 @@
 <template>
-  <div class="page-link d-flex flex-column ai-center pt-10">
+  <div
+    class="page-link d-flex flex-column ai-center pt-10"
+    v-loading="loading"
+    element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.8)"
+  >
     <div class="page p-6">
       <div class="text-green fs-xxxxl">Links</div>
       <div class="text-grey-2 fs-sm mt-5">Published on March 11th 2020</div>
@@ -83,8 +89,10 @@ export default {
   },
   methods: {
     async fetchLinks() {
+      this.loading = true;
       const res = await this.$http.get("links/list");
       this.model = res.data;
+      this.loading = false;
     }
   },
   created() {
