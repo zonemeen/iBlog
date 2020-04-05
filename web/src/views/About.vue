@@ -34,19 +34,21 @@
       <div class="pl-6 text-green-1 mb-9">
         <p>
           <a
-            href="http://blog.miqilin21.cn"
+            href="https://github.com/miqilin21/myBlog"
             class="text-green-1 bd-bottom-about"
-            >• CMS(本博客)</a
-          >
-          - 基于NodeJs、Vue、MongoDB实现的一款CMS系统
+          >• CMS(本博客)</a>
+          - 基于NodeJs、Vue、MongoDB实现的一款CMS博客系统🔥
         </p>
         <p>
           <a
-            href="https://github.com/miqilin21/moba-mobile-site"
+            href="https://github.com/miqilin21/iMoney"
             class="text-green-1 bd-bottom-about"
-            >• Moba-Mobile-Site</a
-          >
-          - 仿王者荣耀官网移动端&后台管理系统，后端Node.js，前端Vue.js
+          >• iMoney</a>
+          - 基于Vue、Vue Router、Vuex、TypeScript实现的一款极简的记账应用
+        </p>
+        <p>
+          <a href="https://github.com/miqilin21/cv" class="text-green-1 bd-bottom-about">• cv</a>
+          - 原生js实现的米淇淋个人简历📄
         </p>
         <p>
           <a href="/" class="text-green-1 bd-bottom-about">• 其他项目</a>
@@ -57,7 +59,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/scss/style.scss";
 
 .bd-bottom-about,

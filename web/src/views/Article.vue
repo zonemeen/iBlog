@@ -8,11 +8,7 @@
     <div class="page">
       <div class="text-green fs-xxxxl mt-11">{{ model.title }}</div>
       <div class="text-grey-2 fs-sm mt-6">
-        <p>
-          发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }} | 更新于：{{
-          model.updateAt | date("YYYY-MM-DD HH:mm")
-          }}
-        </p>
+        <p>发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }}</p>
       </div>
       <div>
         <div class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand">
