@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const history = require("connect-history-api-fallback");
-
 const app = express();
 
 app.set("secret", "i2u34y12oi3u4y8");
