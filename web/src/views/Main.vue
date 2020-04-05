@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="main">
     <div class="topbar nav jc-around bg-navcolor">
       <div class="mt-4 hand">
         <router-link tag="div" to="/">
-          <img src="../assets/logo.png" height="42" />
+          <img src="../assets/logo.png" height="42" class="main-img" />
         </router-link>
       </div>
-      <div class="d-flex my-7 text-grey-1 hand">
+      <div class="d-flex my-7 text-grey-1 hand main-font">
         <router-link
           exact
           tag="div"
@@ -15,7 +15,8 @@
           :key="item.text"
           active-class="active"
           class="nav-item px-5 icon"
-        >{{ item.text }}</router-link>
+          >{{ item.text }}</router-link
+        >
         <!-- <div class="nav-item px-5">
           <router-link
             tag="div"
@@ -29,21 +30,28 @@
     <div class="border-bottom border-top bg-navcolor">
       <div class="d-flex py-6 jc-center">
         <div class="px-7 hand">
-          <a href="https://github.com/miqilin21" target="_blank" class="text-grey-1">GITHUB</a>
+          <a
+            href="https://github.com/miqilin21"
+            target="_blank"
+            class="text-grey-1"
+            >GITHUB</a
+          >
         </div>
         <div class="px-7 hand">
           <a
             href="https://www.zhihu.com/people/mi-qi-lin-60-52"
             target="_blank"
             class="text-grey-1"
-          >ZHIHU</a>
+            >ZHIHU</a
+          >
         </div>
         <div class="px-7 hand">
           <a
             href="https://www.weibo.com/p/1005052708035565"
             target="_blank"
             class="text-grey-1"
-          >WEIBO</a>
+            >WEIBO</a
+          >
         </div>
         <div class="px-7 hand">
           <a href="/" class="text-grey-1">TWITTER</a>
@@ -67,7 +75,9 @@
               <a href="https://github.com/miqilin21">miqilin21</a>
             </p>
             <p>
-              <a href="http://www.beian.miit.gov.cn/" class="text-grey-2">浙ICP备20010345号</a>
+              <a href="http://www.beian.miit.gov.cn/" class="text-grey-2"
+                >浙ICP备20010345号</a
+              >
             </p>
           </div>
         </div>
@@ -79,7 +89,8 @@
               v-for="item in model"
               :to="`/article/list/${item._id}`"
               :key="item._id"
-            >{{ item.title }}</router-link>
+              >{{ item.title }}</router-link
+            >
           </div>
         </div>
       </div>
@@ -96,20 +107,20 @@ export default {
         { text: "归档", link: "/archives" },
         { text: "友链", link: "/links" },
         { text: "留言", link: "/message" },
-        { text: "关于", link: "/about" }
+        { text: "关于", link: "/about" },
       ],
-      model: []
+      model: [],
     };
   },
   methods: {
     async fetchArticles() {
       const res = await this.$http.get("articles/recent");
       this.model = res.data;
-    }
+    },
   },
   created() {
     this.fetchArticles();
-  }
+  },
 };
 </script>
 

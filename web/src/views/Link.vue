@@ -13,7 +13,7 @@
         &nbsp;
         <span class="fs-xxl text-grey-1">友情链接</span>
       </div>
-      <div class="m-9 pl-9">
+      <div class="m-9 pl-9 link-item">
         <div
           class="p-6 show-link show m-7 bg-postcolor bdr"
           style="width: 70%;"
@@ -32,7 +32,9 @@
                 <span>
                   <img :src="item.icon" style="width: 40px; height: 40px;" />
                 </span>
-                <span class="fs-xxxxl text-green pl-6">{{ item.name }}</span>
+                <span class="fs-xxxxl text-green pl-6 link-font">{{
+                  item.name
+                }}</span>
               </div>
             </a>
           </el-tooltip>
@@ -62,13 +64,15 @@
         <p>• 网站地址：blog.miqilin21.cn</p>
         <p>• 描述：我劝你要多喝热水哈哈哈哈哈哈哈哈哈哈哈</p>
       </div>
-      <p class="my-9 text-grey-2">暂时先这样，同时欢迎互换友链，在本页留言即可。 ^_^</p>
+      <p class="my-9 text-grey-2">
+        暂时先这样，同时欢迎互换友链，在本页留言即可。 ^_^
+      </p>
     </div>
     <div class="mb-9">
       <div class="mb-7">
-        <span class="fs-xxxl text-grey-1 text-center">Responses</span>
+        <span class="fs-xxxl text-grey-1 text-center ml-5">Responses</span>
       </div>
-      <div id="link" class="bg-postcolor p-8" style="width: 600px !important"></div>
+      <div id="link" class="bg-postcolor p-8 res" style="width: 600px;"></div>
     </div>
     <div class="w-100 h-100">
       <el-backtop :bottom="50"></el-backtop>
@@ -83,7 +87,7 @@ export default {
   data() {
     return {
       model: [],
-      fullscreenLoading: false
+      fullscreenLoading: false,
     };
   },
   methods: {
@@ -92,12 +96,12 @@ export default {
       const res = await this.$http.get("links/list");
       this.model = res.data;
       this.fullscreenLoading = false;
-    }
+    },
   },
   created() {
     this.fetchLinks();
   },
-  mounted: function() {
+  mounted: function () {
     new Valine({
       el: "#link",
       appId: "9uFsTmmEThWWBitWhFgx0P9z-gzGzoHsz", // your AppId
@@ -106,9 +110,9 @@ export default {
       verify: false,
       avatar: "monsterid", // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
       pageSize: 5,
-      placeholder: "大家请坐下，陈独秀同志要发言了。。。"
+      placeholder: "大家请坐下，陈独秀同志要发言了。。。",
     });
-  }
+  },
 };
 </script>
 

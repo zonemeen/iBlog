@@ -7,36 +7,39 @@
     <img
       class="w-100 h-100"
       src="../assets/images/bg.png"
-      style="position: fixed; left:0; top:0; z-index:-1;"
+      style="position: fixed; left: 0; top: 0; z-index: -1;"
     />
-    <div class="post-container d-flex flex-wrap jc-center">
+    <div
+      class="post-container d-flex flex-wrap jc-center ai-center"
+      style="width: 80%; margin: 0 auto;"
+    >
       <div v-for="(article, i) in articles" :key="i">
-        <div class="show">
+        <div class="show home-art">
           <router-link
             tag="div"
             :to="`/article/list/${article._id}`"
-            class="top mt-10 mr-10 mb-0 ml-10 hand"
+            class="top mt-10 mr-8 mb-0 ml-8 hand"
             :style="{ 'background-image': `url(${article.icon})` }"
           ></router-link>
-          <div class="bg-postcolor pt-8 mx-10 title">
+          <div class="bg-postcolor pt-8 mx-8 title">
             <router-link
               tag="span"
               :to="`/article/list/${article._id}`"
               class="fs-xxl jc-center d-flex flex-wrap hand text-grey-1"
-            >{{ article.title }}</router-link>
+              >{{ article.title }}</router-link
+            >
             <div class="d-flex mt-4 p-7 text-grey-1">
               <i class="iconfont icon-xinzengyudingicon- pr-2"></i>
               <span class="fs-sm">
-                {{
-                article.createdAt | date("YYYY-MM-DD")
-                }}
+                {{ article.createdAt | date("YYYY-MM-DD") }}
               </span>
               <i class="iconfont icon-inbox1 pl-9"></i>
               <router-link
                 tag="span"
                 :to="`/article/list/${article._id}`"
                 class="fs-sm pl-2 mr-6 hand"
-              >{{ article.categories[0].name }}</router-link>
+                >{{ article.categories[0].name }}</router-link
+              >
               <i class="iconfont icon-love- text-red hand"></i>
             </div>
           </div>
@@ -45,7 +48,10 @@
     </div>
     <div class="my-10">
       <div class="page-navigator d-flex jc-center">
-        <div :class="{ current: 1 == pagination.currentPage }" class="mx-4 hand fs-md">
+        <div
+          :class="{ current: 1 == pagination.currentPage }"
+          class="mx-4 hand fs-md"
+        >
           <a @click="goToPage(1)" data-hover="首页">
             <span class="text-grey-1">首页</span>
           </a>
@@ -61,7 +67,12 @@
           v-for="article in pagination.totalPage"
           :key="article"
         >
-          <a @click="goToPage(article)" :data-hover="article" class="text-grey-1">{{ article }}</a>
+          <a
+            @click="goToPage(article)"
+            :data-hover="article"
+            class="text-grey-1"
+            >{{ article }}</a
+          >
         </div>
 
         <div class="mx-4 hand fs-md">
@@ -79,9 +90,7 @@
         </div>
         <div class="current mx-4 fs-md">
           <span class="text-grey-1">
-            第{{ pagination.currentPage }}页 / 共{{
-            pagination.totalPage
-            }}页
+            第{{ pagination.currentPage }}页 / 共{{ pagination.totalPage }}页
           </span>
         </div>
       </div>
@@ -96,9 +105,9 @@ export default {
       articles: [],
       pagination: {
         totalPage: 1,
-        currentPage: 1
+        currentPage: 1,
       },
-      fullscreenLoading: false
+      fullscreenLoading: false,
     };
   },
   methods: {
@@ -129,10 +138,10 @@ export default {
       }
       this.pagination.currentPage++;
       this.fetchData();
-    }
+    },
   },
   created() {
     this.fetchData();
-  }
+  },
 };
 </script>

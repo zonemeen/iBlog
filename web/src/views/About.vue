@@ -12,7 +12,7 @@
       <div class="pl-6 text-green-1">
         <p>• 转行前端程序员一枚，目前坐标：深圳</p>
         <p>• 未来希望成为一名优秀前端工作者</p>
-        <p>• 还是一名具有吃遍各地美食梦的程序 🐵</p>
+        <p>• 还是一名具有吃遍各地美食梦的程序🐵</p>
       </div>
       <div class="py-4">
         <span class="fs-xxl text-green">#</span>
@@ -36,18 +36,24 @@
           <a
             href="https://github.com/miqilin21/myBlog"
             class="text-green-1 bd-bottom-about"
-          >• CMS(本博客)</a>
+            >• CMS(本博客)</a
+          >
           - 基于NodeJs、Vue、MongoDB实现的一款CMS博客系统🔥
         </p>
         <p>
           <a
             href="https://github.com/miqilin21/iMoney"
             class="text-green-1 bd-bottom-about"
-          >• iMoney</a>
-          - 基于Vue、Vue Router、Vuex、TypeScript实现的一款极简的记账应用
+            >• iMoney</a
+          >
+          - 基于Vue、Vue Router、Vuex、TypeScript实现的一款极简的记账应用🤑
         </p>
         <p>
-          <a href="https://github.com/miqilin21/cv" class="text-green-1 bd-bottom-about">• cv</a>
+          <a
+            href="https://github.com/miqilin21/cv"
+            class="text-green-1 bd-bottom-about"
+            >• cv</a
+          >
           - 原生js实现的米淇淋个人简历📄
         </p>
         <p>

@@ -282,3 +282,41 @@ code {
     }
   }
 }
+
+@media(max-width:41.4286rem) {
+
+  .main-img {
+    height: 2.2857rem;
+    margin-top: 0.3571rem;
+  }
+
+  .main-font {
+    font-size: 0.8571rem;
+  }
+
+  .page {
+    width: 100%;
+  }
+
+  .res {
+    width: 100% !important;
+  }
+
+  .link-item {
+    margin: 0 auto;
+  }
+
+  .link-font {
+    font-size: 1.2857rem;
+  }
+
+  .page-article {
+    margin: 0 auto;
+    width: 90%;
+
+    img {
+      width: 80%;
+    }
+  }
+
+}

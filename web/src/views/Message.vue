@@ -18,9 +18,13 @@
     </div>
     <div class="mb-9">
       <div class="mb-7">
-        <span class="fs-xxxl text-grey-1 text-center">Responses</span>
+        <span class="fs-xxxl text-grey-1 text-center ml-5">Responses</span>
       </div>
-      <div id="comment" class="bg-postcolor p-8" style="width: 600px !important"></div>
+      <div
+        id="comment"
+        class="bg-postcolor p-8 res"
+        style="width: 600px;"
+      ></div>
     </div>
     <div class="w-100 h-100">
       <el-backtop :bottom="50"></el-backtop>
@@ -32,7 +36,7 @@
 window.AV = require("leancloud-storage");
 import Valine from "valine";
 export default {
-  mounted: function() {
+  mounted: function () {
     new Valine({
       el: "#comment",
       appId: "gx1SngFstb33zG0O4dDEAoIi-gzGzoHsz", // your AppId
@@ -41,9 +45,8 @@ export default {
       verify: false,
       avatar: "monsterid", // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
       pageSize: 5,
-      placeholder: "大家请坐下，陈独秀同志要发言了。。。"
+      placeholder: "大家请坐下，陈独秀同志要发言了。。。",
     });
-  }
+  },
 };
 </script>
-

@@ -11,7 +11,9 @@
         <p>发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }}</p>
       </div>
       <div>
-        <div class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand">
+        <div
+          class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand"
+        >
           <span class>
             <i class="iconfont icon-tag1"></i>
           </span>
@@ -40,14 +42,14 @@ import "highlight.js/styles/tomorrow-night-eighties.css";
 
 const renderer = new marked.Renderer();
 const r = {
-  heading: renderer.heading.bind(renderer)
+  heading: renderer.heading.bind(renderer),
 };
 let toc = [];
 
 renderer.heading = (text, level, raw, slugger) => {
   toc.push({
     level: level,
-    text: text
+    text: text,
   });
 
   return r.heading(text, level, raw, slugger);
@@ -63,28 +65,28 @@ marked.setOptions({
   sanitize: false,
   smartLists: true,
   smartypants: false,
-  highlight: function(code, lang) {
+  highlight: function (code, lang) {
     if (lang && hljs.getLanguage(lang)) {
       return hljs.highlight(lang, code, true).value;
     } else {
       return hljs.highlightAuto(code).value;
     }
-  }
+  },
 });
 
 export default {
   name: "test",
   props: {
-    id: { required: true }
+    id: { required: true },
   },
   data() {
     return {
       model: null,
-      fullscreenLoading: false
+      fullscreenLoading: false,
     };
   },
   watch: {
-    id: "fetch"
+    id: "fetch",
     // id(){
     //   this.fetch()
     // }
@@ -92,7 +94,7 @@ export default {
   computed: {
     compiledMarkdown() {
       return marked(this.model.body);
-    }
+    },
   },
   methods: {
     async fetch() {
@@ -100,10 +102,10 @@ export default {
       const res = await this.$http.get(`articles/list/${this.id}`);
       this.model = res.data;
       this.fullscreenLoading = false;
-    }
+    },
   },
   created() {
     this.fetch();
-  }
+  },
 };
 </script>
