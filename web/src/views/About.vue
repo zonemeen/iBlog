@@ -36,24 +36,18 @@
           <a
             href="https://github.com/miqilin21/myBlog"
             class="text-green-1 bd-bottom-about"
-            >• CMS(本博客)</a
-          >
+          >• CMS(本博客)</a>
           - 基于NodeJs、Vue、MongoDB实现的一款CMS博客系统🔥
         </p>
         <p>
           <a
             href="https://github.com/miqilin21/iMoney"
             class="text-green-1 bd-bottom-about"
-            >• iMoney</a
-          >
+          >• iMoney</a>
           - 基于Vue、Vue Router、Vuex、TypeScript实现的一款极简的记账应用🤑
         </p>
         <p>
-          <a
-            href="https://github.com/miqilin21/cv"
-            class="text-green-1 bd-bottom-about"
-            >• cv</a
-          >
+          <a href="https://github.com/miqilin21/cv" class="text-green-1 bd-bottom-about">• cv</a>
           - 原生js实现的米淇淋个人简历📄
         </p>
         <p>

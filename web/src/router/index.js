@@ -15,34 +15,52 @@ const routes = [{
     component: Main,
     children: [{
         path: '/',
-        name: '首页',
-        component: Home
+        name: 'Home',
+        component: Home,
+        meta: {
+          title: '首页 - MIQILIN'
+        }
       },
       {
         path: '/archives',
-        name: '归档',
-        component: Archive
+        name: 'Archive',
+        component: Archive,
+        meta: {
+          title: '归档 - MIQILIN'
+        }
       },
       {
         path: '/links',
-        name: '友链',
-        component: Link
+        name: 'Link',
+        component: Link,
+        meta: {
+          title: '友链 - MIQILIN'
+        }
       },
       {
         path: '/message',
-        name: '留言',
-        component: Message
+        name: 'Message',
+        component: Message,
+        meta: {
+          title: '留言 - MIQILIN'
+        }
       },
       {
         path: '/about',
-        name: '关于',
-        component: About
+        name: 'About',
+        component: About,
+        meta: {
+          title: '关于 - MIQILIN'
+        }
       },
       {
         path: '/article/list/:id',
-        name: '文章',
+        name: 'Article',
         component: Article,
-        props: true
+        props: true,
+        meta: {
+          title: '文章详情 - MIQILIN'
+        }
       }
     ]
   },
@@ -54,7 +72,16 @@ const routes = [{
 ]
 
 const router = new VueRouter({
+  mode: "history",
+  base: process.env.BASE_URL,
   routes
+})
+router.beforeEach((to, from, next) => {
+  // to and from are both route objects
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
 })
 
 export default router

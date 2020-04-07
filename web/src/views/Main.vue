@@ -17,13 +17,6 @@
           class="nav-item px-5 icon"
           >{{ item.text }}</router-link
         >
-        <!-- <div class="nav-item px-5">
-          <router-link
-            tag="div"
-            to="/search"
-            class="iconfont icon-findx"
-          ></router-link>
-        </div>-->
       </div>
     </div>
     <router-view></router-view>

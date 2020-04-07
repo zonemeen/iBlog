@@ -4,11 +4,6 @@
     v-loading.fullscreen.lock="fullscreenLoading"
     element-loading-background="rgba(0, 0, 0, 0.8)"
   >
-    <img
-      class="w-100 h-100"
-      src="../assets/images/bg.png"
-      style="position: fixed; left: 0; top: 0; z-index: -1;"
-    />
     <div
       class="post-container d-flex flex-wrap jc-center ai-center"
       style="width: 80%; margin: 0 auto;"
