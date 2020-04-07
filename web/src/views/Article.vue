@@ -39,6 +39,7 @@
 import marked from "marked";
 import hljs from "highlight.js";
 import "highlight.js/styles/tomorrow-night-eighties.css";
+import { addLineAndCopy } from "../common/lineAndCopy";
 
 const renderer = new marked.Renderer();
 const r = {
@@ -65,7 +66,7 @@ marked.setOptions({
   sanitize: false,
   smartLists: true,
   smartypants: false,
-  highlight: function (code, lang) {
+  highlight: function(code, lang) {
     if (lang && hljs.getLanguage(lang)) {
       return hljs.highlight(lang, code, true).value;
     } else {
@@ -101,6 +102,10 @@ export default {
       this.fullscreenLoading = true;
       const res = await this.$http.get(`articles/list/${this.id}`);
       this.model = res.data;
+      this.$nextTick(() => {
+        addLineAndCopy();
+        // this.addCodeSupport()
+      });
       this.fullscreenLoading = false;
     },
   },

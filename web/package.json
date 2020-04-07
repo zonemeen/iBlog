@@ -15,6 +15,7 @@
     "gitalk": "^1.6.2",
     "github-markdown-css": "^4.0.0",
     "highlight.js": "^9.18.1",
+    "jquery": "^3.4.1",
     "leancloud-storage": "^4.5.0",
     "marked": "^0.8.1",
     "valine": "^1.3.10",
