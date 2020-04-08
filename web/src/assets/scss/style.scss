@@ -30,7 +30,7 @@ body {
 /* 滚动条之外的部分 */
 ::-webkit-scrollbar {
   width: 0px;
-  height: 0px;
+  // height: 0px;
   // background-color: #dbdbdb;
   // float: right;
   // position: absolute;
@@ -38,13 +38,12 @@ body {
   // right: 0;
 }
 
-// /* 滚动条部分 */
-// ::-webkit-scrollbar-thumb {
-
-//   background: #555;
-//   border-radius: 10px;
-//   /* background-clip: content-box; */
-// }
+/* 滚动条部分 */
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+  // background-clip: content-box;
+}
 
 a {
   text-decoration: none;
@@ -82,14 +81,10 @@ $size in $font-sizes {
 
 // text overflow
 .text-ellipsis {
-  display: inline-block;
+  // display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-ul {
-  list-style-type: none;
 }
 
 // flex
@@ -210,21 +205,18 @@ $type in $spacing-types {
 }
 
 .page {
-  width: 46.4286rem;
+  width: 650px;
 }
 
-.post-tags {
-  max-width: 4.2857rem;
-}
+.page-article {
+  // overflow: hidden;
 
-.post-tags:hover {
-  background-color: map-get($colors, "border");
-  color: map-get($colors, "grey");
-}
+  img {
+    display: block !important;
+    margin: 0 auto !important;
+    width: 85% !important;
+  }
 
-.page-article img {
-  display: block;
-  margin: 0 auto;
 }
 
 h2,
@@ -234,7 +226,7 @@ h4 {
 }
 
 pre {
-  padding: 0.7143rem;
+  padding: 10px 10px 0 10px;
   background: map-get($colors, "postcolor");
 }
 
@@ -250,6 +242,7 @@ pre,
   border-radius: 0.3571rem;
   // border: 1px solid #c3ccd0;
   overflow: hidden;
+  overflow: scroll;
   padding-left: 3.5714rem !important;
 
   code {
@@ -265,7 +258,7 @@ pre,
     top: 0;
     left: 0px;
     line-height: 1.7857rem;
-    padding: 0.5714rem 0;
+    padding: 10px 0;
     list-style-type: none;
     counter-reset: sectioncounter;
     margin-bottom: 0;
@@ -333,10 +326,10 @@ pre,
 
   .page-article {
     margin: 0 auto;
-    width: 90%;
+    width: 95%;
 
     img {
-      width: 80%;
+      width: 85%;
     }
   }
 

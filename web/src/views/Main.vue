@@ -1,5 +1,9 @@
 <template>
-  <div class="main">
+  <div
+    class="main"
+    v-loading.fullscreen.lock="fullscreenLoading"
+    element-loading-background="rgba(0, 0, 0, 1)"
+  >
     <div class="topbar nav jc-around bg-navcolor">
       <div class="mt-4 hand">
         <router-link tag="div" to="/">
@@ -103,12 +107,15 @@ export default {
         { text: "关于", link: "/about" },
       ],
       model: [],
+      fullscreenLoading: false,
     };
   },
   methods: {
     async fetchArticles() {
+      this.fullscreenLoading = true;
       const res = await this.$http.get("articles/recent");
       this.model = res.data;
+      this.fullscreenLoading = false;
     },
   },
   created() {

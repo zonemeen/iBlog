@@ -2,7 +2,7 @@
   <div
     class="main-container mb-9 mt-8"
     v-loading.fullscreen.lock="fullscreenLoading"
-    element-loading-background="rgba(0, 0, 0, 0.8)"
+    element-loading-background="rgba(0, 0, 0, 1)"
   >
     <div
       class="post-container d-flex flex-wrap jc-center ai-center"

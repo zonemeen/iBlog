@@ -2,7 +2,7 @@
   <div
     class="page-link d-flex flex-column ai-center pt-10"
     v-loading.fullscreen.lock="fullscreenLoading"
-    element-loading-background="rgba(0, 0, 0, 0.8)"
+    element-loading-background="rgba(0, 0, 0, 1)"
   >
     <div class="page p-6">
       <div class="text-green fs-xxxxl">Links</div>
@@ -101,7 +101,7 @@ export default {
   created() {
     this.fetchLinks();
   },
-  mounted: function () {
+  mounted: function() {
     new Valine({
       el: "#link",
       appId: "9uFsTmmEThWWBitWhFgx0P9z-gzGzoHsz", // your AppId

@@ -2,12 +2,14 @@
   <div
     class="mb-7"
     v-loading.fullscreen.lock="fullscreenLoading"
-    element-loading-background="rgba(0, 0, 0, 0.8)"
+    element-loading-background="rgba(0, 0, 0, 1)"
   >
     <div class="page-archive d-flex flex-column ai-center jc-center">
       <div class="mt-11 pr-11 mr-11">
         <div class="fs-xxxxl text-green">共计{{ model.length }}篇文章</div>
-        <div class="fs-xxxl text-grey-2 mt-6">{{ model.createdAt | date("YYYY") }}</div>
+        <div class="fs-xxxl text-grey-2 mt-6">
+          {{ model.createdAt | date("YYYY") }}
+        </div>
       </div>
       <div>
         <router-link
@@ -19,7 +21,9 @@
         >
           <div class="bg-postcolor px-8 my-8 py-7" style="border-radius: 10px;">
             <div class="fs-lg text-grey-1">{{ item.title }}</div>
-            <div class="fs-sm text-grey-1 mt-5">{{ item.createdAt | date("YYYY-MM-DD") }}</div>
+            <div class="fs-sm text-grey-1 mt-5">
+              {{ item.createdAt | date("YYYY-MM-DD") }}
+            </div>
           </div>
         </router-link>
       </div>
@@ -32,7 +36,7 @@ export default {
   data() {
     return {
       model: [],
-      fullscreenLoading: false
+      fullscreenLoading: false,
     };
   },
   methods: {
@@ -41,11 +45,11 @@ export default {
       const res = await this.$http.get("articles/list");
       this.model = res.data;
       this.fullscreenLoading = false;
-    }
+    },
   },
   created() {
     this.fetchArticles();
-  }
+  },
 };
 </script>
 

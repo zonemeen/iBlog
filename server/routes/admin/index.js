@@ -54,8 +54,8 @@ module.exports = (app) => {
     storage: MAO({
       config: {
         region: "oss-cn-shenzhen",
-        accessKeyId: "LTAI4Feb6mXYySq4KFCFU8kh",
-        accessKeySecret: "p5GNOJjBbPb8Oj560JO4GPIqyc27CF",
+        accessKeyId: "aliyunid", //阿里云oss的accessKeyId，要自己去创建
+        accessKeySecret: "aliyunsecret", //阿里云oss的accessKeySecret
         bucket: "miqilin-blog",
       },
     }),
@@ -73,15 +73,17 @@ module.exports = (app) => {
 
   //登录
   app.post("/admin/api/login", async (req, res) => {
-    const { username, password } = req.body;
+    const {
+      username,
+      password
+    } = req.body;
     const user = await AdminUser.findOne({
       username,
     }).select("+password");
     assert(user, 422, "用户不存在");
     const isValid = require("bcryptjs").compareSync(password, user.password);
     assert(isValid, 422, "密码错误");
-    const token = jwt.sign(
-      {
+    const token = jwt.sign({
         id: user._id,
       },
       app.get("secret")

@@ -9,7 +9,7 @@
         &nbsp;
         <span class="fs-xxl text-grey-1">关于自己</span>
       </div>
-      <div class="pl-6 text-green-1">
+      <div class="pl-5 text-green-1">
         <p>• 转行前端程序员一枚，目前坐标：深圳</p>
         <p>• 未来希望成为一名优秀前端工作者</p>
         <p>• 还是一名具有吃遍各地美食梦的程序🐵</p>
@@ -19,10 +19,10 @@
         &nbsp;
         <span class="fs-xxl text-grey-1">关于博客</span>
       </div>
-      <div class="pl-6 text-green-1">
+      <div class="pl-5 text-green-1">
         <p>
           •
-          该博客用Vue实现，express提供数据接口，mongoDB储存数据，部署在腾讯云的服务器上，博客的初衷是希望把自己平常工作学习总结的东西记录下来，以便不时之需可以查阅。
+          该博客用Vue实现，express提供数据接口，mongoDB储存数据，部署在腾讯云的linux服务器上，博客的初衷是希望把自己平常工作学习总结的东西记录下来，以便不时之需可以查阅。
         </p>
         <p>• 如有错误地方烦请指正</p>
       </div>
@@ -31,7 +31,7 @@
         &nbsp;
         <span class="fs-xxl text-grey-1">Side Project (Coding)</span>
       </div>
-      <div class="pl-6 text-green-1 mb-9">
+      <div class="pl-5 text-green-1 mb-9">
         <p>
           <a
             href="https://github.com/miqilin21/myBlog"
@@ -47,11 +47,18 @@
           - 基于Vue、Vue Router、Vuex、TypeScript实现的一款极简的记账应用🤑
         </p>
         <p>
+          <a
+            href="https://github.com/miqilin21/iMusic"
+            class="text-green-1 bd-bottom-about"
+          >• iMusic</a>
+          - 基于网易云音乐API实现的一款音乐微信小程序🎵
+        </p>
+        <p>
           <a href="https://github.com/miqilin21/cv" class="text-green-1 bd-bottom-about">• cv</a>
           - 原生js实现的米淇淋个人简历📄
         </p>
         <p>
-          <a href="/" class="text-green-1 bd-bottom-about">• 其他项目</a>
+          <a href="https://github.com/miqilin21" class="text-green-1 bd-bottom-about">• 其他项目</a>
           - 持续开发中...
         </p>
       </div>
@@ -62,9 +69,10 @@
 <style lang="scss" scoped>
 @import "../assets/scss/style.scss";
 
-.bd-bottom-about,
-.bd-bottom-about:hover {
+.bd-bottom-about {
   border-bottom: 0.0714rem solid grey;
-  color: map-get($colors, "red");
+  &.bd-bottom-about:hover {
+    color: map-get($colors, "red");
+  }
 }
 </style>
