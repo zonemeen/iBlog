@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-4">
+  <div class="pt-5">
     <div class="d-flex">
       <div class="avatar-box text-center">
         <img
@@ -11,9 +11,9 @@
         <i
           v-else
           @click="lookUserInfo"
-          class="iconfont icon-xingzhuangkaobei"
+          class="iconfont icon-xingzhuangkaobei hand"
         ></i>
-        <p class="mt-2 avatar text-center fs-xl">
+        <p class="mt-2 avatar text-center fs-xl text-grey-2">
           {{ userInfo.nickName ? userInfo.nickName : "留言" }}
         </p>
       </div>
@@ -25,7 +25,7 @@
           :placeholder="placeholder"
         ></el-input>
         <div class="mt-3 d-flex jc-between position-emoji">
-          <button @blur="showEmoji = false" class>
+          <button @blur="showEmoji = false" class="bg-white btn-none">
             <i
               class="iconfont icon-xingzhuang hand"
               @click="
@@ -46,7 +46,7 @@
           </button>
           <el-button
             type="primary"
-            size="medium"
+            size="small"
             :loading="btnLoading"
             @click="fabuHandle"
             >发布</el-button
@@ -216,20 +216,21 @@ export default {
 .avatar-box {
   width: 80px;
   padding-right: 30px;
+  padding-top: 14px;
   img {
     cursor: pointer;
     width: 100%;
     height: auto;
-    background-color: #4ebbaa;
     border-radius: 20%;
   }
-  .icon-touxiang {
+  .icon-xingzhuangkaobei {
     font-size: 50px;
     color: #c4c4c4;
   }
 }
-.icon-biaoqing {
-  font-size: 30px;
+.btn-none {
+  border: 1px solid transparent;
+  outline: none;
 }
 .position-emoji {
   transition: all 0.6s ease-in-out;
@@ -240,10 +241,9 @@ export default {
     left: 0;
   }
 }
-.icon-weixiao {
-  font-size: 26px;
+.icon-xingzhuang {
+  font-size: 22px;
   color: #c4c4c4;
-  cursor: pointer;
   &:hover {
     color: #ffb929;
   }
@@ -252,9 +252,6 @@ export default {
   .avatar-box {
     width: 65px;
     padding-right: 15px;
-  }
-  .el-textarea__inner {
-    height: 60px !important;
   }
 }
 @media screen and (max-width: 400px) {
@@ -269,28 +266,9 @@ export default {
 @media screen and (max-width: 375px) {
   .avatar-box {
     padding-right: 10px;
-    .icon-touxiang {
+    .icon-xingzhuangkaobei {
       font-size: 32px;
     }
   }
-}
-</style>
-<style lang="scss">
-.container-emoji {
-  height: 180px !important;
-}
-// grid-template-columns{repeat(15, 10%)}
-@media screen and (max-width: 768px) {
-  #EmojiPicker {
-    width: 100% !important;
-  }
-  .el-textarea__inner {
-    height: 80px !important;
-  }
-}
-@media screen and (max-width: 375px) {
-  // .el-textarea__inner{
-  //   height: 80px!important;
-  // }
 }
 </style>

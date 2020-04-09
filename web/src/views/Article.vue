@@ -23,29 +23,10 @@
             <span class>{{ model.categories[0].name }}</span>
           </div>
         </div>
-        <div class="mt-5 mb-6"></div>
-        <div class="text-grey-2 fs-md mb-10 container">
+        <div class="text-grey-2 fs-md mb-9 container">
           <div class="markdown-body">
             <div id="content" v-html="model.body"></div>
           </div>
-        </div>
-        <div class="fs-xxl">
-          <h3 class><i class="col-primary"># </i>评论</h3>
-          <comment-textarea
-            model="comments"
-            @toResponse="getBlogsComments"
-            type="parent"
-            :blogsId="id"
-            placeholder="大家请坐下，陈独秀同志，要发言了。。。"
-          ></comment-textarea>
-          <comment-list
-            class="mt-4"
-            model="comments"
-            @getCommentList="getBlogsComments"
-            :commentsList="parentComments"
-            v-if="parentComments"
-            :blogsId="id"
-          ></comment-list>
         </div>
       </div>
       <div class="d-none left">
@@ -66,7 +47,24 @@
         </div>
       </div>
     </div>
-
+    <div class="art-comment">
+      <h3 class="fs-xxxxl">评论</h3>
+      <comment-textarea
+        model="comments"
+        @toResponse="getBlogsComments"
+        type="parent"
+        :blogsId="id"
+        placeholder="大家请坐下，陈独秀同志，要发言了。。。"
+      ></comment-textarea>
+      <comment-list
+        class="mt-7"
+        model="comments"
+        @getCommentList="getBlogsComments"
+        :commentsList="parentComments"
+        v-if="parentComments"
+        :blogsId="id"
+      ></comment-list>
+    </div>
     <div class="w-100 h-100">
       <el-backtop :bottom="50"></el-backtop>
     </div>
@@ -208,7 +206,12 @@ export default {
   position: sticky !important;
   top: 80px;
 }
-@media (max-width: 900px) {
+.art-comment {
+  max-width: 650px;
+  margin: 0 auto 40px;
+}
+
+@media screen and (max-width: 900px) {
   .d-none {
     display: none;
   }
@@ -216,9 +219,13 @@ export default {
     margin: 0 auto;
   }
 }
-@media (max-width: 780px) {
+@media screen and (max-width: 768px) {
   .page {
     width: 95%;
+    margin: 0 auto;
+  }
+  .art-comment {
+    width: 90%;
     margin: 0 auto;
   }
 }

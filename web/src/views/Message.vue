@@ -15,12 +15,12 @@
         <p>• 请不要发广告和带有商业推广链接的无用留言。</p>
       </div>
       <p class="my-8 text-grey-2">希望彼此之间有好的交流。 ^_^</p>
-      <div class="mb-9">
+      <div>
         <div class="mb-7">
           <span class="fs-xxxl text-grey-1 text-center ml-5">留言板</span>
         </div>
         <div :class="{ 'message-box': parentComments.length > 0 }">
-          <div class="textarea-box bg-white">
+          <div class="textarea-box bg-white bdr">
             <comment-textarea
               model="messages"
               @toResponse="getMessagesList"
@@ -28,7 +28,10 @@
               placeholder="大家请坐下，陈独秀同志，要发言了。。。"
             ></comment-textarea>
           </div>
-          <div :class="{ 'message-box': parentComments.length > 0 }">
+          <div
+            :class="{ 'message-box': parentComments.length > 0 }"
+            class="my-9"
+          >
             <comment-list
               model="messages"
               @getCommentList="getMessagesList"
@@ -72,27 +75,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.slot-box {
-  height: 100%;
-  padding-bottom: 20px;
-  .textarea-box {
-    width: 100%;
-    max-width: 500px;
-    padding: 5px 15px 15px;
-  }
-}
-// .dialog {
-//   position: relative;
-//   background-color: rgba(21, 21, 21, 0.5);
-// }
-@media screen and (max-width: 768px) {
-  .slot-box {
-    padding-bottom: 0px;
-  }
-}
-</style>
-<style>
-.emoji-picker-icon {
-  top: 95px;
+.textarea-box {
+  width: 100%;
+  max-width: 650px;
+  padding: 5px 15px 15px;
 }
 </style>

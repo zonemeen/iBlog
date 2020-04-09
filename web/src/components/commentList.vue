@@ -1,6 +1,6 @@
 <template>
-  <div class="comment-list fs-2xl">
-    <div v-if="commentsList.length == 0" class="text-center fs-5xl">
+  <div class="comment-list">
+    <div v-if="commentsList.length == 0" class="text-center">
       <p class="fs-xxl text-grey-1">快来抢个沙发吧！</p>
     </div>
     <div
@@ -14,11 +14,11 @@
         <div class="avatar-one text-left">
           <img :src="item.avatarImg" alt="miqilin头像" width="50" height="50" />
         </div>
-        <div class="flex-1">
+        <div class="flex-1 fs-lg">
           <div class="d-flex ai-center">
-            <strong class="col-less mr-4">{{ item.nickName }}</strong>
-            <span class="col-grey-4">
-              <span class="fs-xl">{{ item.createdAt | formatDate }}</span>
+            <strong class="mr-4 text-green">{{ item.nickName }}</strong>
+            <span class="text-grey-2">
+              <span class="">{{ item.createdAt | formatDate }}</span>
               <strong
                 class="reply pl-4"
                 @click="replyHandle(item, index, false)"
@@ -27,9 +27,9 @@
               >
             </span>
           </div>
-          <div class="py-2">{{ item.content }}</div>
+          <div class="py-2 text-grey-2">{{ item.content }}</div>
           <div
-            class="bg-orange-light px-4"
+            class="bg-navcolor px-4 bdr"
             :class="{ 'py-4': item.children.length > 0 }"
           >
             <div class v-for="(c, i) in item.children" :key="i">
@@ -43,12 +43,12 @@
                   />
                 </div>
                 <div class="flex-1">
-                  <div class="mt-0">
+                  <div class="mt-0 fs-md">
                     <span>
-                      <strong class="col-less mr-4">{{ c.nickName }}</strong>
+                      <strong class="text-green mr-4">{{ c.nickName }}</strong>
                     </span>
-                    <span class="col-grey-4">
-                      <span class="fs-xl">{{ c.createdAt | formatDate }}</span>
+                    <span class="text-grey-2">
+                      <span>{{ c.createdAt | formatDate }}</span>
                       <strong
                         class="reply pl-4"
                         @click="replyHandle(item, index, c)"
@@ -59,11 +59,11 @@
                       >
                     </span>
                   </div>
-                  <div class="py-2">
+                  <div class="py-4">
                     <!-- <i class="pl-3 pr-2">回复</i> -->
-                    <span>
-                      <span class="col-more">@{{ c.byAiteName }}：</span>
-                      {{ c.content }}
+                    <span class="text-grey-2 fs-md">
+                      <span>@{{ c.byAiteName }}：</span>
+                      <span>{{ c.content }}</span>
                     </span>
                   </div>
                 </div>
@@ -106,17 +106,6 @@
         ></comment-textarea>
       </div>
     </el-drawer>
-    <!-- <div class="text-center">
-      <el-pagination
-        small
-        background
-        @current-change="handleCurrentChange"
-        :current-page="pageNum"
-        :page-size="pageSize"
-        layout="prev, pager, next"
-        :total="total"
-      ></el-pagination>
-    </div> -->
   </div>
 </template>
 
@@ -203,22 +192,21 @@ export default {
   .avatar-one {
     padding-right: 30px;
     img {
-      background-color: #4ebbaa;
       border-radius: 20%;
     }
   }
   .mini-avatar {
     padding-right: 10px;
     img {
-      background-color: #4ebbaa;
       border-radius: 20%;
     }
   }
 }
+
 .reply {
   cursor: pointer;
   &:hover {
-    color: var(--more);
+    color: #34b686;
     text-decoration: underline;
   }
 }
@@ -245,25 +233,6 @@ export default {
         height: 22px;
       }
     }
-    .px-4 {
-      padding: 0 10px;
-    }
-    .py-4 {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      // padding: 10px 0px;
-    }
   }
-}
-</style>
-<style>
-.el-drawer__body {
-  padding: 0 20px;
-}
-.el-drawer__header {
-  margin-bottom: 10px !important;
-}
-.emoji-picker-icon {
-  top: 95px;
 }
 </style>
