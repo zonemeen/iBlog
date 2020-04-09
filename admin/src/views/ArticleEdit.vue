@@ -29,7 +29,13 @@
       </el-form-item>
       <el-form-item label="详情">
         <div>
-          <mavon-editor ref="editor" v-model="model.body"> </mavon-editor>
+          <mavon-editor
+            code_style="monokai-sublime"
+            :ishljs="true"
+            ref="mavon"
+            v-model="model.body"
+            @imgAdd="$imgAdd"
+          ></mavon-editor>
         </div>
       </el-form-item>
       <el-form-item>
@@ -78,12 +84,20 @@ export default {
       const res = await this.$http.get("rest/categories");
       this.categories = res.data;
     },
-    async handleImageAdded(file, Editor, cursorLocation, resetUploader) {
+    // async handleImageAdded(file, Editor, cursorLocation, resetUploader) {
+    //   const formData = new FormData();
+    //   formData.append("file", file);
+    //   const res = await this.$http.post("upload", formData);
+    //   Editor.insertEmbed(cursorLocation, "image", res.data.url);
+    //   resetUploader();
+    // }
+    $imgAdd(pos, $file) {
       const formData = new FormData();
-      formData.append("file", file);
-      const res = await this.$http.post("upload", formData);
-      Editor.insertEmbed(cursorLocation, "image", res.data.url);
-      resetUploader();
+      formData.append("file", $file);
+      this.$http.post("upload", formData).then(res => {
+        console.log(res);
+        this.$refs.mavon.$img2Url(pos, res.data.url);
+      });
     }
   },
   created() {

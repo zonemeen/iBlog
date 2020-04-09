@@ -13,7 +13,7 @@ function prefixID(htmlPart) {
   }
 }
 
-function buildToc(article) {
+function Toc(article) {
   var toc = []
   article = article.replace(/<h(\d)(?:\s[^>]+)*>([^<]+)/g, (htmlPart, indent, text) => {
     let prefix = prefixID(htmlPart, indent, text)
@@ -40,4 +40,4 @@ function buildToc(article) {
   }
 }
 
-export default buildToc
+export default Toc

@@ -11,7 +11,8 @@ Vue.use(ElementUI);
 
 import http from "./http";
 Vue.prototype.$http = http;
-
+import MTopHandle from './components/MTopHandle'
+Vue.component('MTopHandle', MTopHandle)
 Vue.mixin({
   computed: {
     uploadUrl() {

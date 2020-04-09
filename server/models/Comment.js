@@ -13,9 +13,13 @@ const schema = new mongoose.Schema({
     type: mongoose.SchemaTypes.ObjectId,
     ref: 'User'
   },
+  relateBlogId: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'Article'
+  },
   parent: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: 'Message'
+    ref: 'Comment'
   },
   byAiteName: {
     type: String
@@ -23,4 +27,4 @@ const schema = new mongoose.Schema({
 }, {
   timestamps: true
 })
-module.exports = mongoose.model('Message', schema)
+module.exports = mongoose.model('Comment', schema)

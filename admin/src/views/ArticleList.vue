@@ -1,18 +1,23 @@
 <template>
   <div>
-    <h1>分类列表</h1>
+    <m-top-handle
+      title="标题"
+      content="写博客"
+      path="/articles/create/"
+    ></m-top-handle>
+    <h1>文章列表</h1>
     <el-table :data="items">
       <el-table-column prop="_id" label="ID" width="250"></el-table-column>
       <el-table-column prop="title" label="文章标题"></el-table-column>
       <el-table-column prop="createdAt" label="创建时间">
-        <template scope="scope">{{
-          scope.row.createdAt | date("YYYY-MM-DD HH:mm:ss")
-        }}</template>
+        <template scope="scope">
+          {{ scope.row.createdAt | date("YYYY-MM-DD HH:mm:ss") }}
+        </template>
       </el-table-column>
       <el-table-column prop="updatedAt" label="最后更新时间">
-        <template scope="scope">{{
-          scope.row.updatedAt | date("YYYY-MM-DD HH:mm:ss")
-        }}</template>
+        <template scope="scope">
+          {{ scope.row.updatedAt | date("YYYY-MM-DD HH:mm:ss") }}
+        </template>
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="180">
         <template slot-scope="scope">
@@ -24,7 +29,7 @@
             >编辑</el-button
           >
           <el-button
-            type="danger"
+            type="text"
             size="small"
             icon="el-icon-delete"
             @click="remove(scope.row._id)"
@@ -40,7 +45,7 @@
 export default {
   data() {
     return {
-      items: []
+      items: [],
     };
   },
   methods: {
@@ -52,19 +57,26 @@ export default {
       this.$confirm("是否确定要删除这篇文章?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
-        type: "warning"
-      }).then(async () => {
-        await this.$http.delete(`rest/articles/${id}`);
-        this.$message({
-          type: "success",
-          message: "删除成功!"
+        type: "warning",
+      })
+        .then(async () => {
+          await this.$http.delete(`rest/articles/${id}`);
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+          this.fetch();
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
         });
-        this.fetch();
-      });
-    }
+    },
   },
   created() {
     this.fetch();
-  }
+  },
 };
 </script>

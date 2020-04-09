@@ -25,6 +25,7 @@ body {
   background-color: map-get($colors, "bgcolor");
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* 滚动条之外的部分 */

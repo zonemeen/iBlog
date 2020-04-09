@@ -6,18 +6,18 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1048331",
+      "name": "weixiao",
+      "font_class": "xingzhuang",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
       "icon_id": "1744397",
       "name": "inbox",
       "font_class": "inbox",
       "unicode": "e67a",
       "unicode_decimal": 59002
-    },
-    {
-      "icon_id": "2024168",
-      "name": "tag",
-      "font_class": "tag",
-      "unicode": "e644",
-      "unicode_decimal": 58948
     },
     {
       "icon_id": "2374305",
@@ -43,7 +43,7 @@
     {
       "icon_id": "6287590",
       "name": "tag",
-      "font_class": "tag1",
+      "font_class": "tag",
       "unicode": "e6b7",
       "unicode_decimal": 59063
     },
@@ -55,11 +55,11 @@
       "unicode_decimal": 59000
     },
     {
-      "icon_id": "8716868",
-      "name": "tag",
-      "font_class": "tag2",
-      "unicode": "e65e",
-      "unicode_decimal": 58974
+      "icon_id": "13356470",
+      "name": "头像",
+      "font_class": "xingzhuangkaobei",
+      "unicode": "e690",
+      "unicode_decimal": 59024
     }
   ]
 }

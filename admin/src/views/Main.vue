@@ -17,9 +17,21 @@
             <el-menu-item index="/articles/list">文章列表</el-menu-item>
           </el-menu-item-group>
           <el-menu-item-group>
+            <template slot="title">文章评论</template>
+            <el-menu-item index="/comments/list">评论列表</el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group>
             <template slot="title">友链</template>
             <el-menu-item index="/links/create">新建友链</el-menu-item>
             <el-menu-item index="/links/list">友链列表</el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group>
+            <template slot="title">留言</template>
+            <el-menu-item index="/messages/list">留言列表</el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group>
+            <template slot="title">留言评论用户</template>
+            <el-menu-item index="/users/list">留言评论用户列表</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="2">

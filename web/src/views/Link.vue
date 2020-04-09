@@ -38,7 +38,6 @@
               </div>
             </a>
           </el-tooltip>
-
           <div class="fs-md text-green-1 mt-5">{{ item.description }}</div>
         </div>
       </div>
@@ -65,14 +64,8 @@
         <p>• 描述：我劝你要多喝热水哈哈哈哈哈哈哈哈哈哈哈</p>
       </div>
       <p class="my-9 text-grey-2">
-        暂时先这样，同时欢迎互换友链，在本页留言即可。 ^_^
+        暂时先这样，同时欢迎互换友链，到留言页留言即可。 ^_^
       </p>
-    </div>
-    <div class="mb-9">
-      <div class="mb-7">
-        <span class="fs-xxxl text-grey-1 text-center ml-5">Responses</span>
-      </div>
-      <div id="link" class="bg-postcolor p-8 res" style="width: 600px;"></div>
     </div>
     <div class="w-100 h-100">
       <el-backtop :bottom="50"></el-backtop>
@@ -81,8 +74,6 @@
 </template>
 
 <script>
-window.AV = require("leancloud-storage");
-import Valine from "valine";
 export default {
   data() {
     return {
@@ -100,18 +91,6 @@ export default {
   },
   created() {
     this.fetchLinks();
-  },
-  mounted: function() {
-    new Valine({
-      el: "#link",
-      appId: "9uFsTmmEThWWBitWhFgx0P9z-gzGzoHsz", // your AppId
-      appKey: "QXGK5mOCVFoqHNkgQ2uqa9jX", // your AppKey
-      notify: false,
-      verify: false,
-      avatar: "monsterid", // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
-      pageSize: 5,
-      placeholder: "大家请坐下，陈独秀同志要发言了。。。",
-    });
   },
 };
 </script>

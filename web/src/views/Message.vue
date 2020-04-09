@@ -15,16 +15,29 @@
         <p>• 请不要发广告和带有商业推广链接的无用留言。</p>
       </div>
       <p class="my-8 text-grey-2">希望彼此之间有好的交流。 ^_^</p>
-    </div>
-    <div class="mb-9">
-      <div class="mb-7">
-        <span class="fs-xxxl text-grey-1 text-center ml-5">Responses</span>
+      <div class="mb-9">
+        <div class="mb-7">
+          <span class="fs-xxxl text-grey-1 text-center ml-5">留言板</span>
+        </div>
+        <div :class="{ 'message-box': parentComments.length > 0 }">
+          <div class="textarea-box bg-white">
+            <comment-textarea
+              model="messages"
+              @toResponse="getMessagesList"
+              type="parent"
+              placeholder="大家请坐下，陈独秀同志，要发言了。。。"
+            ></comment-textarea>
+          </div>
+          <div :class="{ 'message-box': parentComments.length > 0 }">
+            <comment-list
+              model="messages"
+              @getCommentList="getMessagesList"
+              :commentsList="parentComments"
+              v-if="parentComments"
+            ></comment-list>
+          </div>
+        </div>
       </div>
-      <div
-        id="comment"
-        class="bg-postcolor p-8 res"
-        style="width: 600px;"
-      ></div>
     </div>
     <div class="w-100 h-100">
       <el-backtop :bottom="50"></el-backtop>
@@ -33,20 +46,53 @@
 </template>
 
 <script>
-window.AV = require("leancloud-storage");
-import Valine from "valine";
 export default {
-  mounted: function () {
-    new Valine({
-      el: "#comment",
-      appId: "gx1SngFstb33zG0O4dDEAoIi-gzGzoHsz", // your AppId
-      appKey: "7WIr5ScNYiwC5JiV9e3KhguE", // your AppKey
-      notify: false,
-      verify: false,
-      avatar: "monsterid", // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
-      pageSize: 5,
-      placeholder: "大家请坐下，陈独秀同志要发言了。。。",
-    });
+  data() {
+    return {
+      parentComments: [],
+    };
+  },
+  created() {
+    this.getMessagesList();
+  },
+  methods: {
+    async getMessagesList() {
+      let res = await this.$http.get("messages");
+      let blogsComments = res.data;
+      this.parentComments = blogsComments.filter(
+        (v) => v.parent == "5e52a80981bf76430fd982f0"
+      );
+      this.parentComments.forEach((c) => {
+        return (c.children = blogsComments.filter((v) => v.parent == c._id));
+      });
+      console.log(this.parentComments, blogsComments, res.data);
+    },
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.slot-box {
+  height: 100%;
+  padding-bottom: 20px;
+  .textarea-box {
+    width: 100%;
+    max-width: 500px;
+    padding: 5px 15px 15px;
+  }
+}
+// .dialog {
+//   position: relative;
+//   background-color: rgba(21, 21, 21, 0.5);
+// }
+@media screen and (max-width: 768px) {
+  .slot-box {
+    padding-bottom: 0px;
+  }
+}
+</style>
+<style>
+.emoji-picker-icon {
+  top: 95px;
+}
+</style>

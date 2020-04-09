@@ -14,7 +14,7 @@
             >编辑</el-button
           >
           <el-button
-            type="danger"
+            type="text"
             size="small"
             icon="el-icon-delete"
             @click="remove(scope.row._id)"
@@ -30,7 +30,7 @@
 export default {
   data() {
     return {
-      items: []
+      items: [],
     };
   },
   methods: {
@@ -42,19 +42,26 @@ export default {
       this.$confirm("是否确定要删除该管理员?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
-        type: "warning"
-      }).then(async () => {
-        await this.$http.delete(`rest/admin_users/${id}`);
-        this.$message({
-          type: "success",
-          message: "删除成功!"
+        type: "warning",
+      })
+        .then(async () => {
+          await this.$http.delete(`rest/admin_users/${id}`);
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+          this.fetch();
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
         });
-        this.fetch();
-      });
-    }
+    },
   },
   created() {
     this.fetch();
-  }
+  },
 };
 </script>

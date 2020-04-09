@@ -7,7 +7,7 @@ const router = new VueRouter({
   routes: [{
       path: "/login",
       name: "login",
-      component: resolve => require(['@/views/Login.vue'], resolve),
+      component: () => import( /* webpackChunkName: "login" */ '../views/Login.vue'),
       meta: {
         isPublic: true
       }
@@ -15,58 +15,71 @@ const router = new VueRouter({
     {
       path: "/",
       name: "main",
-      component: resolve => require(['@/views/Main.vue'], resolve),
+      component: () => import( /* webpackChunkName: "main" */ '../views/Main.vue'),
       children: [{
           path: "/categories/create",
-          component: resolve => require(['@/views/CategoryEdit.vue'], resolve),
+          component: () => import( /* webpackChunkName: "category_edit" */ '../views/CategoryEdit.vue'),
         },
         {
           path: "/categories/edit/:id",
-          component: resolve => require(['@/views/CategoryEdit.vue'], resolve),
+          component: () => import( /* webpackChunkName: "category_edit" */ '../views/CategoryEdit.vue'),
           props: true
         },
         {
           path: "/categories/list",
-          component: resolve => require(['@/views/CategoryList.vue'], resolve),
+          component: () => import( /* webpackChunkName: "category_list" */ '../views/CategoryList.vue'),
         },
         {
           path: "/articles/create",
-          component: resolve => require(['@/views/ArticleEdit.vue'], resolve),
+          component: () => import( /* webpackChunkName: "article_edit" */ '../views/ArticleEdit.vue'),
         },
         {
           path: "/articles/edit/:id",
-          component: resolve => require(['@/views/ArticleEdit.vue'], resolve),
+          component: () => import( /* webpackChunkName: "article_edit" */ '../views/ArticleEdit.vue'),
           props: true
         },
         {
           path: "/articles/list",
-          component: resolve => require(['@/views/ArticleList.vue'], resolve),
+          component: () => import( /* webpackChunkName: "article_list" */ '../views/ArticleList.vue'),
+        },
+        {
+          path: "/comments/list",
+          component: () => import( /* webpackChunkName: "comment_list" */ '../views/CommentList.vue'),
+          props: true
         },
         {
           path: "/links/create",
-          component: resolve => require(['@/views/LinkEdit.vue'], resolve),
+          component: () => import( /* webpackChunkName: "link_edit" */ '../views/LinkEdit.vue'),
         },
         {
           path: "/links/edit/:id",
-          component: resolve => require(['@/views/LinkEdit.vue'], resolve),
+          component: () => import( /* webpackChunkName: "link_edit" */ '../views/LinkEdit.vue'),
           props: true
         },
         {
           path: "/links/list",
-          component: resolve => require(['@/views/LinkList.vue'], resolve),
+          component: () => import( /* webpackChunkName: "link_list" */ '../views/LinkList.vue'),
+        },
+        {
+          path: "/messages/list",
+          component: () => import( /* webpackChunkName: "message_list" */ '../views/MessageList.vue'),
+        },
+        {
+          path: "/users/list",
+          component: () => import( /* webpackChunkName: "link_list" */ '../views/UserList.vue'),
         },
         {
           path: "/admin_users/create",
-          component: resolve => require(['@/views/AdminUserEdit.vue'], resolve),
+          component: () => import( /* webpackChunkName: "admin_edit" */ '../views/AdminUserEdit.vue'),
         },
         {
           path: "/admin_users/edit/:id",
-          component: resolve => require(['@/views/AdminUserEdit.vue'], resolve),
+          component: () => import( /* webpackChunkName: "admin_edit" */ '../views/AdminUserEdit.vue'),
           props: true
         },
         {
           path: "/admin_users/list",
-          component: resolve => require(['@/views/AdminUserList.vue'], resolve),
+          component: () => import( /* webpackChunkName: "admin_list" */ '../views/AdminUserList.vue'),
         }
       ]
     }

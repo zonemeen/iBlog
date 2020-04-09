@@ -21,6 +21,8 @@
     "mongoose": "^5.9.2",
     "multer": "^1.4.2",
     "multer-aliyun-oss": "^1.0.4",
+    "nodemailer": "^6.4.6",
+    "nodemailer-smtp-transport": "^2.7.4",
     "require-all": "^3.0.0"
   }
 }

@@ -3,6 +3,7 @@ module.exports = (app) => {
   const assert = require("http-assert");
   const jwt = require("jsonwebtoken");
   const AdminUser = require("../../models/AdminUser");
+  const sendEmail = require("../../plugins/sendEmail.js");
   const router = express.Router({
     mergeParams: true,
   });
@@ -54,8 +55,8 @@ module.exports = (app) => {
     storage: MAO({
       config: {
         region: "oss-cn-shenzhen",
-        accessKeyId: "aliyunid", //阿里云oss的accessKeyId，要自己去创建
-        accessKeySecret: "aliyunsecret", //阿里云oss的accessKeySecret
+        accessKeyId: "accessKeyId", //阿里云oss的accessKeyId，要自己去创建
+        accessKeySecret: "accessKeySecret", //阿里云oss的accessKeySecret
         bucket: "miqilin-blog",
       },
     }),
@@ -91,6 +92,14 @@ module.exports = (app) => {
     res.send({
       token,
       username,
+    });
+  });
+
+  app.post("/admin/api/email", async (req, res) => {
+    console.log(req.body);
+    sendEmail(req.body);
+    res.send({
+      ok: "ok",
     });
   });
 

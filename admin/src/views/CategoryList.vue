@@ -11,13 +11,15 @@
             size="small"
             icon="el-icon-edit"
             @click="$router.push(`/categories/edit/${scope.row._id}`)"
-          >编辑</el-button>
+            >编辑</el-button
+          >
           <el-button
-            type="danger"
+            type="text"
             size="small"
             icon="el-icon-delete"
             @click="remove(scope.row._id)"
-          >删除</el-button>
+            >删除</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
@@ -28,7 +30,7 @@
 export default {
   data() {
     return {
-      items: []
+      items: [],
     };
   },
   methods: {
@@ -40,19 +42,26 @@ export default {
       this.$confirm("是否确定要删除该分类?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
-        type: "warning"
-      }).then(async () => {
-        await this.$http.delete(`rest/categories/${id}`);
-        this.$message({
-          type: "success",
-          message: "删除成功!"
+        type: "warning",
+      })
+        .then(async () => {
+          await this.$http.delete(`rest/categories/${id}`);
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+          this.fetch();
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
         });
-        this.fetch();
-      });
-    }
+    },
   },
   created() {
     this.fetch();
-  }
+  },
 };
 </script>
