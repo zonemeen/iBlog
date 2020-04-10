@@ -28,10 +28,7 @@
               placeholder="大家请坐下，陈独秀同志，要发言了。。。"
             ></comment-textarea>
           </div>
-          <div
-            :class="{ 'message-box': parentComments.length > 0 }"
-            class="my-9"
-          >
+          <div :class="{ 'message-box': parentComments.length > 0 }" class="my-9">
             <comment-list
               model="messages"
               @getCommentList="getMessagesList"
@@ -52,7 +49,7 @@
 export default {
   data() {
     return {
-      parentComments: [],
+      parentComments: []
     };
   },
   created() {
@@ -63,14 +60,14 @@ export default {
       let res = await this.$http.get("messages");
       let blogsComments = res.data;
       this.parentComments = blogsComments.filter(
-        (v) => v.parent == "5e52a80981bf76430fd982f0"
+        v => v.parent == "5e90abb3a6522a44580faa1c"
       );
-      this.parentComments.forEach((c) => {
-        return (c.children = blogsComments.filter((v) => v.parent == c._id));
+      this.parentComments.forEach(c => {
+        return (c.children = blogsComments.filter(v => v.parent == c._id));
       });
       console.log(this.parentComments, blogsComments, res.data);
-    },
-  },
+    }
+  }
 };
 </script>
 

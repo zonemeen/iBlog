@@ -13,9 +13,7 @@
           <p>发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }}</p>
         </div>
         <div>
-          <div
-            class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand"
-          >
+          <div class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand">
             <span class>
               <i class="iconfont icon-tag"></i>
             </span>
@@ -40,9 +38,7 @@
               :key="item.id"
               :style="{ paddingLeft: `${item.indent}em` }"
               @click="scrollTo(item.id)"
-            >
-              {{ item.text }}
-            </div>
+            >{{ item.text }}</div>
           </div>
         </div>
       </div>
@@ -97,27 +93,27 @@ marked.setOptions({
     } else {
       return hljs.highlightAuto(code).value;
     }
-  },
+  }
 });
 
 export default {
   components: {
     commentTextarea,
-    commentList,
+    commentList
   },
   props: {
-    id: { required: true },
+    id: { required: true }
   },
   data() {
     return {
       model: null,
       articleToc: [],
       fullscreenLoading: false,
-      parentComments: [],
+      parentComments: []
     };
   },
   watch: {
-    id: "fetch",
+    id: "fetch"
     // id(){
     //   this.fetch()
     // }
@@ -145,7 +141,7 @@ export default {
       node.scrollIntoView({
         behavior: "smooth",
         block: "center",
-        inline: "nearest",
+        inline: "nearest"
       });
     },
     async getBlogsComments() {
@@ -153,17 +149,17 @@ export default {
       console.log(res);
       let blogsComments = res.data;
       this.parentComments = blogsComments.filter(
-        (v) => v.parent == "5e52a80981bf76430fd982f0"
+        v => v.parent == "5e52a80981bf76430fd982f0"
       );
-      this.parentComments.forEach((c) => {
-        return (c.children = blogsComments.filter((v) => v.parent == c._id));
+      this.parentComments.forEach(c => {
+        return (c.children = blogsComments.filter(v => v.parent == c._id));
       });
-    },
+    }
   },
   created() {
     this.fetch();
     this.getBlogsComments();
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>

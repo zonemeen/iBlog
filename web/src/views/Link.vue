@@ -27,14 +27,16 @@
             popper-class="text-grey-2 fs-xl"
           >
             <div slot="content" class="text-green">{{ item.site }}</div>
-            <a class="a-container hand" :href="item.site">
+            <a class="a-container hand" :href="item.site" target="_blank">
               <div class="ai-center d-flex">
                 <span>
                   <img :src="item.icon" style="width: 40px; height: 40px;" />
                 </span>
-                <span class="fs-xxxxl text-green pl-6 link-font">{{
+                <span class="fs-xxxxl text-green pl-6 link-font">
+                  {{
                   item.name
-                }}</span>
+                  }}
+                </span>
               </div>
             </a>
           </el-tooltip>
@@ -63,9 +65,7 @@
         <p>• 网站地址：blog.miqilin21.cn</p>
         <p>• 描述：我劝你要多喝热水哈哈哈哈哈哈哈哈哈哈哈</p>
       </div>
-      <p class="my-9 text-grey-2">
-        暂时先这样，同时欢迎互换友链，到留言页留言即可。 ^_^
-      </p>
+      <p class="my-9 text-grey-2">暂时先这样，同时欢迎互换友链，到留言页留言即可。 ^_^</p>
     </div>
     <div class="w-100 h-100">
       <el-backtop :bottom="50"></el-backtop>
@@ -78,7 +78,7 @@ export default {
   data() {
     return {
       model: [],
-      fullscreenLoading: false,
+      fullscreenLoading: false
     };
   },
   methods: {
@@ -87,11 +87,11 @@ export default {
       const res = await this.$http.get("links/list");
       this.model = res.data;
       this.fullscreenLoading = false;
-    },
+    }
   },
   created() {
     this.fetchLinks();
-  },
+  }
 };
 </script>
 

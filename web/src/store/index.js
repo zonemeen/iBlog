@@ -1,7 +1,5 @@
 import Vue from "vue";
 import Vuex from "vuex";
-// import theme from '@/styles/skins.scss'
-// console.log(theme,'skin')
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -10,13 +8,6 @@ export default new Vuex.Store({
     vuex_skin_obj: {
       name: 'miqilin',
       chinaName: '米淇淋',
-      first: 'M',
-      icon: 'icon-M',
-      behind: 'qilin',
-      headerUp: 'out ?',
-      headerDown: '未完待续。。。',
-      footerUp: 'miqilin',
-      footerDown: "I'm here all the time!",
     },
   },
   mutations: {
