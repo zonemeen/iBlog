@@ -149,7 +149,7 @@ export default {
       console.log(res);
       let blogsComments = res.data;
       this.parentComments = blogsComments.filter(
-        v => v.parent == "5e52a80981bf76430fd982f0"
+        v => v.parent == "5e90abb3a6522a44580faa1c"
       );
       this.parentComments.forEach(c => {
         return (c.children = blogsComments.filter(v => v.parent == c._id));

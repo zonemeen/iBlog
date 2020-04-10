@@ -141,7 +141,7 @@ export default {
       this.$message.success("发布成功");
 
       this.btnLoading = false;
-      if (this.userInfo._id == "5e90abb3a6522a44580faa1c") {
+      if (this.userInfo._id == "5e90b499ffb29f2a96becba7") {
         let byAiteObj = await this.$http.get(`users/${this.byAiteUserId}`);
         let replyObj = {
           recipient: byAiteObj.data.email,
