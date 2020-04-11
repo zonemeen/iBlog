@@ -1,5 +1,5 @@
 <template>
-  <div class="page-about d-flex flex-column ai-center pt-10">
+  <div class="page-about d-flex flex-column ai-center py-9">
     <div class="page p-6">
       <div class="text-green fs-xxxxl">About</div>
       <div class="text-grey-2 fs-sm mt-5">Published on March 11th 2020</div>
@@ -37,7 +37,8 @@
             href="https://github.com/miqilin21/myBlog"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-          >• CMS(本博客)</a>
+            >• CMS(本博客)</a
+          >
           - 基于NodeJs、Vue、MongoDB实现的一款CMS博客系统🔥
         </p>
         <p>
@@ -45,7 +46,8 @@
             href="https://github.com/miqilin21/iMoney"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-          >• iMoney</a>
+            >• iMoney</a
+          >
           - 基于Vue、Vue Router、Vuex、TypeScript实现的一款极简的记账应用🤑
         </p>
         <p>
@@ -53,7 +55,8 @@
             href="https://github.com/miqilin21/iMusic"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-          >• iMusic</a>
+            >• iMusic</a
+          >
           - 基于网易云音乐API实现的一款音乐微信小程序🎵
         </p>
         <p>
@@ -61,7 +64,8 @@
             href="https://github.com/miqilin21/cv"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-          >• cv</a>
+            >• cv</a
+          >
           - 原生js实现的米淇淋个人简历📄
         </p>
         <p>
@@ -69,7 +73,8 @@
             href="https://github.com/miqilin21"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-          >• 其他项目</a>
+            >• 其他项目</a
+          >
           - 持续开发中...
         </p>
       </div>

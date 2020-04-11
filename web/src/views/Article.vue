@@ -8,9 +8,7 @@
           <p>发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }}</p>
         </div>
         <div>
-          <div
-            class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand"
-          >
+          <div class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand">
             <span class>
               <i class="iconfont icon-tag"></i>
             </span>
@@ -35,9 +33,7 @@
               :key="item.id"
               :style="{ paddingLeft: `${item.indent}em` }"
               @click="scrollTo(item.id)"
-            >
-              {{ item.text }}
-            </div>
+            >{{ item.text }}</div>
           </div>
         </div>
       </div>
@@ -53,7 +49,7 @@
         placeholder="输入留言内容"
       ></comment-textarea>
       <comment-list
-        class="mt-7"
+        class="mt-7 mb-10"
         model="comments"
         @getCommentList="getBlogsComments"
         :commentsList="parentComments"

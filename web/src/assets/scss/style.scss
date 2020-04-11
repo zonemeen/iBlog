@@ -8,34 +8,28 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-// *::before,
-// *::after {
-//   box-sizing: border-box;
-// }
-
 html {
   font-size: 14px;
-  word-spacing: 1px;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  // overflow-y: scroll;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background-color: map-get($colors, "bgcolor");
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   font-family: "-apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei",
     sans-serif;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 4px;
+  height: 4px;
   position: absolute;
 }
 
