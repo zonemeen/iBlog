@@ -1,13 +1,6 @@
 <template>
-  <div
-    class="main-container mb-9 mt-8"
-    v-loading.fullscreen.lock="fullscreenLoading"
-    element-loading-background="rgba(0, 0, 0, 1)"
-  >
-    <div
-      class="post-container d-flex flex-wrap jc-center ai-center"
-      style="width: 80%; margin: 0 auto;"
-    >
+  <div class="main-container mb-9 mt-8">
+    <div class="post-container d-flex flex-wrap jc-center ai-center">
       <div v-for="(article, i) in articles" :key="i">
         <div class="show home-art">
           <router-link
@@ -100,21 +93,18 @@ export default {
       articles: [],
       pagination: {
         totalPage: 1,
-        currentPage: 1,
-      },
-      fullscreenLoading: false,
+        currentPage: 1
+      }
     };
   },
   methods: {
     async fetchData() {
-      this.fullscreenLoading = true;
       const res = await this.$http.get(
         `/articles/${this.pagination.currentPage}`
       );
       this.articles = res.data.list;
       this.pagination.totalPage = res.data.totalPage;
       this.pagination.currentPage = res.data.currentPage;
-      this.fullscreenLoading = false;
     },
     async goToPage(pageNum) {
       this.pagination.currentPage = pageNum;
@@ -133,10 +123,17 @@ export default {
       }
       this.pagination.currentPage++;
       this.fetchData();
-    },
+    }
   },
   created() {
     this.fetchData();
-  },
+  }
 };
 </script>
+
+<style lang="scss" scoped>
+.post-container {
+  width: 80%;
+  margin: 0 auto;
+}
+</style>

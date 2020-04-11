@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="page-link d-flex flex-column ai-center pt-10"
-    v-loading.fullscreen.lock="fullscreenLoading"
-    element-loading-background="rgba(0, 0, 0, 1)"
-  >
+  <div class="page-link d-flex flex-column ai-center pt-10">
     <div class="page p-6">
       <div class="text-green fs-xxxxl">Links</div>
       <div class="text-grey-2 fs-sm mt-5">Published on March 11th 2020</div>
@@ -33,9 +29,7 @@
                   <img :src="item.icon" style="width: 40px; height: 40px;" />
                 </span>
                 <span class="fs-xxxxl text-green pl-6 link-font">
-                  {{
-                  item.name
-                  }}
+                  {{ item.name }}
                 </span>
               </div>
             </a>
@@ -65,10 +59,9 @@
         <p>• 网站地址：blog.miqilin21.cn</p>
         <p>• 描述：我劝你要多喝热水哈哈哈哈哈哈哈哈哈哈哈</p>
       </div>
-      <p class="my-9 text-grey-2">暂时先这样，同时欢迎互换友链，到留言页留言即可。 ^_^</p>
-    </div>
-    <div class="w-100 h-100">
-      <el-backtop :bottom="50"></el-backtop>
+      <p class="my-9 text-grey-2">
+        暂时先这样，同时欢迎互换友链，到留言页留言即可。 ^_^
+      </p>
     </div>
   </div>
 </template>
@@ -77,16 +70,13 @@
 export default {
   data() {
     return {
-      model: [],
-      fullscreenLoading: false
+      model: []
     };
   },
   methods: {
     async fetchLinks() {
-      this.fullscreenLoading = true;
       const res = await this.$http.get("links/list");
       this.model = res.data;
-      this.fullscreenLoading = false;
     }
   },
   created() {

@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="main"
-    v-loading.fullscreen.lock="fullscreenLoading"
-    element-loading-background="rgba(0, 0, 0, 1)"
-  >
+  <div class="main">
     <Header></Header>
     <router-view></router-view>
     <Footer></Footer>
@@ -24,5 +20,3 @@ export default {
   }
 };
 </script>
-
-

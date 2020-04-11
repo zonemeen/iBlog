@@ -1,5 +1,5 @@
 <template>
-  <div class="topbar nav jc-around bg-navcolor">
+  <div class="topbar nav jc-around bg-navcolor w-100">
     <div class="mt-4 hand">
       <router-link tag="div" to="/">
         <img src="../assets/logo.png" height="42" class="main-img" />
@@ -14,7 +14,8 @@
         :key="item.text"
         active-class="active"
         class="nav-item px-5 icon"
-      >{{ item.text }}</router-link>
+        >{{ item.text }}</router-link
+      >
     </div>
   </div>
 </template>

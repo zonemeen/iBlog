@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="mb-7"
-    v-loading.fullscreen.lock="fullscreenLoading"
-    element-loading-background="rgba(0, 0, 0, 1)"
-  >
+  <div class="mb-7">
     <div class="page-archive d-flex flex-column ai-center jc-center">
       <div class="mt-11 pr-11 mr-11">
         <div class="fs-xxxxl text-green">共计{{ model.length }}篇文章</div>
@@ -35,21 +31,18 @@
 export default {
   data() {
     return {
-      model: [],
-      fullscreenLoading: false,
+      model: []
     };
   },
   methods: {
     async fetchArticles() {
-      this.fullscreenLoading = true;
       const res = await this.$http.get("articles/list");
       this.model = res.data;
-      this.fullscreenLoading = false;
-    },
+    }
   },
   created() {
     this.fetchArticles();
-  },
+  }
 };
 </script>
 

@@ -1,11 +1,6 @@
 <template>
   <div>
-    <div
-      class="page-article d-flex jc-center w-100"
-      v-if="model"
-      v-loading.fullscreen.lock="fullscreenLoading"
-      element-loading-background="rgba(0, 0, 0, 1)"
-    >
+    <div class="page-article d-flex jc-center" v-if="model">
       <div class="d-none left"></div>
       <div class="page">
         <div class="text-green fs-xxxxl mt-11">{{ model.title }}</div>
@@ -13,7 +8,9 @@
           <p>发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }}</p>
         </div>
         <div>
-          <div class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand">
+          <div
+            class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand"
+          >
             <span class>
               <i class="iconfont icon-tag"></i>
             </span>
@@ -38,7 +35,9 @@
               :key="item.id"
               :style="{ paddingLeft: `${item.indent}em` }"
               @click="scrollTo(item.id)"
-            >{{ item.text }}</div>
+            >
+              {{ item.text }}
+            </div>
           </div>
         </div>
       </div>
@@ -46,11 +45,12 @@
     <div class="art-comment">
       <h3 class="fs-xxxxl">评论</h3>
       <comment-textarea
+        class="textarea-box bg-white bdr"
         model="comments"
         @toResponse="getBlogsComments"
         type="parent"
         :blogsId="id"
-        placeholder="大家请坐下，陈独秀同志，要发言了。。。"
+        placeholder="输入留言内容"
       ></comment-textarea>
       <comment-list
         class="mt-7"
@@ -108,7 +108,6 @@ export default {
     return {
       model: null,
       articleToc: [],
-      fullscreenLoading: false,
       parentComments: []
     };
   },
@@ -120,7 +119,6 @@ export default {
   },
   methods: {
     async fetch() {
-      this.fullscreenLoading = true;
       const res = await this.$http.get(`articles/list/${this.id}`);
       this.model = res.data;
       let tocData = Toc(marked(res.data.body));
@@ -130,7 +128,6 @@ export default {
         addLineAndCopy();
         // this.addCodeSupport()
       });
-      this.fullscreenLoading = false;
     },
     scrollTo(id) {
       // 绑定 toc 点击事件
@@ -205,6 +202,9 @@ export default {
 .art-comment {
   max-width: 650px;
   margin: 0 auto 40px;
+}
+.textarea-box {
+  padding: 15px;
 }
 
 @media screen and (max-width: 900px) {

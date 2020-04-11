@@ -25,7 +25,7 @@
               model="messages"
               @toResponse="getMessagesList"
               type="parent"
-              placeholder="大家请坐下，陈独秀同志，要发言了。。。"
+              placeholder="输入留言内容"
             ></comment-textarea>
           </div>
           <div :class="{ 'message-box': parentComments.length > 0 }" class="my-9">
@@ -38,9 +38,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="w-100 h-100">
-      <el-backtop :bottom="50"></el-backtop>
     </div>
   </div>
 </template>
