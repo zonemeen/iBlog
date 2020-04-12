@@ -24,7 +24,7 @@
           •
           该博客用Vue实现，express提供数据接口，mongoDB储存数据，部署在腾讯云的linux服务器上，搭建博客的初衷是希望把自己平常工作学习总结的东西记录下来，以便不时之需可以查阅。
         </p>
-        <p>• 如有错误地方烦请指正</p>
+        <p>• 如有错误、有bug的地方烦请指正</p>
       </div>
       <div class="py-4 mt-6">
         <span class="fs-xxl text-green">#</span>

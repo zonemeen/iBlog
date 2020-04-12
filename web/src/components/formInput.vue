@@ -45,7 +45,7 @@
           :action="$http.defaults.baseURL + '/upload'"
           :show-file-list="false"
           :limit="1"
-          :on-success="(res) => $set(userForm, 'avatarImg', res.url)"
+          :on-success="res => $set(userForm, 'avatarImg', res.url)"
         >
           <img
             v-if="userForm.avatarImg"
@@ -73,12 +73,12 @@
 import {
   // validateUrl,
   validateEmail,
-  validateQQEmail,
+  validateQQEmail
 } from "../common/validate";
 export default {
   props: {
     isUpload: { type: Boolean, default: false },
-    toForm: { type: Object, default: null },
+    toForm: { type: Object, default: null }
   },
   data() {
     return {
@@ -89,38 +89,37 @@ export default {
         url: "",
         description: "",
         avatarImg: "",
-        isRead: false,
+        isRead: false
       },
       userRules: {
         nickName: {
           required: true,
           message: "必填，且不超过10个字符",
-          trigger: "change",
+          trigger: "change"
         },
         email: { required: true, validator: validateEmail, trigger: "change" },
         qqEmail: {
           required: true,
           validator: validateQQEmail,
-          trigger: "change",
+          trigger: "change"
         },
         url: { required: true, message: "必填", trigger: "change" },
         description: {
           required: true,
           message: "必填，且不超过30个字符",
-          trigger: "change",
+          trigger: "change"
         },
         avatarImg: {
           required: true,
           message: "必填，且仅限jpg/png, 不大于200KB",
-          trigger: "change",
-        },
+          trigger: "change"
+        }
         // isRead: { required: false, message: "必填", trigger: "change" }
-      },
+      }
     };
   },
   watch: {
     isUpload(newV) {
-      console.log(newV);
       if (newV) {
         this.userRules.description.required = true;
         this.userRules.avatarImg.required = true;
@@ -131,10 +130,9 @@ export default {
         this.userRules.qqEmail.required = false;
         this.userRules.url.required = false;
       }
-    },
+    }
   },
   created() {
-    console.log(this.isUpload);
     if (this.isUpload) {
       this.userRules.description.required = true;
       this.userRules.avatarImg.required = true;
@@ -145,23 +143,20 @@ export default {
       this.userRules.qqEmail.required = false;
       this.userRules.url.required = false;
     }
-    console.log(this.userRules.url);
     this.userForm = this.toForm ? this.toForm : this.userForm;
   },
   methods: {
     saveForm(formName) {
-      this.$refs[formName].validate(async (valid) => {
+      this.$refs[formName].validate(async valid => {
         this.userForm.email = this.userForm.qqEmail;
         if (valid) {
           this.$emit("toRequest", this.userForm);
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
     },
     beforeAvatarUpload(file) {
-      console.log(file);
       const isJPG = file.type === "image/jpeg" || file.type === "image/png";
       const isLt2M = file.size / 1024 / 1024 < 0.2;
       if (!isJPG) {
@@ -176,8 +171,8 @@ export default {
       // console.log(this.$parent)
       // this.$parent.turnAnima = true
       // console.log(this.$parent.turnAnima)
-    },
-  },
+    }
+  }
 };
 </script>
 

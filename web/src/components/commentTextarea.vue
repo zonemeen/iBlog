@@ -8,13 +8,22 @@
           :src="userInfo.avatarImg"
           alt="miqilin头像"
         />
-        <i v-else @click="lookUserInfo" class="iconfont icon-xingzhuangkaobei hand"></i>
-        <p
-          class="mt-2 avatar text-center fs-lg text-grey-2"
-        >{{ userInfo.nickName ? userInfo.nickName : "留言" }}</p>
+        <i
+          v-else
+          @click="lookUserInfo"
+          class="iconfont icon-xingzhuangkaobei hand"
+        ></i>
+        <p class="mt-2 avatar text-center fs-lg text-grey-2">
+          {{ userInfo.nickName ? userInfo.nickName : "留言" }}
+        </p>
       </div>
       <div class="flex-1">
-        <el-input type="textarea" rows="4" v-model="messageObj.content" :placeholder="placeholder"></el-input>
+        <el-input
+          type="textarea"
+          rows="4"
+          v-model="messageObj.content"
+          :placeholder="placeholder"
+        ></el-input>
         <div class="mt-3 d-flex jc-between position-emoji">
           <button @blur="showEmoji = false" class="bg-white btn-none">
             <i
@@ -35,13 +44,28 @@
               @select="selectEmoji"
             />
           </button>
-          <el-button type="primary" size="small" :loading="btnLoading" @click="fabuHandle">发布</el-button>
+          <el-button
+            type="primary"
+            size="small"
+            :loading="btnLoading"
+            @click="fabuHandle"
+            >发布</el-button
+          >
         </div>
       </div>
     </div>
-    <el-dialog :append-to-body="true" :visible.sync="dialogVisible" width="300px" center>
+    <el-dialog
+      :append-to-body="true"
+      :visible.sync="dialogVisible"
+      width="300px"
+      center
+    >
       <div :class="{ turnAnima: false }">
-        <form-input @toRequest="submit" :isUpload="false" :toForm="userForm"></form-input>
+        <form-input
+          @toRequest="submit"
+          :isUpload="false"
+          :toForm="userForm"
+        ></form-input>
       </div>
     </el-dialog>
   </div>
@@ -108,7 +132,6 @@ export default {
     this.userInfo = localStorage.userInfo
       ? JSON.parse(localStorage.userInfo)
       : this.userInfo;
-    console.log(this.userInfo);
   },
   computed: {
     ...mapState(["map_user_info"])
@@ -134,7 +157,6 @@ export default {
         this.type == "children" ? this.parentId : "5e90abb3a6522a44580faa1c";
       this.messageObj.byAiteName =
         this.type == "children" ? this.nickName : "miqilin";
-      console.log(this.model);
       let url = this.model == "comments" ? "/comments" : "/messages";
       await this.$http.post(url, this.messageObj);
       this.$emit("toResponse");
@@ -153,7 +175,6 @@ export default {
       this.messageObj.content = "";
     },
     async submit(userForm) {
-      console.log(userForm);
       userForm.avatarImg = this.qqUrl.replace(
         "QQ号码",
         userForm.email.replace("@qq.com", "")
@@ -175,7 +196,6 @@ export default {
       this.dialogVisible = false;
     },
     selectEmoji(emoji) {
-      console.log(emoji);
       this.messageObj.content += emoji.data;
     },
     insert(emoji) {

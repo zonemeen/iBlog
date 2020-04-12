@@ -65,7 +65,6 @@ export default {
       this.parentComments.forEach(c => {
         return (c.children = blogsComments.filter(v => v.parent == c._id));
       });
-      console.log(this.parentComments, blogsComments, res.data);
     }
   }
 };

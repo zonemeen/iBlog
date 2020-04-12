@@ -8,7 +8,9 @@
           <p>发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }}</p>
         </div>
         <div>
-          <div class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand">
+          <div
+            class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand"
+          >
             <span class>
               <i class="iconfont icon-tag"></i>
             </span>
@@ -33,7 +35,9 @@
               :key="item.id"
               :style="{ paddingLeft: `${item.indent}em` }"
               @click="scrollTo(item.id)"
-            >{{ item.text }}</div>
+            >
+              {{ item.text }}
+            </div>
           </div>
         </div>
       </div>
@@ -139,7 +143,6 @@ export default {
     },
     async getBlogsComments() {
       let res = await this.$http.get(`/comments/${this.id}`);
-      console.log(res);
       let blogsComments = res.data;
       this.parentComments = blogsComments.filter(
         v => v.parent == "5e90abb3a6522a44580faa1c"

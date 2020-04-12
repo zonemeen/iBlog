@@ -117,10 +117,10 @@ export default {
   props: {
     blogsId: String,
     model: String,
-    commentsList: Array,
+    commentsList: Array
   },
   components: {
-    commentTextarea,
+    commentTextarea
   },
   data() {
     return {
@@ -137,21 +137,19 @@ export default {
       total: 31,
       pageNum: 1,
       pageSize: 10,
-      clientWidth: 10000,
+      clientWidth: 10000
     };
   },
   created() {
-    console.log(document.body.clientWidth);
     this.clientWidth = document.body.clientWidth;
-    console.log(this.userInfo);
   },
   filters: {
     formatDate(val) {
       return dayjs(val).format("YYYY-MM-DD HH:MM:ss");
-    },
+    }
   },
   computed: {
-    ...mapState(["map_user_info"]),
+    ...mapState(["map_user_info"])
   },
   methods: {
     replyHandle(item, index, c) {
@@ -179,8 +177,8 @@ export default {
     },
     handleClose() {
       this.dialog = false;
-    },
-  },
+    }
+  }
 };
 </script>
 

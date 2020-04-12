@@ -6,7 +6,7 @@
           <router-link
             tag="div"
             :to="`/article/list/${article._id}`"
-            class="top mt-10 mr-8 mb-0 ml-8 hand"
+            class="top mt-10 mx-8 mb-0 hand"
             :style="{ 'background-image': `url(${article.icon})` }"
           ></router-link>
           <div class="bg-postcolor pt-8 mx-8 title">
@@ -133,7 +133,7 @@ export default {
 
 <style lang="scss" scoped>
 .post-container {
-  width: 80%;
+  max-width: 990px;
   margin: 0 auto;
 }
 </style>
