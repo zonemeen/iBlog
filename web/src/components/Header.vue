@@ -14,7 +14,8 @@
         :key="item.text"
         active-class="active"
         class="nav-item px-5 icon"
-      >{{ item.text }}</router-link>
+        >{{ item.text }}</router-link
+      >
     </div>
   </div>
 </template>
@@ -48,7 +49,9 @@ export default {
 
 .topbar {
   position: sticky;
+  width: 100%;
   top: 0;
+  left: 0;
   z-index: 999;
 }
 </style>

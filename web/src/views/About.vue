@@ -24,7 +24,7 @@
           •
           该博客用Vue实现，express提供数据接口，mongoDB储存数据，部署在腾讯云的linux服务器上，搭建博客的初衷是希望把自己平常工作学习总结的东西记录下来，以便不时之需可以查阅。
         </p>
-        <p>• 如有错误、有bug的地方烦请指正</p>
+        <p>• 如有错误、bug的地方烦请指正</p>
       </div>
       <div class="py-4 mt-6">
         <span class="fs-xxl text-green">#</span>
@@ -37,8 +37,7 @@
             href="https://github.com/miqilin21/myBlog"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-            >• CMS(本博客)</a
-          >
+          >• CMS(本博客)</a>
           - 基于NodeJs、Vue、MongoDB实现的一款CMS博客系统🔥
         </p>
         <p>
@@ -46,8 +45,7 @@
             href="https://github.com/miqilin21/iMoney"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-            >• iMoney</a
-          >
+          >• iMoney</a>
           - 基于Vue、Vue Router、Vuex、TypeScript实现的一款极简的记账应用🤑
         </p>
         <p>
@@ -55,8 +53,7 @@
             href="https://github.com/miqilin21/iMusic"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-            >• iMusic</a
-          >
+          >• iMusic</a>
           - 基于网易云音乐API实现的一款音乐微信小程序🎵
         </p>
         <p>
@@ -64,8 +61,7 @@
             href="https://github.com/miqilin21/cv"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-            >• cv</a
-          >
+          >• cv</a>
           - 原生js实现的米淇淋个人简历📄
         </p>
         <p>
@@ -73,8 +69,7 @@
             href="https://github.com/miqilin21"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-            >• 其他项目</a
-          >
+          >• 其他项目</a>
           - 持续开发中...
         </p>
       </div>
@@ -86,7 +81,7 @@
 @import "../assets/scss/style.scss";
 
 .bd-bottom-about {
-  border-bottom: 0.0714rem solid grey;
+  border-bottom: 1px solid grey;
   &.bd-bottom-about:hover {
     color: map-get($colors, "red");
   }

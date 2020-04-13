@@ -28,9 +28,7 @@
                 <span>
                   <img :src="item.icon" style="width: 40px; height: 40px;" />
                 </span>
-                <span class="fs-xxxxl text-green pl-6 link-font">
-                  {{ item.name }}
-                </span>
+                <span class="fs-xxxxl text-green pl-6 link-font">{{ item.name }}</span>
               </div>
             </a>
           </el-tooltip>
@@ -59,9 +57,7 @@
         <p>• 网站地址：blog.miqilin21.cn</p>
         <p>• 描述：我劝你要多喝热水哈哈哈哈哈哈哈哈哈哈哈</p>
       </div>
-      <p class="my-9 text-grey-2">
-        暂时先这样，同时欢迎互换友链，到留言页留言即可。 ^_^
-      </p>
+      <p class="my-9 text-grey-2">暂时先这样，同时欢迎互换友链，到留言页留言即可。 ^_^</p>
     </div>
   </div>
 </template>
@@ -87,6 +83,6 @@ export default {
 
 <style lang="scss" scpoed>
 .show-link {
-  box-shadow: 0.0714rem 0.0714rem 0.3571rem 0.0714rem rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 </style>

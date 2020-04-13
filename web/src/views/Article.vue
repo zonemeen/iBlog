@@ -8,9 +8,7 @@
           <p>发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }}</p>
         </div>
         <div>
-          <div
-            class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand"
-          >
+          <div class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand">
             <span class>
               <i class="iconfont icon-tag"></i>
             </span>
@@ -35,9 +33,7 @@
               :key="item.id"
               :style="{ paddingLeft: `${item.indent}em` }"
               @click="scrollTo(item.id)"
-            >
-              {{ item.text }}
-            </div>
+            >{{ item.text }}</div>
           </div>
         </div>
       </div>
@@ -166,10 +162,10 @@ export default {
 }
 
 .page {
-  max-width: 46.4286rem;
+  max-width: 650px;
 }
 .post-tags {
-  max-width: 4.2857rem;
+  max-width: 60px;
 }
 
 .post-tags:hover {
@@ -182,7 +178,7 @@ export default {
 }
 
 .blogs-menu {
-  max-width: 14.2857rem;
+  max-width: 200px;
   line-height: 1.3;
   margin-top: 205px;
   .menu-title {
