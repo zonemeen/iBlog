@@ -42,18 +42,54 @@ module.exports = app => {
     })
   })
 
-  // // 标签
-  // router.get('/tags', async (req, res) => {
-  //   const data = await Category.aggregate([{
-  //     $lookup: {
-  //       from: 'articles',
-  //       localField: '_id',
-  //       foreignField: 'categories',
-  //       as: 'tagsList'
-  //     }
-  //   }])
-  //   res.send(data)
-  // })
+  // 按照年进行归类后的数据
+  router.get('/archive', async (req, res) => {
+    const data = await Article.aggregate([{
+        $sort: {
+          _id: -1
+        }
+      }, {
+        $lookup: {
+          from: 'categories',
+          localField: 'categories',
+          foreignField: '_id',
+          as: 'newList'
+        }
+      },
+      {
+        $group: {
+          _id: {
+            $year: '$createdAt',
+          },
+          count: {
+            $sum: 1
+          },
+          list: {
+            $push: {
+              _id: '$_id',
+              title: '$title',
+              categories: '$newList',
+              createdAt: '$createdAt',
+            }
+          }
+        }
+      }
+    ])
+    res.send(data)
+  })
+
+  // 标签
+  router.get('/tags', async (req, res) => {
+    const data = await Category.aggregate([{
+      $lookup: {
+        from: 'articles',
+        localField: '_id',
+        foreignField: 'categories',
+        as: 'tagsList'
+      }
+    }])
+    res.send(data)
+  })
 
   // 文章详情
   router.get("/articles/list/:id", async (req, res) => {

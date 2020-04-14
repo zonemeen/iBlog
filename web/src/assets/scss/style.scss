@@ -216,6 +216,84 @@ $type in $spacing-types {
   }
 }
 
+.main-content {
+  max-width: 1024px;
+  margin: 20px auto 100px;
+}
+
+.archive-page {
+  padding: 80px 20px 40px;
+}
+
+.post-lists {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.post-list-item {
+  float: left;
+  width: 33.3333%;
+  height: auto;
+  padding: 18px;
+  align-items: center;
+}
+
+.post-list-item-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  border-radius: 0.6rem;
+}
+
+.post-list-item-container .item-label .item-title a {
+  font-size: 15px;
+  word-break: break-all;
+  color: #34b686;
+  line-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.post-list-item-container .item-label .item-title a:hover {
+  font-size: 15px;
+  word-break: break-all;
+  color: #eb5055;
+  line-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.archive-page .categorys-title::before {
+  position: absolute;
+  top: 0;
+  left: -15px;
+  padding: 0 30px;
+  content: "#";
+  color: #34b686;
+}
+
+.post-list-item-container .item-label .item-meta .item-meta-date {
+  font-size: 12px;
+  position: relative;
+  float: left;
+  padding-top: 9px;
+  padding-left: 9px;
+  text-align: right;
+  text-transform: none;
+  color: #bbbbbb;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 h2,
 h3,
 h4 {

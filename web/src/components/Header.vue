@@ -14,8 +14,7 @@
         :key="item.text"
         active-class="active"
         class="nav-item px-5 icon"
-        >{{ item.text }}</router-link
-      >
+      >{{ item.text }}</router-link>
     </div>
   </div>
 </template>
@@ -27,6 +26,7 @@ export default {
       items: [
         { text: "首页", link: "/" },
         { text: "归档", link: "/archives" },
+        { text: "标签", link: "/tags" },
         { text: "友链", link: "/links" },
         { text: "留言", link: "/message" },
         { text: "关于", link: "/about" }

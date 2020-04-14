@@ -21,7 +21,7 @@
               <i class="iconfont icon-inbox1 pl-9"></i>
               <router-link
                 tag="span"
-                :to="`/article/list/${article._id}`"
+                :to="`/tags`"
                 class="fs-sm pl-2 mr-6 hand"
               >{{ article.categories[0].name }}</router-link>
               <i class="iconfont icon-love- text-red hand"></i>
@@ -119,7 +119,7 @@ export default {
 
 <style lang="scss" scoped>
 .post-container {
-  max-width: 1080px;
+  max-width: 1024px;
   margin: 0 auto;
   .top {
     width: 270px;

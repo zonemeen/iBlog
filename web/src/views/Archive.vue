@@ -1,23 +1,35 @@
 <template>
-  <div class="mb-9">
-    <div class="page-archive d-flex flex-column ai-center jc-center">
-      <div class="mt-10 pr-11 mr-11">
-        <div class="fs-xxxxl text-green">共计{{ model.length }}篇文章</div>
-        <div class="fs-xxxl text-grey-2 mt-6">{{ model.createdAt | date("YYYY") }}</div>
-      </div>
-      <div>
-        <router-link
-          tag="div"
-          :to="`/article/list/${item._id}`"
-          class="show box hand"
-          v-for="item in model"
-          :key="item.title"
-        >
-          <div class="bg-postcolor px-8 my-8 py-7 bdr">
-            <div class="fs-lg text-grey-1">{{ item.title }}</div>
-            <div class="fs-sm text-grey-1 mt-5">{{ item.createdAt | date("YYYY-MM-DD") }}</div>
+  <div>
+    <div v-if="model.length > 0" class="main-content archive-page">
+      <div class="categorys-item" v-for="item in model" :key="item._id">
+        <div class="categorys-title">{{item._id}}</div>
+        <div class="post-lists">
+          <div class="post-lists-body">
+            <div class="post-list-item" v-for="article in item.list" :key="article.createdAt">
+              <div class="post-list-item-container show">
+                <div>{{article.categories.map(cat => {return cat.title}).join('|')}}</div>
+                <div class="item-label bg-postcolor">
+                  <div class="item-title pl-4">
+                    <router-link
+                      :to="`/article/list/${article._id}`"
+                      :title="`访问 ${article.title}`"
+                    >{{article.title}}</router-link>
+                  </div>
+                  <div class="item-meta">
+                    <div class="item-meta-date">
+                      {{article.createdAt | date('YYYY-MM-DD HH:mm:ss')}}
+                      <router-link
+                        class="text-grey-1"
+                        :to="`/tags`"
+                        :data-hover="article.categories.map(cat => {return cat.name}).join('|')"
+                      >{{article.categories.map(cat => {return cat.name}).join('|')}}</router-link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -31,19 +43,42 @@ export default {
     };
   },
   methods: {
-    async fetchArticles() {
-      const res = await this.$http.get("articles/list");
+    async fetch() {
+      const res = await this.$http.get("/archive");
       this.model = res.data;
     }
   },
   created() {
-    this.fetchArticles();
+    this.fetch();
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.box {
-  min-width: 350px !important;
+.archive-page .categorys-title {
+  font-size: 20px;
+  position: relative;
+  margin: 10px auto;
+  padding: 0 32px;
+  color: #bbbbbb;
+}
+.post-lists-body {
+  display: block;
+}
+.post-list-item-container .item-label {
+  position: relative;
+  height: 100px;
+  padding: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  .post-list-item {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 620px) {
+  .post-list-item {
+    width: 100%;
+  }
 }
 </style>

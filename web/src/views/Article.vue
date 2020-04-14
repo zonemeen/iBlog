@@ -8,13 +8,16 @@
           <p>发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }}</p>
         </div>
         <div>
-          <div class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand">
-            <span class>
+          <router-link
+            tag="div"
+            :to="`/tags`"
+            class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand"
+          >
+            <span>
               <i class="iconfont icon-tag"></i>
-            </span>
-            &nbsp;
+            </span>&nbsp;
             <span class>{{ model.categories[0].name }}</span>
-          </div>
+          </router-link>
         </div>
         <div class="text-grey-2 fs-md mb-9 container">
           <div class="markdown-body">

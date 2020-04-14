@@ -23,6 +23,14 @@ const routes = [{
       }
     },
     {
+      path: '/tags',
+      name: 'Tag',
+      component: () => import( /* webpackChunkName: "archive" */ '../views/Tag.vue'),
+      meta: {
+        title: '标签 - MIQILIN'
+      }
+    },
+    {
       path: '/links',
       name: 'Link',
       component: () => import( /* webpackChunkName: "link" */ '../views/Link.vue'),
