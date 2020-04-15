@@ -4,14 +4,15 @@
       <div class="d-none left"></div>
       <div class="page">
         <div class="text-green fs-xxxxl mt-11">{{ model.title }}</div>
-        <div class="text-grey-2 fs-sm mt-6">
-          <p>发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }}</p>
+        <div class="text-grey-2 d-flex fs-sm my-4">
+          <p class="mr-4">发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }}</p>
+          <p>评论数：{{ Comments.length }}条</p>
         </div>
         <div>
           <router-link
             tag="div"
             :to="`/tags`"
-            class="p-2 bdr post-tags text-border text-center bg-blue fs-sm mt-6 hand"
+            class="p-2 bdr post-tags text-border text-center bg-blue fs-sm hand mb-6"
           >
             <span>
               <i class="iconfont icon-tag"></i>
@@ -141,14 +142,15 @@ export default {
       });
     },
     async getBlogsComments() {
-      let res = await this.$http.get(`/comments/${this.id}`);
-      let blogsComments = res.data;
+      const res = await this.$http.get(`/comments/${this.id}`);
+      const blogsComments = res.data;
       this.parentComments = blogsComments.filter(
         v => v.parent == "5e90abb3a6522a44580faa1c"
       );
       this.parentComments.forEach(c => {
         return (c.children = blogsComments.filter(v => v.parent == c._id));
       });
+      this.Comments = res.data;
     }
   },
   created() {

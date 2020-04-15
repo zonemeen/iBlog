@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 .main-container {
-  margin-bottom: 140px;
+  margin-bottom: 160px;
   .archive-page .categorys-title {
     font-size: 20px;
     position: relative;
