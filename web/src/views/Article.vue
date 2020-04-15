@@ -107,6 +107,7 @@ export default {
   data() {
     return {
       model: null,
+      Comments: [],
       articleToc: [],
       parentComments: []
     };

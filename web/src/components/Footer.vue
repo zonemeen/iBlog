@@ -34,14 +34,18 @@
             <p class="load">I work with passion & love.</p>
             <p>
               The Site is Powered by
-              <a href="https://github.com/miqilin21">miqilin21</a>
+              <a href="https://github.com/miqilin21" target="_blank">miqilin21</a>
             </p>
             <p>
               © Copyright 2020
-              <a href="https://github.com/miqilin21">miqilin21</a>
+              <a href="https://github.com/miqilin21" target="_blank">miqilin21</a>
             </p>
             <p>
-              <a href="http://www.beian.miit.gov.cn/" class="text-grey-2">浙ICP备20010345号-1</a>
+              <a
+                href="http://www.beian.miit.gov.cn/"
+                target="_blank"
+                class="text-grey-2"
+              >浙ICP备20010345号-1</a>
             </p>
           </div>
         </div>
