@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-container">
     <div v-if="model.length > 0" class="main-content archive-page">
       <div class="categorys-item" v-for="item in model" :key="item._id">
         <div class="categorys-title">{{item._id}}</div>
@@ -55,30 +55,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.archive-page .categorys-title {
-  font-size: 20px;
-  position: relative;
-  margin: 10px auto;
-  padding: 0 32px;
-  color: #bbbbbb;
-}
-.post-lists-body {
-  display: block;
-}
-.post-list-item-container .item-label {
-  position: relative;
-  height: 100px;
-  padding: 20px;
-}
-
-@media screen and (max-width: 900px) {
-  .post-list-item {
-    width: 50%;
-  }
-}
-@media screen and (max-width: 620px) {
-  .post-list-item {
-    width: 100%;
+.main-container {
+  margin-bottom: 140px;
+  .archive-page .categorys-title {
+    font-size: 20px;
+    position: relative;
+    margin: 10px auto;
+    padding: 0 32px;
+    color: #bbbbbb;
   }
 }
 </style>

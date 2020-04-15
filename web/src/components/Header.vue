@@ -1,11 +1,11 @@
 <template>
-  <div class="topbar nav jc-around bg-navcolor">
-    <div class="mt-4 hand">
+  <div class="topbar nav d-flex jc-around ai-center bg-navcolor">
+    <div class="hand">
       <router-link tag="div" to="/">
         <img src="../assets/logo.png" height="42" class="main-img" />
       </router-link>
     </div>
-    <div class="d-flex my-7 text-grey-1 hand main-font">
+    <div class="d-flex text-grey-1 hand">
       <router-link
         exact
         tag="div"
@@ -15,6 +15,37 @@
         active-class="active"
         class="nav-item px-5 icon"
       >{{ item.text }}</router-link>
+      <el-dropdown trigger="click" @visible-change="v => isShowMenu = v">
+        <div
+          class="menu-button hand"
+          @click="isShowMenu = !isShowMenu"
+          :class="{'isShowMenu': isShowMenu}"
+        >
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>
+            <router-link tag="div" to="/">首页</router-link>
+          </el-dropdown-item>
+          <el-dropdown-item divided>
+            <router-link tag="div" to="/archives">归档</router-link>
+          </el-dropdown-item>
+          <el-dropdown-item divided>
+            <router-link tag="div" to="/tags">标签</router-link>
+          </el-dropdown-item>
+          <el-dropdown-item divided>
+            <router-link tag="div" to="/links">友链</router-link>
+          </el-dropdown-item>
+          <el-dropdown-item divided>
+            <router-link tag="div" to="/message">留言</router-link>
+          </el-dropdown-item>
+          <el-dropdown-item divided>
+            <router-link tag="div" to="/about">关于</router-link>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </div>
   </div>
 </template>
@@ -23,6 +54,7 @@
 export default {
   data() {
     return {
+      isShowMenu: false,
       items: [
         { text: "首页", link: "/" },
         { text: "归档", link: "/archives" },
@@ -48,10 +80,48 @@ export default {
 }
 
 .topbar {
-  position: sticky;
+  position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   z-index: 999;
+  height: 65px;
+}
+.menu-button {
+  border: none;
+  display: none;
+  i {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px auto;
+    transition: 0.2s ease-in-out;
+  }
+}
+.isShowMenu {
+  i {
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:nth-child(1) {
+      transform: translateY(8px) rotate(-45deg);
+    }
+    &:nth-child(3) {
+      transform: translateY(-8px) rotate(45deg);
+    }
+  }
+}
+.el-dropdown-link {
+  cursor: pointer;
+}
+@media screen and (max-width: 650px) {
+  .nav-item {
+    display: none;
+  }
+  .menu-button {
+    display: block;
+    margin-left: 120px;
+  }
 }
 </style>

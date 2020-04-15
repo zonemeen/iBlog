@@ -10,18 +10,10 @@
         ></el-input>
       </el-form-item>
       <el-form-item prop="email" v-if="isUpload">
-        <el-input
-          size="medium"
-          v-model="userForm.email"
-          placeholder="电子邮箱(@xx.com)"
-        ></el-input>
+        <el-input size="medium" v-model="userForm.email" placeholder="电子邮箱(@xx.com)"></el-input>
       </el-form-item>
       <el-form-item prop="qqEmail" v-else>
-        <el-input
-          size="medium"
-          v-model="userForm.qqEmail"
-          placeholder="QQ邮箱(仅为了获取QQ头像)"
-        ></el-input>
+        <el-input size="medium" v-model="userForm.qqEmail" placeholder="QQ邮箱(仅为了获取QQ头像)"></el-input>
       </el-form-item>
       <el-form-item prop="url">
         <el-input
@@ -51,7 +43,7 @@
             v-if="userForm.avatarImg"
             :src="userForm.avatarImg"
             class="logo-img"
-            alt="Mamba头像缩略图"
+            alt="miqilin头像缩略图"
           />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
@@ -61,11 +53,9 @@
         <el-checkbox size="medium" v-model="userForm.isRead">
           <span :class="userForm.isRead ? 'isRead' : 'read-text'" @click="readInfo">已阅读详细填写要求</span>
         </el-checkbox>
-      </el-form-item> -->
+      </el-form-item>-->
     </el-form>
-    <el-button type="primary" class="width-100" @click="saveForm('userForm')"
-      >提交</el-button
-    >
+    <el-button type="primary" class="width-100" @click="saveForm('userForm')">提交</el-button>
   </div>
 </template>
 

@@ -202,6 +202,10 @@ $type in $spacing-types {
   transform: scale(1.1, 1.1);
 }
 
+.main-container {
+  margin: 60px 0;
+}
+
 .page {
   width: 650px;
 }
@@ -218,11 +222,11 @@ $type in $spacing-types {
 
 .main-content {
   max-width: 1024px;
-  margin: 20px auto 100px;
+  margin: 0px auto;
 }
 
 .archive-page {
-  padding: 80px 20px 40px;
+  padding: 80px 20px 0px;
 }
 
 .post-lists {
@@ -235,7 +239,7 @@ $type in $spacing-types {
   float: left;
   width: 33.3333%;
   height: auto;
-  padding: 18px;
+  padding: 25px;
   align-items: center;
 }
 
@@ -292,6 +296,21 @@ $type in $spacing-types {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.post-list-item-container .item-label {
+  position: relative;
+  height: 120px;
+  padding: 25px 20px 40px;
+}
+
+.post-list-item-container .item-label .item-meta {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0 22px 20px;
+  text-align: right;
 }
 
 h2,
@@ -373,16 +392,13 @@ pre,
   }
 }
 
+@media screen and (max-width: 768px) {
+  .post-list-item {
+    width: 50%;
+  }
+}
+
 @media screen and(max-width:580px) {
-  .main-img {
-    height: 32px;
-    margin-top: 5px;
-  }
-
-  .main-font {
-    font-size: 12px;
-  }
-
   .page {
     width: 100%;
   }
@@ -406,5 +422,11 @@ pre,
     img {
       width: 85%;
     }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .post-list-item {
+    width: 100%;
   }
 }

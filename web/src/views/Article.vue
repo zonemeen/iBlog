@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-container">
     <div class="page-article d-flex jc-center" v-if="model">
       <div class="d-none left"></div>
       <div class="page">

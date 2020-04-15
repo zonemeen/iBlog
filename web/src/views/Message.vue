@@ -1,5 +1,5 @@
 <template>
-  <div class="page-link d-flex flex-column ai-center py-9">
+  <div class="main-container page-link d-flex flex-column ai-center pt-9">
     <div class="page p-6">
       <div class="text-green fs-xxxxl">Message</div>
       <div class="text-grey-2 fs-sm mt-5">Published on March 11th 2020</div>
@@ -28,10 +28,7 @@
               placeholder="输入留言内容"
             ></comment-textarea>
           </div>
-          <div
-            :class="{ 'message-box': parentComments.length > 0 }"
-            class="my-9"
-          >
+          <div :class="{ 'message-box': parentComments.length > 0 }" class="my-9">
             <comment-list
               model="messages"
               @getCommentList="getMessagesList"

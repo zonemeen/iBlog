@@ -118,6 +118,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.main-container {
+  padding-top: 60px;
+}
 .post-container {
   max-width: 1024px;
   margin: 0 auto;

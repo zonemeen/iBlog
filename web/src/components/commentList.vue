@@ -7,7 +7,7 @@
       v-else
       v-for="(item, index) in commentsList"
       :key="index"
-      class="py-4"
+      class="py-5"
       :class="index > 0 ? 'border-top' : ''"
     >
       <div class="d-flex">
@@ -18,29 +18,20 @@
           <div class="d-flex ai-center">
             <strong class="mr-4 text-green">{{ item.nickName }}</strong>
             <span class="text-grey-2">
-              <span class="">{{ item.createdAt | formatDate }}</span>
+              <span class>{{ item.createdAt | formatDate }}</span>
               <strong
                 class="reply pl-4"
                 @click="replyHandle(item, index, false)"
                 v-if="item.userId != userInfo._id"
-                >{{ showReply ? "回复" : "回复" }}</strong
-              >
+              >{{ showReply ? "回复" : "回复" }}</strong>
             </span>
           </div>
-          <div class="py-2 text-grey-2">{{ item.content }}</div>
-          <div
-            class="bg-navcolor px-4 bdr"
-            :class="{ 'py-4': item.children.length > 0 }"
-          >
+          <div class="py-4 text-grey-2">{{ item.content }}</div>
+          <div class="bg-navcolor pl-5 bdr" :class="{ 'py-4': item.children.length > 0 }">
             <div class v-for="(c, i) in item.children" :key="i">
-              <div class="d-flex">
+              <div class="d-flex pt-2">
                 <div class="mini-avatar text-left">
-                  <img
-                    :src="c.avatarImg"
-                    alt="miqilin头像"
-                    width="30"
-                    height="30"
-                  />
+                  <img :src="c.avatarImg" alt="miqilin头像" width="30" height="30" />
                 </div>
                 <div class="flex-1">
                   <div class="mt-0 fs-md">
@@ -53,10 +44,11 @@
                         class="reply pl-4"
                         @click="replyHandle(item, index, c)"
                         v-if="c.userId != userInfo._id"
-                        >{{
-                          showReply && commentIndex == index ? "回复" : "回复"
-                        }}</strong
                       >
+                        {{
+                        showReply && commentIndex == index ? "回复" : "回复"
+                        }}
+                      </strong>
                     </span>
                   </div>
                   <div class="py-4">
@@ -188,7 +180,7 @@ export default {
 }
 .comment-list {
   .avatar-one {
-    padding-right: 30px;
+    padding-right: 20px;
     img {
       border-radius: 20%;
     }

@@ -1,43 +1,41 @@
 <template>
-  <div>
-    <div class>
-      <div class="main-content archive-page">
-        <div class="post-title text-green fs-xxxxl">标签分类的博文--点击自动查找相应`Tags`</div>
-        <div>
-          <div class="post-tags">
-            <a v-for="item in model" :key="item._id" :href="`#${item.name}`">
-              {{item.name}}
-              <span>({{item.tagsList.length}})个</span>
-            </a>
-          </div>
+  <div class="main-container">
+    <div class="main-content archive-page">
+      <div class="post-title text-green fs-xxxxl">标签分类的博文--点击自动查找相应`Tags`</div>
+      <div>
+        <div class="post-tags">
+          <a v-for="item in model" :key="item._id" :href="`#${item.name}`">
+            {{item.name}}
+            <span>({{item.tagsList.length}})个</span>
+          </a>
         </div>
       </div>
-      <div class="main-content archive-page">
-        <div v-for="item in model" :key="item._id" :id="`${item.name}`" class="post-lists">
-          <div v-if="item.tagsList.length > 0">
-            <div class="categorys-title">{{item.name}} : {{item.tagsList.length}}</div>
-            <div v-for="tag in item.tagsList" :key="tag._id" class="post-list-item">
-              <div class="post-list-item-container bg-postcolor show">
-                <div class="item-label">
-                  <div class="item-title pl-4">
+    </div>
+    <div class="main-content archive-page">
+      <div v-for="item in model" :key="item._id" :id="`${item.name}`" class="post-lists">
+        <div v-if="item.tagsList.length > 0">
+          <div class="categorys-title">{{item.name}} : {{item.tagsList.length}}</div>
+          <div v-for="tag in item.tagsList" :key="tag._id" class="post-list-item">
+            <div class="post-list-item-container bg-postcolor show">
+              <div class="item-label">
+                <div class="item-title pl-4">
+                  <router-link
+                    :data-hover="`${tag.title}`"
+                    :to="`/article/list/${tag._id}`"
+                  >{{tag.title}}</router-link>
+                </div>
+                <div class="item-meta">
+                  <div class="item-meta-date">
                     <router-link
-                      :data-hover="`${tag.title}`"
-                      :to="`/article/list/${tag._id}`"
-                    >{{tag.title}}</router-link>
-                  </div>
-                  <div class="item-meta">
-                    <div class="item-meta-date">
-                      <router-link
-                        class="text-grey-1"
-                        :to="`/archives`"
-                        :data-hover="getDataHover(tag.createdAt)"
-                      >{{tag.createdAt | date('YYYY-MM-DD HH:mm:ss')}}</router-link>
-                      <router-link
-                        class="text-grey-1"
-                        :data-hover="`${item.name}`"
-                        to="/tags"
-                      >{{item.name}}</router-link>
-                    </div>
+                      class="text-grey-1"
+                      :to="`/archives`"
+                      :data-hover="getDataHover(tag.createdAt)"
+                    >{{tag.createdAt | date('YYYY-MM-DD HH:mm:ss')}}</router-link>
+                    <router-link
+                      class="text-grey-1"
+                      :data-hover="`${item.name}`"
+                      to="/tags"
+                    >{{item.name}}</router-link>
                   </div>
                 </div>
               </div>
@@ -127,28 +125,5 @@ export default {
   margin: 10px auto;
   padding: 0 30px;
   color: #bbbbbb;
-}
-.post-list-item-container .item-label {
-  position: relative;
-  height: 120px;
-  padding: 25px 20px 40px;
-}
-.post-list-item-container .item-label .item-meta {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 0 22px 20px;
-  text-align: right;
-}
-@media screen and (max-width: 768px) {
-  .post-list-item {
-    width: 50%;
-  }
-}
-@media screen and (max-width: 480px) {
-  .post-list-item {
-    width: 100%;
-  }
 }
 </style>

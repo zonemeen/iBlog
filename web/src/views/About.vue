@@ -1,5 +1,5 @@
 <template>
-  <div class="page-about d-flex flex-column ai-center py-9">
+  <div class="main-container page-about d-flex flex-column ai-center pt-9">
     <div class="page p-6">
       <div class="text-green fs-xxxxl">About</div>
       <div class="text-grey-2 fs-sm mt-5">Published on March 11th 2020</div>
@@ -37,8 +37,8 @@
             href="https://github.com/miqilin21/myBlog"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-          >• CMS(本博客)</a>
-          - 基于NodeJs、Vue、MongoDB实现的一款CMS博客系统🔥
+          >• myBlog(本博客)</a>
+          - 基于NodeJs、Vue、MongoDB实现的一款伪全栈博客系统🔥
         </p>
         <p>
           <a

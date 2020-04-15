@@ -25,7 +25,7 @@ const routes = [{
     {
       path: '/tags',
       name: 'Tag',
-      component: () => import( /* webpackChunkName: "archive" */ '../views/Tag.vue'),
+      component: () => import( /* webpackChunkName: "tag" */ '../views/Tag.vue'),
       meta: {
         title: '标签 - MIQILIN'
       }
