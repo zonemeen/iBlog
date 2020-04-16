@@ -2,7 +2,11 @@
   <div class="topbar nav d-flex jc-around ai-center bg-navcolor">
     <div class="hand">
       <router-link tag="div" to="/">
-        <img src="../assets/logo.png" height="42" class="main-img" />
+        <img
+          src="https://miqilin-blog.oss-cn-shenzhen.aliyuncs.com/logo.png"
+          height="42"
+          class="main-img"
+        />
       </router-link>
     </div>
     <div class="d-flex text-grey-1 hand">
@@ -14,12 +18,13 @@
         :key="item.text"
         active-class="active"
         class="nav-item px-5 icon"
-      >{{ item.text }}</router-link>
-      <el-dropdown trigger="click" @visible-change="v => isShowMenu = v">
+        >{{ item.text }}</router-link
+      >
+      <el-dropdown trigger="click" @visible-change="(v) => (isShowMenu = v)">
         <div
           class="menu-button hand"
           @click="isShowMenu = !isShowMenu"
-          :class="{'isShowMenu': isShowMenu}"
+          :class="{ isShowMenu: isShowMenu }"
         >
           <i></i>
           <i></i>
@@ -61,10 +66,10 @@ export default {
         { text: "标签", link: "/tags" },
         { text: "友链", link: "/links" },
         { text: "留言", link: "/message" },
-        { text: "关于", link: "/about" }
-      ]
+        { text: "关于", link: "/about" },
+      ],
     };
-  }
+  },
 };
 </script>
 

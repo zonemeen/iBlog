@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Main from '../views/Main.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
   path: '/',
-  component: () => import( /* webpackChunkName: "main" */ '../views/Main.vue'),
+  component: Main,
   children: [{
       path: '/',
       name: 'Home',
@@ -64,7 +65,10 @@ const routes = [{
       }
     }
   ]
-}, ]
+}, {
+  path: '*',
+  redirect: '/'
+}]
 
 const router = new VueRouter({
   mode: "history",

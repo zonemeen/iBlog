@@ -19,9 +19,9 @@ export default {
       next();
     });
 
-    this.$router.afterEach(() => {
+    this.$router.afterEach((to, from) => {
       this.$insProgress.finish();
     });
-  }
+  },
 };
 </script>

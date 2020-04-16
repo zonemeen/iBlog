@@ -23,15 +23,24 @@
                 class="reply pl-4"
                 @click="replyHandle(item, index, false)"
                 v-if="item.userId != userInfo._id"
-              >{{ showReply ? "回复" : "回复" }}</strong>
+                >{{ showReply ? "回复" : "回复" }}</strong
+              >
             </span>
           </div>
           <div class="py-4 text-grey-2">{{ item.content }}</div>
-          <div class="bg-navcolor pl-5 bdr" :class="{ 'py-4': item.children.length > 0 }">
+          <div
+            class="bg-navcolor pl-5 bdr"
+            :class="{ 'py-4': item.children.length > 0 }"
+          >
             <div class v-for="(c, i) in item.children" :key="i">
               <div class="d-flex pt-2">
                 <div class="mini-avatar text-left">
-                  <img :src="c.avatarImg" alt="miqilin头像" width="30" height="30" />
+                  <img
+                    :src="c.avatarImg"
+                    alt="miqilin头像"
+                    width="30"
+                    height="30"
+                  />
                 </div>
                 <div class="flex-1">
                   <div class="mt-0 fs-md">
@@ -46,7 +55,7 @@
                         v-if="c.userId != userInfo._id"
                       >
                         {{
-                        showReply && commentIndex == index ? "回复" : "回复"
+                          showReply && commentIndex == index ? "回复" : "回复"
                         }}
                       </strong>
                     </span>
@@ -103,16 +112,12 @@
 
 <script>
 import dayjs from "dayjs";
-import commentTextarea from "../components/commentTextarea";
 import { mapState } from "vuex";
 export default {
   props: {
     blogsId: String,
     model: String,
-    commentsList: Array
-  },
-  components: {
-    commentTextarea
+    commentsList: Array,
   },
   data() {
     return {
@@ -129,7 +134,7 @@ export default {
       total: 31,
       pageNum: 1,
       pageSize: 10,
-      clientWidth: 10000
+      clientWidth: 10000,
     };
   },
   created() {
@@ -138,10 +143,10 @@ export default {
   filters: {
     formatDate(val) {
       return dayjs(val).format("YYYY-MM-DD HH:MM:ss");
-    }
+    },
   },
   computed: {
-    ...mapState(["map_user_info"])
+    ...mapState(["map_user_info"]),
   },
   methods: {
     replyHandle(item, index, c) {
@@ -169,8 +174,8 @@ export default {
     },
     handleClose() {
       this.dialog = false;
-    }
-  }
+    },
+  },
 };
 </script>
 

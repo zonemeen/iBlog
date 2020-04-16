@@ -2,27 +2,53 @@
   <div class="main-container">
     <div v-if="model.length > 0" class="main-content archive-page">
       <div class="categorys-item" v-for="item in model" :key="item._id">
-        <div class="categorys-title">{{item._id}}</div>
+        <div class="categorys-title">{{ item._id }}</div>
         <div class="post-lists">
           <div class="post-lists-body">
-            <div class="post-list-item" v-for="article in item.list" :key="article.createdAt">
+            <div
+              class="post-list-item"
+              v-for="article in item.list"
+              :key="article.createdAt"
+            >
               <div class="post-list-item-container show">
-                <div>{{article.categories.map(cat => {return cat.title}).join('|')}}</div>
+                <div>
+                  {{
+                    article.categories
+                      .map((cat) => {
+                        return cat.title;
+                      })
+                      .join("|")
+                  }}
+                </div>
                 <div class="item-label bg-postcolor">
                   <div class="item-title pl-4">
                     <router-link
                       :to="`/article/list/${article._id}`"
                       :title="`访问 ${article.title}`"
-                    >{{article.title}}</router-link>
+                      >{{ article.title }}</router-link
+                    >
                   </div>
                   <div class="item-meta">
                     <div class="item-meta-date">
-                      {{article.createdAt | date('YYYY-MM-DD HH:mm:ss')}}
+                      {{ article.createdAt | date("YYYY-MM-DD HH:mm:ss") }}
                       <router-link
                         class="text-grey-1"
                         :to="`/tags`"
-                        :data-hover="article.categories.map(cat => {return cat.name}).join('|')"
-                      >{{article.categories.map(cat => {return cat.name}).join('|')}}</router-link>
+                        :data-hover="
+                          article.categories
+                            .map((cat) => {
+                              return cat.name;
+                            })
+                            .join('|')
+                        "
+                        >{{
+                          article.categories
+                            .map((cat) => {
+                              return cat.name;
+                            })
+                            .join("|")
+                        }}</router-link
+                      >
                     </div>
                   </div>
                 </div>
@@ -39,24 +65,26 @@
 export default {
   data() {
     return {
-      model: []
+      model: [],
     };
   },
   methods: {
     async fetch() {
+      this.$insProgress.start();
       const res = await this.$http.get("/archive");
       this.model = res.data;
-    }
+      this.$insProgress.finish();
+    },
   },
   created() {
     this.fetch();
-  }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .main-container {
-  margin-bottom: 160px;
+  margin-bottom: 180px;
   .archive-page .categorys-title {
     font-size: 20px;
     position: relative;
