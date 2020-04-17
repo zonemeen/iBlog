@@ -8,22 +8,13 @@
           :src="userInfo.avatarImg"
           alt="miqilin头像"
         />
-        <i
-          v-else
-          @click="lookUserInfo"
-          class="iconfont icon-xingzhuangkaobei hand"
-        ></i>
-        <p class="mt-2 avatar text-center fs-lg text-grey-2">
-          {{ userInfo.nickName ? userInfo.nickName : "留言" }}
-        </p>
+        <i v-else @click="lookUserInfo" class="iconfont icon-xingzhuangkaobei hand"></i>
+        <p
+          class="mt-2 avatar text-center fs-lg text-grey-2"
+        >{{ userInfo.nickName ? userInfo.nickName : "留言" }}</p>
       </div>
       <div class="flex-1">
-        <el-input
-          type="textarea"
-          rows="4"
-          v-model="messageObj.content"
-          :placeholder="placeholder"
-        ></el-input>
+        <el-input type="textarea" rows="4" v-model="messageObj.content" :placeholder="placeholder"></el-input>
         <div class="mt-3 d-flex jc-between position-emoji">
           <button @blur="showEmoji = false" class="bg-white btn-none">
             <i
@@ -44,28 +35,13 @@
               @select="selectEmoji"
             />
           </button>
-          <el-button
-            type="primary"
-            size="small"
-            :loading="btnLoading"
-            @click="fabuHandle"
-            >发布</el-button
-          >
+          <el-button type="primary" size="small" :loading="btnLoading" @click="fabuHandle">发布</el-button>
         </div>
       </div>
     </div>
-    <el-dialog
-      :append-to-body="true"
-      :visible.sync="dialogVisible"
-      width="300px"
-      center
-    >
+    <el-dialog :append-to-body="true" :visible.sync="dialogVisible" width="300px" center>
       <div :class="{ turnAnima: false }">
-        <form-input
-          @toRequest="submit"
-          :isUpload="false"
-          :toForm="userForm"
-        ></form-input>
+        <form-input @toRequest="submit" :isUpload="false" :toForm="userForm"></form-input>
       </div>
     </el-dialog>
   </div>

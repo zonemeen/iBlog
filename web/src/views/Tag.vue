@@ -1,9 +1,7 @@
 <template>
   <div class="main-container">
     <div class="main-content archive-page">
-      <div class="post-title text-green fs-xxxxl">
-        标签分类的博文--点击自动查找相应`Tags`
-      </div>
+      <div class="post-title text-green fs-xxxxl">标签分类的博文--点击自动查找相应`Tags`</div>
       <div>
         <div class="post-tags">
           <a v-for="item in model" :key="item._id" :href="`#${item.name}`">
@@ -14,29 +12,17 @@
       </div>
     </div>
     <div class="main-content archive-page">
-      <div
-        v-for="item in model"
-        :key="item._id"
-        :id="`${item.name}`"
-        class="post-lists"
-      >
+      <div v-for="item in model" :key="item._id" :id="`${item.name}`" class="post-lists">
         <div v-if="item.tagsList.length > 0">
-          <div class="categorys-title">
-            {{ item.name }} : {{ item.tagsList.length }}
-          </div>
-          <div
-            v-for="tag in item.tagsList"
-            :key="tag._id"
-            class="post-list-item"
-          >
+          <div class="categorys-title">{{ item.name }} : {{ item.tagsList.length }}</div>
+          <div v-for="tag in item.tagsList" :key="tag._id" class="post-list-item">
             <div class="post-list-item-container bg-postcolor show">
               <div class="item-label">
                 <div class="item-title pl-4">
                   <router-link
                     :data-hover="`${tag.title}`"
                     :to="`/article/list/${tag._id}`"
-                    >{{ tag.title }}</router-link
-                  >
+                  >{{ tag.title }}</router-link>
                 </div>
                 <div class="item-meta">
                   <div class="item-meta-date">
@@ -44,16 +30,16 @@
                       class="text-grey-1"
                       :to="`/archives`"
                       :data-hover="getDataHover(tag.createdAt)"
-                      >{{
-                        tag.createdAt | date("YYYY-MM-DD HH:mm:ss")
-                      }}</router-link
                     >
+                      {{
+                      tag.createdAt | date("YYYY-MM-DD HH:mm:ss")
+                      }}
+                    </router-link>
                     <router-link
                       class="text-grey-1"
                       :data-hover="`${item.name}`"
                       to="/tags"
-                      >{{ item.name }}</router-link
-                    >
+                    >{{ item.name }}</router-link>
                   </div>
                 </div>
               </div>
@@ -70,7 +56,7 @@ import dayjs from "dayjs";
 export default {
   data() {
     return {
-      model: [],
+      model: []
     };
   },
   methods: {
@@ -82,11 +68,11 @@ export default {
     },
     getDataHover(val) {
       return dayjs(val).format("YYYY-MM-DD HH:mm:ss");
-    },
+    }
   },
   created() {
     this.fetch();
-  },
+  }
 };
 </script>
 

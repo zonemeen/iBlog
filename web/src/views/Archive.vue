@@ -5,19 +5,15 @@
         <div class="categorys-title">{{ item._id }}</div>
         <div class="post-lists">
           <div class="post-lists-body">
-            <div
-              class="post-list-item"
-              v-for="article in item.list"
-              :key="article.createdAt"
-            >
+            <div class="post-list-item" v-for="article in item.list" :key="article.createdAt">
               <div class="post-list-item-container show">
                 <div>
                   {{
-                    article.categories
-                      .map((cat) => {
-                        return cat.title;
-                      })
-                      .join("|")
+                  article.categories
+                  .map((cat) => {
+                  return cat.title;
+                  })
+                  .join("|")
                   }}
                 </div>
                 <div class="item-label bg-postcolor">
@@ -25,8 +21,7 @@
                     <router-link
                       :to="`/article/list/${article._id}`"
                       :title="`访问 ${article.title}`"
-                      >{{ article.title }}</router-link
-                    >
+                    >{{ article.title }}</router-link>
                   </div>
                   <div class="item-meta">
                     <div class="item-meta-date">
@@ -41,14 +36,15 @@
                             })
                             .join('|')
                         "
-                        >{{
-                          article.categories
-                            .map((cat) => {
-                              return cat.name;
-                            })
-                            .join("|")
-                        }}</router-link
                       >
+                        {{
+                        article.categories
+                        .map((cat) => {
+                        return cat.name;
+                        })
+                        .join("|")
+                        }}
+                      </router-link>
                     </div>
                   </div>
                 </div>
@@ -65,7 +61,7 @@
 export default {
   data() {
     return {
-      model: [],
+      model: []
     };
   },
   methods: {
@@ -74,11 +70,11 @@ export default {
       const res = await this.$http.get("/archive");
       this.model = res.data;
       this.$insProgress.finish();
-    },
+    }
   },
   created() {
     this.fetch();
-  },
+  }
 };
 </script>
 

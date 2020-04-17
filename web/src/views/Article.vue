@@ -5,9 +5,7 @@
       <div class="page">
         <div class="text-green fs-xxxxl mt-11">{{ model.title }}</div>
         <div class="text-grey-2 d-flex fs-sm my-4">
-          <p class="mr-4">
-            发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }}
-          </p>
+          <p class="mr-4">发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }}</p>
           <p>评论数：{{ Comments.length }}条</p>
         </div>
         <div>
@@ -16,7 +14,9 @@
             :to="`/tags`"
             class="p-2 bdr post-tags text-border text-center bg-blue fs-sm hand mb-6"
           >
-            <span> <i class="iconfont icon-tag"></i> </span>&nbsp;
+            <span>
+              <i class="iconfont icon-tag"></i>
+            </span>&nbsp;
             <span class>{{ model.categories[0].name }}</span>
           </router-link>
         </div>
@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="d-none left">
-        <div class="blogs-menu pl-4 toc-sticky text-grey-1 pl-9">
+        <div class="blogs-menu toc-sticky text-grey-1 pl-9">
           <div>
             <h2>目录</h2>
             <div
@@ -37,9 +37,7 @@
               :key="item.id"
               :style="{ paddingLeft: `${item.indent}em` }"
               @click="scrollTo(item.id)"
-            >
-              {{ item.text }}
-            </div>
+            >{{ item.text }}</div>
           </div>
         </div>
       </div>
@@ -77,7 +75,6 @@ import { addLineAndCopy } from "../plugins/lineAndCopy";
 import Toc from "../plugins/Toc.js";
 
 const renderer = new marked.Renderer();
-
 marked.setOptions({
   renderer: renderer,
   gfm: true,
@@ -93,26 +90,23 @@ marked.setOptions({
     } else {
       return hljs.highlightAuto(code).value;
     }
-  },
+  }
 });
 
 export default {
   props: {
-    id: { required: true },
+    id: { required: true }
   },
   data() {
     return {
       model: null,
       Comments: [],
       articleToc: [],
-      parentComments: [],
+      parentComments: []
     };
   },
   watch: {
-    id: "fetch",
-    // id(){
-    //   this.fetch()
-    // }
+    id: "fetch"
   },
   methods: {
     async fetch() {
@@ -137,25 +131,25 @@ export default {
       node.scrollIntoView({
         behavior: "smooth",
         block: "center",
-        inline: "nearest",
+        inline: "nearest"
       });
     },
     async getBlogsComments() {
       const res = await this.$http.get(`/comments/${this.id}`);
       const blogsComments = res.data;
       this.parentComments = blogsComments.filter(
-        (v) => v.parent == "5e90abb3a6522a44580faa1c"
+        v => v.parent == "5e90abb3a6522a44580faa1c"
       );
-      this.parentComments.forEach((c) => {
-        return (c.children = blogsComments.filter((v) => v.parent == c._id));
+      this.parentComments.forEach(c => {
+        return (c.children = blogsComments.filter(v => v.parent == c._id));
       });
       this.Comments = res.data;
-    },
+    }
   },
   created() {
     this.fetch();
     this.getBlogsComments();
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>

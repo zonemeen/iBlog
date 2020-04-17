@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container page-link pt-9">
+  <div class="main-container page-link py-9">
     <div class="p-5">
       <div class="text-green fs-xxxxl">Links</div>
       <div class="text-grey-2 fs-sm mt-5">Published on March 11th 2020</div>
@@ -9,41 +9,13 @@
         &nbsp;
         <span class="fs-xxl text-grey-1">友情链接</span>
       </div>
-      <div class="link d-flex my-6">
-        <div
-          class="link-item show m-4 p-4 bg-postcolor bdr"
-          v-for="item in model"
-          :key="item.name"
-        >
-          <el-tooltip
-            placement="right-end"
-            effect="light"
-            open-delay="100"
-            popper-class="text-grey-2 fs-lg"
-          >
-            <div slot="content" class="text-green">{{ item.site }}</div>
-            <a class="hand" :href="item.site" target="_blank">
-              <div class="ai-center d-flex">
-                <span>
-                  <img class="link-img" :src="item.icon" />
-                </span>
-                <span class="fs-lg text-green pl-5 link-font text-ellipsis">{{
-                  item.name
-                }}</span>
-              </div>
-            </a>
-          </el-tooltip>
-          <div class="fs-xs text-grey-1 mt-3 text-ellipsis">
-            {{ item.description }}
-          </div>
-        </div>
-      </div>
+      <linkItem></linkItem>
       <div class="py-4">
         <span class="fs-xxl text-green">#</span>
         &nbsp;
         <span class="fs-xxl text-grey-1">链接需知</span>
       </div>
-      <div class="px-5 py-2 text-green-1 bg-postcolor bdr">
+      <div class="px-5 py-2 text-green-1">
         <p>• 请确定贵站可以稳定运营</p>
         <p>• 原创博客优先，技术类博客优先，设计、视觉类博客优先</p>
         <p>• 经常过来访问和评论，眼熟的</p>
@@ -60,69 +32,27 @@
         <p>• 网站地址：https://amberzqx.com</p>
         <p>• 描述：我劝你要多喝热水哈哈哈哈哈哈哈哈哈哈哈</p>
       </div>
-      <p class="my-9 text-grey-2">
-        暂时先这样，同时欢迎互换友链，到留言页留言即可。 ^_^
-      </p>
+      <p class="my-9 text-grey-2">暂时先这样，同时欢迎互换友链，到留言页留言即可。 ^_^</p>
     </div>
   </div>
 </template>
 
 <script>
+import linkItem from "../components/linkItem.vue";
+
 export default {
+  components: {
+    linkItem
+  },
   data() {
-    return {
-      model: [],
-    };
-  },
-  methods: {
-    async fetchLinks() {
-      this.$insProgress.start();
-      const res = await this.$http.get("links/list");
-      this.model = res.data;
-      this.$insProgress.finish();
-    },
-  },
-  created() {
-    this.fetchLinks();
-  },
+    return {};
+  }
 };
 </script>
 
 <style lang="scss" scpoed>
-.link-img {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-}
 .page-link {
   max-width: 650px;
   margin: 90px auto 0;
-  .link-item {
-    float: left;
-    width: 33.3333%;
-    height: auto;
-    // padding: 15px;
-    align-items: center;
-  }
-}
-@media screen and (max-width: 880px) {
-  .link {
-    display: flex;
-    flex-wrap: wrap;
-    .link-item {
-      width: 45%;
-      align-items: center;
-    }
-  }
-}
-@media screen and (max-width: 480px) {
-  .link {
-    display: flex;
-    flex-wrap: wrap;
-    .link-item {
-      width: 100%;
-      align-items: center;
-    }
-  }
 }
 </style>
