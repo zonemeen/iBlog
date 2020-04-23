@@ -54,7 +54,6 @@ export default {
   },
   methods: {
     async getMessagesList() {
-      this.$insProgress.start();
       let res = await this.$http.get("messages");
       let blogsComments = res.data;
       this.parentComments = blogsComments.filter(
@@ -63,7 +62,6 @@ export default {
       this.parentComments.forEach(c => {
         return (c.children = blogsComments.filter(v => v.parent == c._id));
       });
-      this.$insProgress.finish();
     }
   }
 };

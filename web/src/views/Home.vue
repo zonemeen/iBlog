@@ -93,14 +93,12 @@ export default {
   },
   methods: {
     async fetchData() {
-      this.$insProgress.start();
       const res = await this.$http.get(
         `/articles/${this.pagination.currentPage}`
       );
       this.articles = res.data.list;
       this.pagination.totalPage = res.data.totalPage;
       this.pagination.currentPage = res.data.currentPage;
-      this.$insProgress.finish();
     },
     async goToPage(pageNum) {
       this.pagination.currentPage = pageNum;

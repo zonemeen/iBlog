@@ -1,5 +1,5 @@
 <template>
-  <div class="topbar nav d-flex jc-around ai-center bg-navcolor">
+  <div class="head nav d-flex jc-around ai-center bg-navcolor">
     <div class="hand">
       <router-link tag="div" to="/">
         <img
@@ -18,8 +18,7 @@
         :key="item.text"
         active-class="active"
         class="nav-item px-5 icon"
-        >{{ item.text }}</router-link
-      >
+      >{{ item.text }}</router-link>
       <el-dropdown trigger="click" @visible-change="(v) => (isShowMenu = v)">
         <div
           class="menu-button hand"
@@ -66,10 +65,10 @@ export default {
         { text: "标签", link: "/tags" },
         { text: "友链", link: "/links" },
         { text: "留言", link: "/message" },
-        { text: "关于", link: "/about" },
-      ],
+        { text: "关于", link: "/about" }
+      ]
     };
-  },
+  }
 };
 </script>
 
@@ -84,7 +83,7 @@ export default {
   color: map-get($colors, "red");
 }
 
-.topbar {
+.head {
   position: fixed;
   width: 100%;
   top: 0;

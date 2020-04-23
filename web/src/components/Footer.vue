@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="foot">
     <div class="border-bottom border-top bg-navcolor">
       <div class="d-flex py-6 jc-center">
         <div class="px-7 hand">
@@ -75,10 +75,8 @@ export default {
   },
   methods: {
     async fetchArticles() {
-      this.fullscreenLoading = true;
       const res = await this.$http.get("articles/recent");
       this.model = res.data;
-      this.fullscreenLoading = false;
     }
   },
   created() {
@@ -86,3 +84,11 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.foot {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+</style>

@@ -4,7 +4,8 @@ import router from "./router";
 import store from "./store";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-import VueInsProgressBar from "vue-ins-progress-bar";
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 import "./assets/scss/style.scss";
 import "./assets/iconfont/iconfont.css";
 import "./plugins/filters";
@@ -15,13 +16,40 @@ Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.prototype.$http = http;
 
-const options = {
-  position: "fixed",
-  show: true,
-  height: "3px",
-};
-
-Vue.use(VueInsProgressBar, options);
+NProgress.configure({
+  easing: 'ease',
+  speed: 500,
+  showSpinner: false,
+  trickleSpeed: 200,
+  minimum: 0.3
+})
+router.beforeEach((to, from, next) => {
+  NProgress.start();
+  next();
+});
+router.afterEach(() => {
+  NProgress.done()
+})
+// axios请求拦截器
+http.interceptors.request.use(
+  config => {
+    NProgress.start()
+    return config
+  },
+  error => {
+    return Promise.reject(error)
+  }
+)
+// axios响应拦截器
+http.interceptors.response.use(
+  function (response) {
+    NProgress.done()
+    return response
+  },
+  function (error) {
+    return Promise.reject(error)
+  }
+)
 
 new Vue({
   router,

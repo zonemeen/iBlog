@@ -46,9 +46,9 @@
             href="https://github.com/miqilin21/iMoney"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-            >• iMoney</a
+            >• 蘑菇记账</a
           >
-          - 基于Vue、Vue Router、Vuex、TypeScript实现的一款极简的记账应用🤑
+          - 基于Vue、Vue Router、Vuex、TypeScript实现的一款极简的本地记账应用🤑
         </p>
         <p>
           <a

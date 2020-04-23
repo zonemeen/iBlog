@@ -1,3 +1,6 @@
+/* NProgress, (c) 2013, 2014 Rico Sta. Cruz - http://ricostacruz.com/nprogress
+ * @license MIT */
+
 /*!
   * vue-router v3.1.6
   * (c) 2020 Evan You

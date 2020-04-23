@@ -30,10 +30,8 @@ export default {
   },
   methods: {
     async fetchLinks() {
-      this.$insProgress.start();
       const res = await this.$http.get("links/list");
       this.model = res.data;
-      this.$insProgress.finish();
     }
   },
   created() {

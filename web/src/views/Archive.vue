@@ -66,10 +66,8 @@ export default {
   },
   methods: {
     async fetch() {
-      this.$insProgress.start();
       const res = await this.$http.get("/archive");
       this.model = res.data;
-      this.$insProgress.finish();
     }
   },
   created() {

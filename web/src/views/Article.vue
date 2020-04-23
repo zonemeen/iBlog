@@ -110,7 +110,6 @@ export default {
   },
   methods: {
     async fetch() {
-      this.$insProgress.start();
       const res = await this.$http.get(`articles/list/${this.id}`);
       this.model = res.data;
       let tocData = Toc(marked(res.data.body));
@@ -120,7 +119,6 @@ export default {
         addLineAndCopy();
         // this.addCodeSupport()
       });
-      this.$insProgress.finish();
     },
     scrollTo(id) {
       // 绑定 toc 点击事件
