@@ -70,7 +70,7 @@ export default {
       this.model = res.data;
     }
   },
-  created() {
+  mounted() {
     this.fetch();
   }
 };

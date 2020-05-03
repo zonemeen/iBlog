@@ -49,7 +49,7 @@ export default {
       parentComments: []
     };
   },
-  created() {
+  mounted() {
     this.getMessagesList();
   },
   methods: {

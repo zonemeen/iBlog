@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="my-10">
+    <div class="my-10" v-if="articles.length>0">
       <div class="page-navigator d-flex jc-center">
         <div :class="{ current: 1 == pagination.currentPage }" class="mx-4 hand fs-md">
           <a @click="goToPage(1)" data-hover="首页">
@@ -119,7 +119,7 @@ export default {
       this.fetchData();
     }
   },
-  created() {
+  mounted() {
     this.fetchData();
   }
 };
