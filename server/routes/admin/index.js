@@ -54,10 +54,10 @@ module.exports = (app) => {
   const upload = multer({
     storage: MAO({
       config: {
-        region: "oss-cn-shenzhen",
-        accessKeyId: "LTAI4Feb6mXYySq4KFCFU8kh", //阿里云oss的accessKeyId，要自己去创建
-        accessKeySecret: "p5GNOJjBbPb8Oj560JO4GPIqyc27CF", //阿里云oss的accessKeySecret
-        bucket: "miqilin-blog",
+        region: "oss-cn-shenzhen", // // 阿里云oss的所在区域
+        accessKeyId: "accessKeyId", // 阿里云oss的accessKeyId，要自己去创建
+        accessKeySecret: "accessKeySecret", // 阿里云oss的accessKeySecret
+        bucket: "miqilin-blog", // 阿里云oss的bucket's name
       },
     }),
   });
