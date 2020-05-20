@@ -37,7 +37,8 @@
             href="https://github.com/miqilin21/myBlog"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-          >• myBlog(本博客)</a>
+            >• myBlog(本博客)</a
+          >
           - 基于NodeJs、Vue、MongoDB实现的一款伪全栈博客系统🔥
         </p>
         <p>
@@ -45,7 +46,8 @@
             href="https://github.com/miqilin21/iMoney"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-          >• 蘑菇记账</a>
+            >• 蘑菇记账</a
+          >
           - 基于Vue、Vue Router、Vuex、TypeScript实现的一款极简的本地记账应用🤑
         </p>
         <p>
@@ -53,15 +55,17 @@
             href="https://github.com/miqilin21/weapp-mogu-bill"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-          >• 蘑菇记账(小程序版)</a>
+            >• 蘑菇记账(小程序版)</a
+          >
           - 原生小程序实现的一款蘑菇记账应用💰
         </p>
         <p>
           <a
-            href="https://github.com/miqilin21/weapp-mogu-bill"
+            href="https://github.com/miqilin21/wx-todos"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-          >• TODOS(小程序版)</a>
+            >• TODOS(小程序版)</a
+          >
           - 原生小程序实现的一款TODO应用工具📅
         </p>
         <p>
@@ -69,7 +73,8 @@
             href="https://github.com/miqilin21/cv"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-          >• cv</a>
+            >• cv</a
+          >
           - 原生js实现的米淇淋个人简历📄
         </p>
         <p>
@@ -77,7 +82,8 @@
             href="https://github.com/miqilin21"
             target="_blank"
             class="text-green-1 bd-bottom-about"
-          >• 其他项目</a>
+            >• 其他项目</a
+          >
           - 持续开发中...
         </p>
       </div>
