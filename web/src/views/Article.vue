@@ -5,8 +5,9 @@
       <div class="page">
         <div class="text-green fs-xxxxl mt-11">{{ model.title }}</div>
         <div class="text-grey-2 d-flex fs-sm my-4">
-          <p class="mr-4">发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm") }}</p>
-          <p>评论数：{{ Comments.length }}条</p>
+          <p class="mr-4">发布于：{{ model.createdAt | date("YYYY-MM-DD HH:mm:ss") }}</p>
+          <p class="mr-4">字数：{{model.body.length}}个</p>
+          <p>评论：{{ Comments.length }}条</p>
         </div>
         <div>
           <router-link
@@ -154,7 +155,7 @@ export default {
 @import "../assets/scss/_variables.scss";
 
 #content {
-  line-height: 1.5;
+  line-height: 1.8;
 }
 
 .page {

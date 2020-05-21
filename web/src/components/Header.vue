@@ -18,7 +18,31 @@
         :key="item.text"
         active-class="active"
         class="nav-item px-5 icon"
-      >{{ item.text }}</router-link>
+        >{{ item.text }}</router-link
+      >
+      <div class="pl-3 play">
+        <i
+          v-show="!isPlay"
+          active-class="active"
+          class="el-icon-video-play fs-xxxl nav-item"
+          @click="playMusic(true)"
+        ></i>
+        <i
+          v-show="isPlay"
+          active-class="active"
+          class="el-icon-video-pause fs-xxxl nav-item"
+          @click="playMusic(false)"
+        ></i>
+      </div>
+      <div v-show="isPlay">
+        <audio
+          id="music"
+          ref="music"
+          src="https://miqilin-blog.oss-cn-shenzhen.aliyuncs.com/happy.mp3"
+          loop
+        ></audio>
+      </div>
+
       <el-dropdown trigger="click" @visible-change="(v) => (isShowMenu = v)">
         <div
           class="menu-button hand"
@@ -59,16 +83,27 @@ export default {
   data() {
     return {
       isShowMenu: false,
+      isPlay: false,
       items: [
         { text: "首页", link: "/" },
         { text: "归档", link: "/archives" },
         { text: "标签", link: "/tags" },
         { text: "友链", link: "/links" },
         { text: "留言", link: "/message" },
-        { text: "关于", link: "/about" }
-      ]
+        { text: "关于", link: "/about" },
+      ],
     };
-  }
+  },
+  methods: {
+    playMusic(play) {
+      this.isPlay = !this.isPlay;
+      if (play) {
+        this.$refs.music.play();
+      } else {
+        this.$refs.music.pause();
+      }
+    },
+  },
 };
 </script>
 
@@ -121,6 +156,9 @@ export default {
 }
 @media screen and (max-width: 650px) {
   .nav-item {
+    display: none;
+  }
+  .play {
     display: none;
   }
   .menu-button {

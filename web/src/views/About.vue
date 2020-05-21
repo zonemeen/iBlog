@@ -48,7 +48,7 @@
             class="text-green-1 bd-bottom-about"
             >• 蘑菇记账</a
           >
-          - 基于Vue、Vue Router、Vuex、TypeScript实现的一款极简的本地记账应用🤑
+          - 基于Vue全家桶、TypeScript、Echarts实现的一款极简的本地记账应用🤑
         </p>
         <p>
           <a

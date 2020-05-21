@@ -73,7 +73,7 @@ module.exports = app => {
             }
           }
         }
-      }
+      },
     ])
     res.send(data)
   })
@@ -158,6 +158,14 @@ module.exports = app => {
     //     _id: req.params.blogsId}))
     const messages = await Message.find()
     res.send(messages)
+  })
+
+  router.get('/time', async (req, res) => {
+    let time = new Date().getTime()
+    console.log('time', time)
+    res.send({
+      'data': time
+    })
   })
 
   app.use("/web/api", router);
