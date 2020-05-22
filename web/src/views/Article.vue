@@ -137,7 +137,7 @@ export default {
       const res = await this.$http.get(`/comments/${this.id}`);
       const blogsComments = res.data;
       this.parentComments = blogsComments.filter(
-        v => v.parent == "5e90abb3a6522a44580faa1c"
+        v => v.parent == "5ec76514d28d6628c59d87ba"
       );
       this.parentComments.forEach(c => {
         return (c.children = blogsComments.filter(v => v.parent == c._id));
