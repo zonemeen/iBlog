@@ -15,6 +15,7 @@
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="login">登录</el-button>
+            <el-button type="danger" @click="register">注册</el-button>
           </el-form-item>
         </el-form>
       </el-card>
@@ -39,6 +40,16 @@ export default {
         message: "登录成功"
       });
       this.$router.push("/");
+    },
+    async register() {
+      const res = await this.$http.post("/register", this.model);
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("username", res.data.username);
+      this.$message({
+        type: "success",
+        message: "注册成功"
+      });
+      this.$router.push("/login");
     }
   }
 };

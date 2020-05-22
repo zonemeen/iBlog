@@ -111,6 +111,11 @@ npm run serve
 
 ![](./screenshot/web.gif)
 
+### 欢迎 Star，Issues
+
+- 您的 Star，是我不断更新维护的动力！！！
+- 若在使用过程中，存在某些问题，欢迎 Issues
+
 ### To Do List
 
 - 性能优化，图片需要压缩处理，预加载处理

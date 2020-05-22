@@ -1,9 +1,10 @@
-module.exports = app => {
-  const mongoose = require("mongoose")
-  mongoose.connect('mongodb://127.0.0.1:27017/blog', {
+module.exports = (app) => {
+  const mongoose = require("mongoose");
+  mongoose.connect("mongodb://127.0.0.1:27017/blog", {
     useNewUrlParser: true,
     useFindAndModify: true,
-    useUnifiedTopology: true
-  })
-  require('require-all')(__dirname + '/../models')
-}
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  });
+  require("require-all")(__dirname + "/../models");
+};

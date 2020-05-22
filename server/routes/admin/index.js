@@ -72,6 +72,15 @@ module.exports = (app) => {
     }
   );
 
+  //注册
+  app.post("/admin/api/register", async (req, res) => {
+    const user = await AdminUser.create({
+      username: req.body.username,
+      password: req.body.password
+    });
+    res.send(user)
+  })
+
   //登录
   app.post("/admin/api/login", async (req, res) => {
     const {

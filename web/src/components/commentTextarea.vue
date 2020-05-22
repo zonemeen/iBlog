@@ -130,7 +130,7 @@ export default {
       this.messageObj.avatarImg = this.userInfo.avatarImg;
       this.messageObj.userId = this.userInfo._id;
       this.messageObj.parent =
-        this.type == "children" ? this.parentId : "5e90abb3a6522a44580faa1c";
+        this.type == "children" ? this.parentId : "5ec76514d28d6628c59d87ba";
       this.messageObj.byAiteName =
         this.type == "children" ? this.nickName : "miqilin";
       let url = this.model == "comments" ? "/comments" : "/messages";
@@ -139,7 +139,7 @@ export default {
       this.$message.success("发布成功");
 
       this.btnLoading = false;
-      if (this.userInfo._id == "5e90b499ffb29f2a96becba7") {
+      if (this.userInfo._id == "5ec76453d28d6628c59d87b9") {
         let byAiteObj = await this.$http.get(`users/${this.byAiteUserId}`);
         let replyObj = {
           recipient: byAiteObj.data.email,
