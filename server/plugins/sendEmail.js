@@ -14,7 +14,7 @@ const config = {
   email: {
     service: 'QQ', // 邮箱类别，我固定QQ
     user: '994718917@qq.com',
-    pass: 'zclqalryvrerbajd',
+    pass: 'otyujutrdgsabfgd',
   }
 }
 
