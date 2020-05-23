@@ -18,8 +18,7 @@
         :key="item.text"
         active-class="active"
         class="nav-item px-5 icon"
-        >{{ item.text }}</router-link
-      >
+      >{{ item.text }}</router-link>
       <div class="pl-3 play">
         <i
           v-show="!isPlay"
@@ -38,7 +37,7 @@
         <audio
           id="music"
           ref="music"
-          src="https://miqilin-blog.oss-cn-shenzhen.aliyuncs.com/happy.mp3"
+          src="https://miqilin-blog.oss-cn-shenzhen.aliyuncs.com/Prospect.mp3"
           loop
         ></audio>
       </div>
@@ -90,8 +89,8 @@ export default {
         { text: "标签", link: "/tags" },
         { text: "友链", link: "/links" },
         { text: "留言", link: "/message" },
-        { text: "关于", link: "/about" },
-      ],
+        { text: "关于", link: "/about" }
+      ]
     };
   },
   methods: {
@@ -102,8 +101,8 @@ export default {
       } else {
         this.$refs.music.pause();
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

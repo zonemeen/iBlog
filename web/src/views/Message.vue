@@ -9,7 +9,7 @@
         &nbsp;
         <span class="fs-xxl text-grey-1">留言前需知</span>
       </div>
-      <div class="pl-6 text-green-1">
+      <div class="pl-5 text-green-1">
         <p>• 烦请各位留言时务必填写自己真实的邮箱。</p>
         <p>• 留言博主基本都会回复，并会邮件通知留言者。</p>
         <p>• 请不要发广告和带有商业推广链接的无用留言。</p>
