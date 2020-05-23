@@ -139,7 +139,7 @@ export default {
       this.$message.success("发布成功");
 
       this.btnLoading = false;
-      if (this.userInfo._id == "5ec88515fe28d35475b43fb4") {
+      if (this.userInfo.nickName == "miqilin博主") {
         let byAiteObj = await this.$http.get(`users/${this.byAiteUserId}`);
         let replyObj = {
           recipient: byAiteObj.data.email,
