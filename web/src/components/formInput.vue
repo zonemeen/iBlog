@@ -4,7 +4,7 @@
       <el-form-item prop="nickName">
         <el-input
           size="medium"
-          :maxlength="10"
+          :maxlength="6"
           v-model="userForm.nickName"
           :placeholder="isUpload ? '网站名称' : '起个牛B点的昵称吧～'"
         ></el-input>
@@ -84,7 +84,7 @@ export default {
       userRules: {
         nickName: {
           required: true,
-          message: "必填，且不超过10个字符",
+          message: "必填，且不超过6个字符",
           trigger: "change"
         },
         email: { required: true, validator: validateEmail, trigger: "change" },

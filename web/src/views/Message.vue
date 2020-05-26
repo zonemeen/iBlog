@@ -20,7 +20,7 @@
           <span class="fs-xxxl text-grey-1 text-center ml-5">留言板</span>
         </div>
         <div :class="{ 'message-box': parentComments.length > 0 }">
-          <div class="textarea-box bg-white bdr">
+          <div class="textarea-box bg-postcolor bdr">
             <comment-textarea
               model="messages"
               @toResponse="getMessagesList"

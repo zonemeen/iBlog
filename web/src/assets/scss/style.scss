@@ -15,6 +15,12 @@ html {
   padding: 0;
 }
 
+.el-textarea__inner {
+  &::placeholder {
+    color: #707275;
+  }
+}
+
 body {
   background-color: map-get($colors, "bgcolor");
   width: 100%;

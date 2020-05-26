@@ -46,7 +46,7 @@
     <div class="art-comment" v-if="model">
       <h3 class="fs-xxxxl">评论</h3>
       <comment-textarea
-        class="textarea-box bg-white bdr"
+        class="textarea-box bg-postcolor bdr"
         model="comments"
         @toResponse="getBlogsComments"
         type="parent"

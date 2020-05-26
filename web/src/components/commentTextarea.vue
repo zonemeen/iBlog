@@ -16,7 +16,7 @@
       <div class="flex-1">
         <el-input type="textarea" rows="4" v-model="messageObj.content" :placeholder="placeholder"></el-input>
         <div class="mt-3 d-flex jc-between position-emoji">
-          <button @blur="showEmoji = false" class="bg-white btn-none">
+          <button @blur="showEmoji = false" class="bg-postcolor btn-none">
             <i
               class="iconfont icon-xingzhuang hand"
               @click="
@@ -186,8 +186,8 @@ export default {
   z-index: 1000;
 }
 .avatar-box {
-  width: 80px;
-  padding-right: 30px;
+  width: 70px;
+  padding-right: 20px;
   padding-top: 14px;
   img {
     cursor: pointer;
@@ -215,11 +215,12 @@ export default {
 }
 .icon-xingzhuang {
   font-size: 22px;
-  color: #c4c4c4;
+  color: #707275;
   &:hover {
     color: #ffb929;
   }
 }
+
 @media screen and (max-width: 768px) {
   .avatar-box {
     width: 65px;
@@ -242,5 +243,14 @@ export default {
       font-size: 32px;
     }
   }
+}
+</style>
+
+<style>
+.el-textarea__inner {
+  background-color: #363938;
+  font-size: 16px;
+  color: #707275;
+  border: 1px solid #707275;
 }
 </style>
