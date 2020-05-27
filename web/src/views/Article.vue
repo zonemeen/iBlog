@@ -16,7 +16,7 @@
             class="p-2 bdr post-tags text-border text-center bg-blue fs-sm hand mb-6"
           >
             <span>
-              <i class="iconfont icon-tag"></i>
+              <i class="iconfont icon-tag1"></i>
             </span>&nbsp;
             <span class>{{ model.categories[0].name }}</span>
           </router-link>
@@ -44,7 +44,11 @@
       </div>
     </div>
     <div class="art-comment" v-if="model">
-      <h3 class="fs-xxxxl">评论</h3>
+      <div class="text-grey border-top">
+        <p>• 非特殊说明，本博所有文章均为博主原创。</p>
+        <p>• 本博客所有文章均采用 CC BY-SA 3.0协议 。转载请注明出处！</p>
+      </div>
+      <h3 class="fs-xxxxl mt-9">评论</h3>
       <comment-textarea
         class="textarea-box bg-postcolor bdr"
         model="comments"

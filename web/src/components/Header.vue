@@ -1,5 +1,5 @@
 <template>
-  <div class="head nav d-flex jc-around ai-center bg-navcolor">
+  <header class="head nav d-flex jc-around ai-center" :class="isScrolling ? `mini` : ''">
     <div class="hand">
       <router-link tag="div" to="/">
         <img
@@ -9,7 +9,7 @@
         />
       </router-link>
     </div>
-    <div class="d-flex text-grey-1 hand">
+    <div class="d-flex text-white hand">
       <router-link
         exact
         tag="div"
@@ -74,7 +74,7 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -83,6 +83,7 @@ export default {
     return {
       isShowMenu: false,
       isPlay: false,
+      isScrolling: false,
       items: [
         { text: "首页", link: "/" },
         { text: "归档", link: "/archives" },
@@ -93,7 +94,25 @@ export default {
       ]
     };
   },
+  mounted() {
+    this.ajustNavigation();
+    window.addEventListener("scroll", this.scrollListener);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.scrollListener);
+  },
   methods: {
+    scrollListener() {
+      this.ajustNavigation();
+    },
+    ajustNavigation() {
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        0;
+      this.isScrolling = scrollTop > 0;
+    },
     playMusic(play) {
       this.isPlay = !this.isPlay;
       if (play) {
@@ -124,6 +143,14 @@ export default {
   left: 0;
   z-index: 999;
   height: 65px;
+  background-color: transparent;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+  transition: 0.5s ease-in-out;
+}
+.mini {
+  background-color: map-get($colors, "navcolor");
+  height: 56px;
+  transition: 0.5s ease-in-out;
 }
 .menu-button {
   border: none;

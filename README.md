@@ -102,6 +102,7 @@ npm run serve
 - ngnix 配置
 - mongodb 配置
 - mongodb 数据从本地迁移至服务器
+- 七牛云 cdn 全站免费加速
 
 ### 博客后台管理系统
 

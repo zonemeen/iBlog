@@ -8,7 +8,7 @@
           :src="userInfo.avatarImg"
           alt="miqilin头像"
         />
-        <i v-else @click="lookUserInfo" class="iconfont icon-xingzhuangkaobei hand"></i>
+        <i v-else @click="lookUserInfo" class="iconfont icon-touxiang hand"></i>
         <p
           class="mt-2 avatar text-center fs-lg text-grey-2"
         >{{ userInfo.nickName ? userInfo.nickName : "留言" }}</p>
@@ -18,7 +18,7 @@
         <div class="mt-3 d-flex jc-between position-emoji">
           <button @blur="showEmoji = false" class="bg-postcolor btn-none">
             <i
-              class="iconfont icon-xingzhuang hand"
+              class="iconfont icon-Smile hand"
               @click="
                 showBtn = true;
                 showEmoji = !showEmoji;
@@ -195,8 +195,8 @@ export default {
     height: auto;
     border-radius: 20%;
   }
-  .icon-xingzhuangkaobei {
-    font-size: 50px;
+  .icon-touxiang {
+    font-size: 44px;
     color: #c4c4c4;
   }
 }
@@ -213,7 +213,7 @@ export default {
     left: 0;
   }
 }
-.icon-xingzhuang {
+.icon-Smile {
   font-size: 22px;
   color: #707275;
   &:hover {

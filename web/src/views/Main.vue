@@ -16,10 +16,10 @@ export default {
   components: {
     Header,
     Footer,
-    Snow,
+    Snow
   },
   data() {
     return {};
-  },
+  }
 };
 </script>

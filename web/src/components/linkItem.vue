@@ -1,5 +1,5 @@
 <template>
-  <div class="link d-flex my-6">
+  <div class="link d-flex my-6 content">
     <div class="link-item show m-4 p-4 bg-postcolor bdr" v-for="item in model" :key="item.name">
       <el-tooltip placement="right-end" effect="light" popper-class="text-grey-2 fs-lg">
         <div slot="content" class="text-green">{{ item.site }}</div>
@@ -53,6 +53,9 @@ export default {
   height: auto;
   // padding: 15px;
   align-items: center;
+}
+.content {
+  line-height: 1.4 !important;
 }
 
 @media screen and (max-width: 880px) {
