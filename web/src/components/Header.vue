@@ -23,13 +23,13 @@
         <i
           v-show="!isPlay"
           active-class="active"
-          class="el-icon-video-play fs-xxxl nav-item"
+          class="iconfont icon-music-o nav-item"
           @click="playMusic(true)"
         ></i>
         <i
           v-show="isPlay"
           active-class="active"
-          class="el-icon-video-pause fs-xxxl nav-item"
+          class="iconfont icon-Pause1 nav-item"
           @click="playMusic(false)"
         ></i>
       </div>
@@ -146,6 +146,12 @@ export default {
   background-color: transparent;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
   transition: 0.5s ease-in-out;
+  .icon-music-o {
+    font-size: 18px;
+  }
+  .icon-Pause1 {
+    font-size: 18px;
+  }
 }
 .mini {
   background-color: map-get($colors, "navcolor");

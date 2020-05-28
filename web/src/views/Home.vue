@@ -143,6 +143,7 @@ export default {
   background-position: center;
   background-size: cover;
   position: relative;
+  overflow: hidden;
   .shouye-text {
     font-size: 32px;
     font-family: "Roboto", sans-serif;
