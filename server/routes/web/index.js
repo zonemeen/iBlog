@@ -42,11 +42,11 @@ module.exports = app => {
     })
   })
 
-  // 按照年进行归类后的数据
+  // 按照年月进行归类后的数据
   router.get('/archive', async (req, res) => {
     const data = await Article.aggregate([{
         $sort: {
-          _id: -1
+          createdAt: -1
         }
       }, {
         $lookup: {
@@ -59,7 +59,7 @@ module.exports = app => {
       {
         $group: {
           _id: {
-            $year: '$createdAt',
+            $month: '$createdAt',
           },
           count: {
             $sum: 1
@@ -74,7 +74,9 @@ module.exports = app => {
           }
         }
       },
-    ])
+    ]).sort({
+      '_id': -1,
+    })
     res.send(data)
   })
 
@@ -87,7 +89,25 @@ module.exports = app => {
         foreignField: 'categories',
         as: 'tagsList'
       }
-    }])
+    }]).unwind('$tagsList').sort({
+      'tagsList.createdAt': -1
+    }).group({
+      _id: "$name",
+      count: {
+        $sum: 1
+      },
+      list: {
+        $push: {
+          _id: '$_id',
+          title: '$title',
+          categories: '$tagsList',
+          createdAt: '$createdAt',
+        }
+      }
+    }).sort({
+      'count': -1,
+      '_id': -1
+    })
     res.send(data)
   })
 
@@ -160,6 +180,7 @@ module.exports = app => {
     res.send(messages)
   })
 
+  // 获取服务器时间
   router.get('/time', async (req, res) => {
     let time = new Date().getTime()
     console.log('time', time)

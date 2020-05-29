@@ -1,41 +1,41 @@
 <template>
   <div class="main-container">
-    <div class="main-content archive-page" v-if="model.length>0">
-      <div class="post-title text-green fs-xxxxl">标签分类的博文--点击自动查找相应`Tags`</div>
+    <div class="main-content archive-page" v-if="model">
+      <div class="post-title text-green fs-xxxxl">标签分类的博文--点击自动查找相应`Tag`</div>
       <div>
         <div class="post-tags">
-          <a v-for="item in model" :key="item._id" :href="`#${item.name}`">
-            {{ item.name }}
-            <span>({{ item.tagsList.length }})个</span>
+          <a v-for="item in model" :key="item._id" :href="`#${item._id}`">
+            {{ item._id }}
+            <span>({{ item.count }})个</span>
           </a>
         </div>
       </div>
     </div>
     <div class="main-content archive-page">
-      <div v-for="item in model" :key="item._id" :id="`${item.name}`" class="post-lists">
-        <div v-if="item.tagsList.length > 0">
-          <div class="categorys-title">{{ item.name }} : {{ item.tagsList.length }}</div>
-          <div v-for="tag in item.tagsList" :key="tag._id" class="post-list-item">
+      <div v-for="item in model" :key="item._id" :id="`${item._id}`" class="post-lists anchor">
+        <div>
+          <div class="categorys-title">{{ item._id }} : {{ item.count }}</div>
+          <div v-for="tag in item.list" :key="tag.categories._id" class="post-list-item">
             <div class="post-list-item-container bg-postcolor show">
               <div class="item-label">
                 <div class="item-title pl-4">
                   <router-link
-                    :data-hover="`${tag.title}`"
-                    :to="`/article/list/${tag._id}`"
-                  >{{ tag.title }}</router-link>
+                    :data-hover="`${tag.categories.title}`"
+                    :to="`/article/list/${tag.categories._id}`"
+                  >{{ tag.categories.title }}</router-link>
                 </div>
                 <div class="item-meta">
                   <div class="item-meta-date">
                     <router-link
                       class="text-grey-1"
                       :to="`/archives`"
-                      :data-hover="getDataHover(tag.createdAt)"
-                    >{{ tag.createdAt | date("YYYY-MM-DD HH:mm:ss") }}</router-link>
+                      :data-hover="getDataHover(tag.categories.createdAt)"
+                    >{{ tag.categories.createdAt | date("YYYY-MM-DD HH:mm:ss") }}</router-link>
                     <router-link
                       class="text-grey-1"
-                      :data-hover="`${item.name}`"
+                      :data-hover="`${item._id}`"
                       to="/tags"
-                    >{{ item.name }}</router-link>
+                    >{{ item._id }}</router-link>
                   </div>
                 </div>
               </div>
@@ -119,11 +119,15 @@ export default {
     }
   }
 }
-.archive-page .categorys-title {
-  font-size: 14px;
-  position: relative;
-  margin: 10px auto;
-  padding: 0 30px;
-  color: #bbbbbb;
+.anchor {
+  margin-top: -80px;
+  padding-top: 80px;
+  .categorys-title {
+    font-size: 14px;
+    position: relative;
+    margin: 10px auto;
+    padding: 0 30px;
+    color: #bbbbbb;
+  }
 }
 </style>
