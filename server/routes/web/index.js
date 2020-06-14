@@ -32,7 +32,7 @@ module.exports = app => {
     const list = await Article.find().sort({
       'createdAt': -1
     }).skip((currentPage - 1) * 6).limit(6).populate('categories')
-    const count = await Article.find().lean().count()
+    const count = await Article.find().lean().countDocuments()
     const totalPage = Math.ceil(count / 6)
     res.send({
       list,
@@ -183,7 +183,6 @@ module.exports = app => {
   // 获取服务器时间
   router.get('/time', async (req, res) => {
     let time = new Date().getTime()
-    console.log('time', time)
     res.send({
       'data': time
     })

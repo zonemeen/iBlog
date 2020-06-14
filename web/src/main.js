@@ -42,13 +42,13 @@ http.interceptors.request.use(
 )
 // axios响应拦截器
 http.interceptors.response.use(
-  function (response) {
-    NProgress.done()
-    return response
+  response => {
+    NProgress.done();
+    return response.status === 200 ? Promise.resolve(response) : Promise.reject(response);
   },
-  function (error) {
+  error => {
     return Promise.reject(error)
-  }
+  },
 )
 
 new Vue({

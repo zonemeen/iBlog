@@ -1,6 +1,6 @@
 <template>
-  <div class="main-container">
-    <div class="main-content archive-page" v-if="model">
+  <div class="main-container" v-if="model">
+    <div class="main-content archive-page">
       <div class="post-title text-green fs-xxxxl">标签分类的博文--点击自动查找相应`Tag`</div>
       <div>
         <div class="post-tags">

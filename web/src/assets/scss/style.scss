@@ -66,9 +66,13 @@ a {
   text-decoration: none;
   color: map-get($colors, "grey");
 }
+ul,
+li {
+  list-style: none;
+  color: map-get($colors, "grey");
+}
 
-@each $colorKey,
-$color in $colors {
+@each $colorKey, $color in $colors {
   .text-#{$colorKey} {
     color: $color;
   }
@@ -89,8 +93,7 @@ $color in $colors {
   }
 }
 
-@each $sizeKey,
-$size in $font-sizes {
+@each $sizeKey, $size in $font-sizes {
   .fs-#{$sizeKey} {
     font-size: $size * $base-font-size;
   }
@@ -117,15 +120,13 @@ $size in $font-sizes {
   flex-wrap: wrap;
 }
 
-@each $key,
-$value in $flex-jc {
+@each $key, $value in $flex-jc {
   .jc-#{$key} {
     justify-content: $value;
   }
 }
 
-@each $key,
-$value in $flex-ai {
+@each $key, $value in $flex-ai {
   .ai-#{$key} {
     align-items: $value;
   }
@@ -149,20 +150,16 @@ $value in $flex-ai {
 }
 
 // m-0, mx-0
-@each $typeKey,
-$type in $spacing-types {
-
+@each $typeKey, $type in $spacing-types {
   // .m-1
-  @each $sizeKey,
-  $size in $spacing-sizes {
+  @each $sizeKey, $size in $spacing-sizes {
     .#{$typeKey}-#{$sizeKey} {
       #{$type}: $size * $spacing-base-size;
     }
   }
 
   // .mx-1 , .my-1
-  @each $sizeKey,
-  $size in $spacing-sizes {
+  @each $sizeKey, $size in $spacing-sizes {
     .#{$typeKey}x-#{$sizeKey} {
       #{$type}-left: $size * $spacing-base-size;
       #{$type}-right: $size * $spacing-base-size;
@@ -175,11 +172,8 @@ $type in $spacing-types {
   }
 
   // .mt-1 { margin-top: 0.25rem; } 三层嵌套循环
-  @each $directionKey,
-  $direction in $spacing-directions {
-
-    @each $sizeKey,
-    $size in $spacing-sizes {
+  @each $directionKey, $direction in $spacing-directions {
+    @each $sizeKey, $size in $spacing-sizes {
       .#{$typeKey}#{$directionKey}-#{$sizeKey} {
         #{$type}-#{$direction}: $size * $spacing-base-size;
       }

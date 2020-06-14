@@ -1,6 +1,6 @@
 <template>
-  <div class="main-container">
-    <div class="main-content archive-page" v-if="model">
+  <div class="main-container" v-if="model">
+    <div class="main-content archive-page">
       <div class="categorys-item" v-for="item in model" :key="item._id">
         <div class="categorys-title">{{item.list[0].createdAt | date("YYYY")}}年{{ item._id }}月</div>
         <div class="post-lists">

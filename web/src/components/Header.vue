@@ -19,7 +19,8 @@
         active-class="active"
         class="nav-item px-5 icon"
       >{{ item.text }}</router-link>
-      <div class="pl-3 play">
+      <Search></Search>
+      <div class="play pl-5">
         <i
           v-show="!isPlay"
           active-class="active"
@@ -41,7 +42,6 @@
           loop
         ></audio>
       </div>
-
       <el-dropdown trigger="click" @visible-change="(v) => (isShowMenu = v)">
         <div
           class="menu-button hand"
@@ -78,7 +78,11 @@
 </template>
 
 <script>
+import Search from "../components/Search.vue";
 export default {
+  components: {
+    Search
+  },
   data() {
     return {
       isShowMenu: false,
@@ -96,15 +100,12 @@ export default {
   },
   mounted() {
     this.ajustNavigation();
-    window.addEventListener("scroll", this.scrollListener);
+    window.addEventListener("scroll", this.ajustNavigation);
   },
   beforeDestroy() {
-    window.removeEventListener("scroll", this.scrollListener);
+    window.removeEventListener("scroll", this.ajustNavigation);
   },
   methods: {
-    scrollListener() {
-      this.ajustNavigation();
-    },
     ajustNavigation() {
       let scrollTop =
         window.pageYOffset ||
@@ -142,21 +143,26 @@ export default {
   top: 0;
   left: 0;
   z-index: 999;
+  display: relative;
   height: 65px;
   background-color: transparent;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
   transition: 0.5s ease-in-out;
   .icon-music-o {
-    font-size: 18px;
+    font-size: 19px;
   }
   .icon-Pause1 {
-    font-size: 18px;
+    font-size: 19px;
   }
 }
+
 .mini {
   background-color: map-get($colors, "navcolor");
   height: 56px;
   transition: 0.5s ease-in-out;
+}
+.show-list {
+  display: block !important;
 }
 .menu-button {
   border: none;

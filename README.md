@@ -71,7 +71,7 @@ npm run serve
 
 - 通用增删改查接口实现(中间件 resourceMiddleware)
 
-- 登录功能
+- 登录注册功能
 - 登出功能
 - 添加 jwt 校验（1. 用户名查找 2. 密码校验 3. 返回 token）
 - 添加 http 拦截器（request、response)
