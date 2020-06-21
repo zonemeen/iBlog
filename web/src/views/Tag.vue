@@ -2,6 +2,7 @@
   <div class="main-container" v-if="model">
     <div class="main-content archive-page">
       <div class="post-title text-green fs-xxxxl">标签分类的博文--点击自动查找相应`Tag`</div>
+      <div class="text-grey-2 fs-sm mt-6">Published on March 11th 2020</div>
       <div>
         <div class="post-tags">
           <a v-for="item in model" :key="item._id" :href="`#${item._id}`">

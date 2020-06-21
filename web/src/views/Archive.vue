@@ -1,7 +1,7 @@
 <template>
   <div class="main-container" v-if="model">
     <div class="main-content archive-page">
-      <div class="categorys-item" v-for="item in model" :key="item._id">
+      <div class="categorys-item mt-6" v-for="item in model" :key="item._id">
         <div class="categorys-title">{{item.list[0].createdAt | date("YYYY")}}年{{ item._id }}月</div>
         <div class="post-lists">
           <div class="post-lists-body">
@@ -66,13 +66,13 @@ export default {
     };
   },
   methods: {
-    async fetch() {
+    async getArchive() {
       const res = await this.$http.get("/archive");
       this.model = res.data;
     }
   },
   mounted() {
-    this.fetch();
+    this.getArchive();
   }
 };
 </script>

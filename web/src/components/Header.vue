@@ -19,7 +19,6 @@
         active-class="active"
         class="nav-item px-5 icon"
       >{{ item.text }}</router-link>
-      <Search></Search>
       <div class="play pl-5">
         <i
           v-show="!isPlay"
@@ -38,7 +37,7 @@
         <audio
           id="music"
           ref="music"
-          src="https://miqilin-blog.oss-cn-shenzhen.aliyuncs.com/Prospect.mp3"
+          src="https://miqilin-blog.oss-cn-shenzhen.aliyuncs.com/Glass%20House.mp3"
           loop
         ></audio>
       </div>
