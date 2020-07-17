@@ -28,7 +28,7 @@ router.beforeEach((to, from, next) => {
   next();
 });
 router.afterEach(() => {
-  NProgress.done()
+  NProgress.done();
 })
 // axios请求拦截器
 http.interceptors.request.use(

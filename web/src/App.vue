@@ -5,14 +5,11 @@
 </template>
 
 <script>
+window.addEventListener("beforeunload", e => {
+  window.scroll(0, 0);
+});
 export default {
   name: "app",
-  watch: {
-    $route: function(to, from) {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }
-  },
   methods: {
     love() {
       !(function(e, t, a) {
