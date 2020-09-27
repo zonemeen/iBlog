@@ -106,11 +106,11 @@ npm run serve
 
 ### 博客后台管理系统
 
-![](./screenshot/admin.gif)
+![](https://miqilin-blog.oss-cn-shenzhen.aliyuncs.com/admin.gif)
 
 ### 博客系统
 
-![](./screenshot/web.gif)
+![](https://miqilin-blog.oss-cn-shenzhen.aliyuncs.com/web.gif)
 
 ### 欢迎 Star，Issues
 
