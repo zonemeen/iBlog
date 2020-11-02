@@ -4,16 +4,24 @@
       <el-form-item prop="nickName">
         <el-input
           size="medium"
-          :maxlength="6"
+          :maxlength="10"
           v-model="userForm.nickName"
           :placeholder="isUpload ? '网站名称' : '起个牛B点的昵称吧～'"
         ></el-input>
       </el-form-item>
       <el-form-item prop="email" v-if="isUpload">
-        <el-input size="medium" v-model="userForm.email" placeholder="电子邮箱(@xx.com)"></el-input>
+        <el-input
+          size="medium"
+          v-model="userForm.email"
+          placeholder="电子邮箱(@xx.com)"
+        ></el-input>
       </el-form-item>
       <el-form-item prop="qqEmail" v-else>
-        <el-input size="medium" v-model="userForm.qqEmail" placeholder="QQ邮箱(仅为了获取QQ头像)"></el-input>
+        <el-input
+          size="medium"
+          v-model="userForm.qqEmail"
+          placeholder="QQ邮箱(仅为了获取QQ头像)"
+        ></el-input>
       </el-form-item>
       <el-form-item prop="url">
         <el-input
@@ -55,7 +63,9 @@
         </el-checkbox>
       </el-form-item>-->
     </el-form>
-    <el-button type="primary" class="width-100" @click="saveForm('userForm')">提交</el-button>
+    <el-button type="primary" class="width-100" @click="saveForm('userForm')"
+      >提交</el-button
+    >
   </div>
 </template>
 
@@ -63,12 +73,12 @@
 import {
   // validateUrl,
   validateEmail,
-  validateQQEmail
+  validateQQEmail,
 } from "../plugins/validate";
 export default {
   props: {
     isUpload: { type: Boolean, default: false },
-    toForm: { type: Object, default: null }
+    toForm: { type: Object, default: null },
   },
   data() {
     return {
@@ -79,33 +89,33 @@ export default {
         url: "",
         description: "",
         avatarImg: "",
-        isRead: false
+        isRead: false,
       },
       userRules: {
         nickName: {
           required: true,
-          message: "必填，且不超过6个字符",
-          trigger: "change"
+          message: "必填，且不超过10个字符",
+          trigger: "change",
         },
         email: { required: true, validator: validateEmail, trigger: "change" },
         qqEmail: {
           required: true,
           validator: validateQQEmail,
-          trigger: "change"
+          trigger: "change",
         },
         url: { required: true, message: "必填", trigger: "change" },
         description: {
           required: true,
           message: "必填，且不超过30个字符",
-          trigger: "change"
+          trigger: "change",
         },
         avatarImg: {
           required: true,
           message: "必填，且仅限jpg/png, 不大于200KB",
-          trigger: "change"
-        }
+          trigger: "change",
+        },
         // isRead: { required: false, message: "必填", trigger: "change" }
-      }
+      },
     };
   },
   watch: {
@@ -120,7 +130,7 @@ export default {
         this.userRules.qqEmail.required = false;
         this.userRules.url.required = false;
       }
-    }
+    },
   },
   created() {
     if (this.isUpload) {
@@ -137,7 +147,7 @@ export default {
   },
   methods: {
     saveForm(formName) {
-      this.$refs[formName].validate(async valid => {
+      this.$refs[formName].validate(async (valid) => {
         this.userForm.email = this.userForm.qqEmail;
         if (valid) {
           this.$emit("toRequest", this.userForm);
@@ -161,8 +171,8 @@ export default {
       // console.log(this.$parent)
       // this.$parent.turnAnima = true
       // console.log(this.$parent.turnAnima)
-    }
-  }
+    },
+  },
 };
 </script>
 
