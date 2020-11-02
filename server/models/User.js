@@ -2,7 +2,6 @@ const mongoose = require("mongoose")
 const schema = new mongoose.Schema({
   nickName: {
     type: String,
-    unique: true
   },
   email: {
     type: String

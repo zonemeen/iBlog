@@ -9,12 +9,17 @@
           alt="miqilin头像"
         />
         <i v-else @click="lookUserInfo" class="iconfont icon-touxiang hand"></i>
-        <p
-          class="mt-2 avatar text-center fs-lg text-grey-2"
-        >{{ userInfo.nickName ? userInfo.nickName : "留言" }}</p>
+        <p class="mt-2 avatar text-center fs-lg text-grey-2">
+          {{ userInfo.nickName ? userInfo.nickName : "留言" }}
+        </p>
       </div>
       <div class="flex-1">
-        <el-input type="textarea" rows="4" v-model="messageObj.content" :placeholder="placeholder"></el-input>
+        <el-input
+          type="textarea"
+          rows="4"
+          v-model="messageObj.content"
+          :placeholder="placeholder"
+        ></el-input>
         <div class="mt-3 d-flex jc-between position-emoji">
           <button @blur="showEmoji = false" class="bg-postcolor btn-none">
             <i
@@ -35,13 +40,28 @@
               @select="selectEmoji"
             />
           </button>
-          <el-button type="primary" size="small" :loading="btnLoading" @click="fabuHandle">发布</el-button>
+          <el-button
+            type="primary"
+            size="small"
+            :loading="btnLoading"
+            @click="fabuHandle"
+            >发布</el-button
+          >
         </div>
       </div>
     </div>
-    <el-dialog :append-to-body="true" :visible.sync="dialogVisible" width="300px" center>
+    <el-dialog
+      :append-to-body="true"
+      :visible.sync="dialogVisible"
+      width="300px"
+      center
+    >
       <div :class="{ turnAnima: false }">
-        <form-input @toRequest="submit" :isUpload="false" :toForm="userForm"></form-input>
+        <form-input
+          @toRequest="submit"
+          :isUpload="false"
+          :toForm="userForm"
+        ></form-input>
       </div>
     </el-dialog>
   </div>
@@ -59,12 +79,12 @@ export default {
     parentId: String,
     nickName: String,
     byAiteUserId: String,
-    placeholder: String
+    placeholder: String,
   },
   components: {
     // EmojiPicker,
     VEmojiPicker,
-    formInput
+    formInput,
   },
   data() {
     return {
@@ -79,20 +99,20 @@ export default {
         email: "",
         url: "",
         avatarImg: "",
-        id: ""
+        id: "",
       },
       dialogVisible: false,
       userForm: {
         nickName: "",
         email: "",
         url: "",
-        avatarImg: ""
+        avatarImg: "",
       },
       qqUrl: "https://q1.qlogo.cn/g?b=qq&nk=QQ号码&s=100",
       userRules: {
         nickName: { required: true, message: "必填", trigger: "change" },
         email: { required: true, message: "必填", trigger: "change" },
-        url: { required: true, message: "必填", trigger: "change" }
+        url: { required: true, message: "必填", trigger: "change" },
       },
       messageObj: {
         nickName: "",
@@ -100,8 +120,8 @@ export default {
         content: "",
         relateBlogId: this.blogsId,
         parent: "",
-        byAiteName: ""
-      }
+        byAiteName: "",
+      },
     };
   },
   created() {
@@ -110,7 +130,7 @@ export default {
       : this.userInfo;
   },
   computed: {
-    ...mapState(["map_user_info"])
+    ...mapState(["map_user_info"]),
   },
   methods: {
     ...mapMutations(["map_set_user_info"]),
@@ -144,7 +164,7 @@ export default {
         let replyObj = {
           recipient: byAiteObj.data.email,
           subject: this.messageObj.byAiteName,
-          html: this.messageObj.content
+          html: this.messageObj.content,
         };
         await this.$http.post("email", replyObj);
       }
@@ -176,8 +196,8 @@ export default {
     },
     insert(emoji) {
       this.input += emoji;
-    }
-  }
+    },
+  },
 };
 </script>
 
