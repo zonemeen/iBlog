@@ -23,6 +23,7 @@
     "multer-aliyun-oss": "^1.0.4",
     "nodemailer": "^6.4.6",
     "nodemailer-smtp-transport": "^2.7.4",
+    "nodemon": "^2.0.15",
     "require-all": "^3.0.0"
   }
 }

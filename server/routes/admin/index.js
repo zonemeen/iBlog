@@ -48,13 +48,13 @@ module.exports = (app) => {
     router
   );
 
-  //图片上传
+  //用于阿里云oss图片上传
   const multer = require("multer");
   const MAO = require("multer-aliyun-oss");
   const upload = multer({
     storage: MAO({
       config: {
-        region: "oss-cn-shenzhen", // // 阿里云oss的所在区域
+        region: "oss-cn-shenzhen", // 阿里云oss的所在区域
         accessKeyId: "your accessKeyId", // 阿里云oss的accessKeyId，要自己去创建
         accessKeySecret: "your accessKeySecret", // 阿里云oss的accessKeySecret
         bucket: "miqilin-blog", // 阿里云oss的bucket's name
@@ -72,14 +72,14 @@ module.exports = (app) => {
     }
   );
 
-  //第一次登录把注册注释取消
-  // app.post("/admin/api/register", async (req, res) => {
-  //   const user = await AdminUser.create({
-  //     username: req.body.username,
-  //     password: req.body.password
-  //   });
-  //   res.send(user)
-  // })
+  // 第一次登录把注册注释取消
+  app.post("/admin/api/register", async (req, res) => {
+    const user = await AdminUser.create({
+      username: req.body.username,
+      password: req.body.password
+    });
+    res.send(user)
+  })
 
   //登录
   app.post("/admin/api/login", async (req, res) => {
@@ -94,8 +94,8 @@ module.exports = (app) => {
     const isValid = require("bcryptjs").compareSync(password, user.password);
     assert(isValid, 422, "密码错误");
     const token = jwt.sign({
-        id: user._id,
-      },
+      id: user._id,
+    },
       app.get("secret")
     );
     res.send({

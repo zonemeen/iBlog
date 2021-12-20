@@ -2,7 +2,7 @@
 
 - vue-cli v4.2.3
 - Node.js v12.13.0
-- MongoDB v4.2.3
+- MongoDB v4.2.17
 
 ### 安装依赖
 
@@ -23,6 +23,10 @@ npm i
 ```
 npm i
 ```
+
+### 安装MongoDB数据库
+
+进入[官网](https://www.mongodb.com/try/download/community)下载，版本是4.2.17，平台是Windows，安装包为msi格式
 
 ### 本地启动项目
 
@@ -45,6 +49,8 @@ npm run serve
 ```
 npm run serve
 ```
+
+第一次登陆时请先注册用户，登录后可以将注册按钮隐藏以防登录账户泄露。
 
 ### 后台管理系统
 
