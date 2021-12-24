@@ -4,53 +4,36 @@
 - Node.js v12.13.0
 - MongoDB v4.2.17
 
-### 安装依赖
-
-#### 1. cd server 进入 serve 文件夹
-
-```
-npm i
-```
-
-#### 2. cd web 进入 web 文件夹
-
-```
-npm i
-```
-
-#### 3. cd admin 进入 admin 文件夹
-
-```
-npm i
-```
-
 ### 安装MongoDB数据库
 
 进入[官网](https://www.mongodb.com/try/download/community)下载，版本是4.2.17，平台是Windows，安装包为msi格式
 
-### 本地启动项目
+### 项目开发
 
-#### 1. cd server 进入 server 文件夹
+#### 1. 克隆项目至本地：
 
-运行前, 请确认是否已启动本地 mongoDB 数据库服务，默认地址：mongodb://127.0.0.1:27017/
-
-```
-npm run serve
-```
-
-#### 2. cd web 进入 web 文件夹
-
-```
-npm run serve
+```sh
+$ git clone git@github.com:miqilin21/vue-blog.git
+$ cd vue-blog
 ```
 
-#### 3. cd admin 进入 admin 文件夹
+#### 2. 安装前后台(admin、web)及后端(server)项目依赖：
 
-```
-npm run serve
+```sh
+$ npm install
 ```
 
-第一次登陆时请先注册用户，登录后可以将注册按钮隐藏以防登录账户泄露。
+#### 3. 运行前后台(admin、web)及后端(server)项目：
+
+```sh
+$ npm run serve
+```
+
+#### 4. 打开浏览器预览：
+
+http://localhost:8080 打开前台本地页面；http://localhost:8090 打开后台本地页面。
+
+第一次后台admin登陆时请先注册用户，登录后可以将注册按钮隐藏以防登录账户泄露。
 
 ### 后台管理系统
 
@@ -99,7 +82,7 @@ npm run serve
 
 ### 项目打包部署
 
-- web、admin 项目打包
+- web、admin 项目打包(根目录下运行 `npm run build` 命令)
 - 域名购买
 - 域名解析
 - linux 云服务器购买
