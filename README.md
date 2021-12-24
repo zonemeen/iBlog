@@ -110,6 +110,8 @@ npm run serve
 - mongodb 数据从本地迁移至服务器
 - 七牛云 cdn 全站免费加速
 
+线上服务器部署可参考这份[指南](https://www.yuque.com/lingqian-ceavu/gxhqpr)。
+
 ### 博客后台管理系统
 
 ![](https://miqilin-blog.oss-cn-shenzhen.aliyuncs.com/admin.gif)
