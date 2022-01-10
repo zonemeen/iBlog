@@ -10,7 +10,7 @@
         />
         <i v-else @click="lookUserInfo" class="iconfont icon-touxiang hand"></i>
         <p class="mt-2 avatar text-center fs-lg text-grey-2">
-          {{ userInfo.nickName ? userInfo.nickName : "留言" }}
+          {{ userInfo.nickName ? userInfo.nickName : '留言' }}
         </p>
       </div>
       <div class="flex-1">
@@ -25,8 +25,8 @@
             <i
               class="iconfont icon-Smile hand"
               @click="
-                showBtn = true;
-                showEmoji = !showEmoji;
+                showBtn = true
+                showEmoji = !showEmoji
               "
             ></i>
             <VEmojiPicker
@@ -45,8 +45,9 @@
             size="small"
             :loading="btnLoading"
             @click="fabuHandle"
-            >发布</el-button
           >
+            发布
+          </el-button>
         </div>
       </div>
     </div>
@@ -68,9 +69,9 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
-import VEmojiPicker from "v-emoji-picker";
-import formInput from "./formInput";
+import { mapState, mapMutations } from 'vuex'
+import { VEmojiPicker } from 'v-emoji-picker'
+import formInput from './formInput'
 export default {
   props: {
     model: String,
@@ -82,7 +83,6 @@ export default {
     placeholder: String,
   },
   components: {
-    // EmojiPicker,
     VEmojiPicker,
     formInput,
   },
@@ -91,114 +91,114 @@ export default {
       showBtn: false,
       showEmoji: false,
       btnLoading: false,
-      input: "",
-      search: "",
-      packData: "",
+      input: '',
+      search: '',
+      packData: '',
       userInfo: {
-        nickName: "",
-        email: "",
-        url: "",
-        avatarImg: "",
-        id: "",
+        nickName: '',
+        email: '',
+        url: '',
+        avatarImg: '',
+        id: '',
       },
       dialogVisible: false,
       userForm: {
-        nickName: "",
-        email: "",
-        url: "",
-        avatarImg: "",
+        nickName: '',
+        email: '',
+        url: '',
+        avatarImg: '',
       },
-      qqUrl: "https://q1.qlogo.cn/g?b=qq&nk=QQ号码&s=100",
+      qqUrl: 'https://q1.qlogo.cn/g?b=qq&nk=QQ号码&s=100',
       userRules: {
-        nickName: { required: true, message: "必填", trigger: "change" },
-        email: { required: true, message: "必填", trigger: "change" },
-        url: { required: true, message: "必填", trigger: "change" },
+        nickName: { required: true, message: '必填', trigger: 'change' },
+        email: { required: true, message: '必填', trigger: 'change' },
+        url: { required: true, message: '必填', trigger: 'change' },
       },
       messageObj: {
-        nickName: "",
-        avatarImg: "",
-        content: "",
+        nickName: '',
+        avatarImg: '',
+        content: '',
         relateBlogId: this.blogsId,
-        parent: "",
-        byAiteName: "",
+        parent: '',
+        byAiteName: '',
       },
-    };
+    }
   },
   created() {
     this.userInfo = localStorage.userInfo
       ? JSON.parse(localStorage.userInfo)
-      : this.userInfo;
+      : this.userInfo
   },
   computed: {
-    ...mapState(["map_user_info"]),
+    ...mapState(['map_user_info']),
   },
   methods: {
-    ...mapMutations(["map_set_user_info"]),
+    ...mapMutations(['map_set_user_info']),
     lookUserInfo() {
-      this.userForm = this.userInfo;
-      this.dialogVisible = true;
+      this.userForm = this.userInfo
+      this.dialogVisible = true
     },
     async fabuHandle() {
       if (!localStorage.userInfo) {
-        return (this.dialogVisible = true);
+        return (this.dialogVisible = true)
       }
       if (!this.messageObj.content) {
-        return this.$message.warning("你好，请发言");
+        return this.$message.warning('你好，请发言')
       }
-      this.btnLoading = true;
-      this.messageObj.nickName = this.userInfo.nickName;
-      this.messageObj.avatarImg = this.userInfo.avatarImg;
-      this.messageObj.userId = this.userInfo._id;
+      this.btnLoading = true
+      this.messageObj.nickName = this.userInfo.nickName
+      this.messageObj.avatarImg = this.userInfo.avatarImg
+      this.messageObj.userId = this.userInfo._id
       this.messageObj.parent =
-        this.type == "children" ? this.parentId : "5ec884e3fe28d35475b43fb3";
+        this.type == 'children' ? this.parentId : '5ec884e3fe28d35475b43fb3'
       this.messageObj.byAiteName =
-        this.type == "children" ? this.nickName : "miqilin";
-      let url = this.model == "comments" ? "/comments" : "/messages";
-      await this.$http.post(url, this.messageObj);
-      this.$emit("toResponse");
-      this.$message.success("发布成功");
+        this.type == 'children' ? this.nickName : 'miqilin'
+      let url = this.model == 'comments' ? '/comments' : '/messages'
+      await this.$http.post(url, this.messageObj)
+      this.$emit('toResponse')
+      this.$message.success('发布成功')
 
-      this.btnLoading = false;
-      if (this.userInfo.nickName == "miqilin博主") {
-        let byAiteObj = await this.$http.get(`users/${this.byAiteUserId}`);
+      this.btnLoading = false
+      if (this.userInfo.nickName == 'miqilin博主') {
+        let byAiteObj = await this.$http.get(`users/${this.byAiteUserId}`)
         let replyObj = {
           recipient: byAiteObj.data.email,
           subject: this.messageObj.byAiteName,
           html: this.messageObj.content,
-        };
-        await this.$http.post("email", replyObj);
+        }
+        await this.$http.post('email', replyObj)
       }
-      this.messageObj.content = "";
+      this.messageObj.content = ''
     },
     async submit(userForm) {
       userForm.avatarImg = this.qqUrl.replace(
-        "QQ号码",
-        userForm.email.replace("@qq.com", "")
-      );
-      console.log(userForm.email.replace("@qq.com", ""));
+        'QQ号码',
+        userForm.email.replace('@qq.com', '')
+      )
+      console.log(userForm.email.replace('@qq.com', ''))
       console.log(
-        this.qqUrl.replace("QQ号码", userForm.email.replace("@qq.com", ""))
-      );
-      console.log(userForm.avatarImg);
-      let res;
+        this.qqUrl.replace('QQ号码', userForm.email.replace('@qq.com', ''))
+      )
+      console.log(userForm.avatarImg)
+      let res
       if (this.userInfo._id) {
-        res = await this.$http.put(`users/${this.userInfo._id}`, userForm);
+        res = await this.$http.put(`users/${this.userInfo._id}`, userForm)
       } else {
-        res = await this.$http.post("users", userForm);
+        res = await this.$http.post('users', userForm)
       }
-      this.map_set_user_info(res.data);
-      this.userInfo = res.data;
-      localStorage.userInfo = JSON.stringify(res.data);
-      this.dialogVisible = false;
+      this.map_set_user_info(res.data)
+      this.userInfo = res.data
+      localStorage.userInfo = JSON.stringify(res.data)
+      this.dialogVisible = false
     },
     selectEmoji(emoji) {
-      this.messageObj.content += emoji.data;
+      this.messageObj.content += emoji.data
     },
     insert(emoji) {
-      this.input += emoji;
+      this.input += emoji
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
