@@ -48,7 +48,7 @@ module.exports = (app) => {
     router
   );
 
-  //用于阿里云oss图片上传
+/*  //用于阿里云oss图片上传
   const multer = require("multer");
   const MAO = require("multer-aliyun-oss");
   const upload = multer({
@@ -67,9 +67,24 @@ module.exports = (app) => {
     upload.single("file"),
     async (req, res) => {
       const file = req.file;
-      // file.url = `http://miqilin21.cn/uploads/${file.filename}`;
       res.send(file);
     }
+  );*/
+
+  //图片上传
+  const multer = require("multer");
+  const upload = multer({
+    dest: __dirname + "/../../uploads"
+  });
+  app.post(
+      "/admin/api/upload",
+      authMiddleware(),
+      upload.single("file"),
+      async (req, res) => {
+        const file = req.file;
+        file.url = `http://localhost:3000/uploads/${file.filename}`;
+        res.send(file);
+      }
   );
 
   // 第一次登录把注册注释取消

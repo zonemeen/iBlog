@@ -1,7 +1,7 @@
-// vue.config.js
+// vue.config.json
 module.exports = {
   devServer: {
-    port: 8090,
+    port: 8088,
   },
   outputDir: __dirname + '/../server/admin',
   publicPath: process.env.NODE_ENV === 'production' ?
