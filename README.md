@@ -1,7 +1,6 @@
 ### 环境准备
 
-- vue-cli v4.2.3
-- Node.js v12.13.0
+- Node.js v14.15.5
 - MongoDB v4.2.17
 
 ### 安装MongoDB数据库
