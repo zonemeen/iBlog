@@ -79,6 +79,8 @@ http://localhost:8080 打开前台本地页面；http://localhost:8088 打开后
 - 博客留言页面 UI
 - 博客留言页面接口实现
 
+这里需要注意一点，评论页面回复他人评论采用的是你的QQ邮箱进行同步通知，需要在 `server/plugins/sendEmail.js` 中进行邮箱配置，如何获取QQ邮箱授权码见[此图](https://cdn.jsdelivr.net/gh/miqilin21/static@master/img/qq-shouquanma.png)。
+
 ### 项目打包部署
 
 - web、admin 项目打包(根目录下运行 `npm run build` 命令)
