@@ -10,24 +10,22 @@
   "dependencies": {
     "axios": "^0.24.0",
     "bcryptjs": "^2.4.3",
-    "core-js": "^3.6.4",
-    "dayjs": "^1.8.23",
-    "element-ui": "^2.13.0",
-    "mavon-editor": "^2.7.7",
-    "vue": "^2.6.11",
-    "vue-router": "^3.1.6",
-    "vue2-editor": "^2.10.2"
+    "dayjs": "^1.10.7",
+    "element-ui": "^2.15.1",
+    "mavon-editor": "^2.10.4",
+    "vue": "^2.6.14",
+    "vue-router": "^3.5.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.2.0",
-    "@vue/cli-plugin-eslint": "~4.2.0",
-    "@vue/cli-service": "~4.2.0",
+    "@vue/cli-plugin-babel": "~4.5.13",
+    "@vue/cli-plugin-eslint": "~4.5.13",
+    "@vue/cli-service": "~4.5.13",
     "babel-eslint": "^10.0.3",
-    "dart-sass": "^1.25.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.1.2",
+    "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.14"
   },
   "eslintConfig": {
     "root": true,

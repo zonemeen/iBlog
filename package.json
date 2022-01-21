@@ -3,17 +3,17 @@
   "version": "1.0.0",
   "description": "- vue-cli v4.2.3\r - Node.js v12.13.0\r - MongoDB v4.2.17",
   "scripts": {
-    "serve": "run-p web-serve admin-serve server-serve",
-    "server-serve": "cd server && npm run serve",
-    "web-serve": "cd web && npm run serve",
-    "admin-serve": "cd admin && npm run serve",
-    "install": "run-p web-install admin-install server-install",
-    "server-install": "cd server && npm install",
-    "web-install": "cd web && npm install",
-    "admin-install": "cd admin && npm install",
-    "build": "run-p web-build admin-build",
-    "web-build": "cd web && npm run build",
-    "admin-build": "cd admin && npm run build"
+    "serve-all": "run-p web-serve admin-serve server-serve",
+    "server-serve": "cd server && yarn serve",
+    "web-serve": "cd web && yarn serve",
+    "admin-serve": "cd admin && yarn serve",
+    "install-all": "run-p web-install admin-install server-install",
+    "server-install": "cd server && yarn",
+    "web-install": "cd web && yarn",
+    "admin-install": "cd admin && yarn",
+    "build-all": "run-p web-build admin-build",
+    "web-build": "cd web && yarn build",
+    "admin-build": "cd admin && yarn build"
   },
   "repository": {
     "type": "git",

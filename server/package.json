@@ -4,24 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "connect-history-api-fallback": "^1.6.0",
     "cors": "^2.8.5",
-    "express": "^5.0.0-alpha.7",
+    "express": "^4.17.1",
     "http-assert": "^1.4.1",
     "inflection": "^1.12.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.2",
-    "multer": "^1.4.2",
-    "multer-aliyun-oss": "^1.0.4",
-    "nodemailer": "^6.4.6",
+    "mongoose": "^5.13.14",
+    "multer": "^1.4.4",
+    "multer-aliyun-oss": "^1.1.1",
+    "nodemailer": "^6.7.2",
     "nodemailer-smtp-transport": "^2.7.4",
     "nodemon": "^2.0.15",
     "require-all": "^3.0.0"
