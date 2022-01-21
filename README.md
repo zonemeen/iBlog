@@ -14,18 +14,19 @@
 ```sh
 $ git clone git@github.com:miqilin21/vue-blog.git
 $ cd vue-blog
+$ yarn
 ```
 
 #### 2. 安装前后台(admin、web)及后端(server)项目依赖：
 
 ```sh
-$ npm install
+$ yarn install-all
 ```
 
 #### 3. 运行前后台(admin、web)及后端(server)项目：
 
 ```sh
-$ npm run serve
+$ yarn serve-all
 ```
 
 #### 4. 打开浏览器预览：
@@ -83,7 +84,7 @@ http://localhost:8080 打开前台本地页面；http://localhost:8088 打开后
 
 ### 项目打包部署
 
-- web、admin 项目打包(根目录下运行 `npm run build` 命令)
+- web、admin 项目打包(根目录下运行 `yarn build-all` 命令)
 - 域名购买
 - 域名解析
 - linux 云服务器购买
