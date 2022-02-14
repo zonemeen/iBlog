@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/miqilin21/vue-blog.git"
+    "url": "git+https://github.com/zonemeen/vue-blog.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/miqilin21/vue-blog/issues"
+    "url": "https://github.com/zonemeen/vue-blog/issues"
   },
-  "homepage": "https://github.com/miqilin21/vue-blog#readme",
+  "homepage": "https://github.com/zonemeen/vue-blog#readme",
   "devDependencies": {
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1"
