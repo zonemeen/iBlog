@@ -14,19 +14,19 @@
 ```sh
 $ git clone git@github.com:miqilin21/vue-blog.git
 $ cd vue-blog
-$ yarn
+$ pnpm i
 ```
 
 #### 2. 安装前后台(admin、web)及后端(server)项目依赖：
 
 ```sh
-$ yarn install-all
+$ pnpm install-all
 ```
 
 #### 3. 运行前后台(admin、web)及后端(server)项目：
 
 ```sh
-$ yarn serve-all
+$ pnpm serve-all
 ```
 
 #### 4. 打开浏览器预览：
@@ -80,11 +80,13 @@ http://localhost:8080 打开前台本地页面；http://localhost:8088 打开后
 - 博客留言页面 UI
 - 博客留言页面接口实现
 
-这里需要注意一点，评论页面回复他人评论采用的是你的QQ邮箱进行同步通知，需要在 `server/plugins/sendEmail.js` 中进行邮箱配置，如何获取QQ邮箱授权码见[此图](https://cdn.jsdelivr.net/gh/miqilin21/static@master/img/qq-shouquanma.png)。
+这里需要注意一点，评论页面回复他人评论采用的是你的QQ邮箱进行同步通知，需要在 `server/plugins/sendEmail.js` 中进行邮箱配置，如何获取QQ邮箱授权码见下图（在QQ邮箱的设置-账户页面）。
+
+![](https://miqilin-blog.oss-cn-shenzhen.aliyuncs.com/qq-shouquanma.png)
 
 ### 项目打包部署
 
-- web、admin 项目打包(根目录下运行 `yarn build-all` 命令)
+- web、admin 项目打包(根目录下运行 `pnpm build-all` 命令)
 - 域名购买
 - 域名解析
 - linux 云服务器购买
