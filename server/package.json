@@ -10,18 +10,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "http-assert": "^1.4.1",
-    "inflection": "^1.12.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.14",
-    "multer": "^1.4.4",
-    "multer-aliyun-oss": "^1.1.1",
-    "nodemailer": "^6.7.2",
-    "nodemailer-smtp-transport": "^2.7.4",
-    "nodemon": "^2.0.15",
-    "require-all": "^3.0.0"
+    "bcryptjs": "2.4.3",
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "http-assert": "1.4.1",
+    "inflection": "1.12.0",
+    "jsonwebtoken": "8.5.1",
+    "mongoose": "5.13.14",
+    "multer": "1.4.4",
+    "multer-aliyun-oss": "1.1.1",
+    "nodemailer": "6.7.2",
+    "nodemailer-smtp-transport": "2.7.4",
+    "nodemon": "2.0.15",
+    "require-all": "3.0.0"
   }
 }

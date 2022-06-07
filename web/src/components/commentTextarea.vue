@@ -70,7 +70,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-import { VEmojiPicker } from 'v-emoji-picker'
+import VEmojiPicker from 'v-emoji-picker'
 import formInput from './formInput'
 export default {
   props: {

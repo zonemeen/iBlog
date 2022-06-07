@@ -6,7 +6,6 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import VEmojiPicker from 'v-emoji-picker'
 import './assets/scss/style.scss'
 import './assets/iconfont/iconfont.css'
 import './plugins/filters'
@@ -15,7 +14,6 @@ import http from './http'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
-Vue.use(VEmojiPicker)
 Vue.prototype.$http = http
 
 NProgress.configure({
