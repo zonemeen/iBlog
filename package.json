@@ -1,30 +1,30 @@
 {
-  "name": "vue-blog",
+  "name": "vue-node-blog",
   "version": "1.0.0",
-  "description": "- vue-cli v4.2.3\r - Node.js v12.13.0\r - MongoDB v4.2.17",
+  "description": "- vue-cli v4.5.13\r - Node.js v14.15.5\r - MongoDB v4.2.17",
   "scripts": {
     "serve-all": "run-p web-serve admin-serve server-serve",
-    "server-serve": "cd server && yarn serve",
-    "web-serve": "cd web && yarn serve",
-    "admin-serve": "cd admin && yarn serve",
+    "server-serve": "cd server && pnpm serve",
+    "web-serve": "cd web && pnpm serve",
+    "admin-serve": "cd admin && pnpm serve",
     "install-all": "run-p web-install admin-install server-install",
-    "server-install": "cd server && yarn",
-    "web-install": "cd web && yarn",
-    "admin-install": "cd admin && yarn",
+    "server-install": "cd server && pnpm i",
+    "web-install": "cd web && pnpm i",
+    "admin-install": "cd admin && pnpm i",
     "build-all": "run-p web-build admin-build",
-    "web-build": "cd web && yarn build",
-    "admin-build": "cd admin && yarn build"
+    "web-build": "cd web && pnpm build",
+    "admin-build": "cd admin && pnpm build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zonemeen/vue-blog.git"
+    "url": "git+https://github.com/zonemeen/vue-node-blog.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zonemeen/vue-blog/issues"
+    "url": "https://github.com/zonemeen/vue-node-blog/issues"
   },
-  "homepage": "https://github.com/zonemeen/vue-blog#readme",
+  "homepage": "https://github.com/zonemeen/vue-node-blog#readme",
   "devDependencies": {
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1"
