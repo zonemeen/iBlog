@@ -27,32 +27,32 @@
 export default {
   data() {
     return {
-      model: {}
-    };
+      model: {},
+    }
   },
   methods: {
     async login() {
-      const res = await this.$http.post("/login", this.model);
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("username", res.data.username);
+      const res = await this.$http.post('/login', this.model)
+      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('username', res.data.username)
       this.$message({
-        type: "success",
-        message: "登录成功"
-      });
-      this.$router.push("/");
+        type: 'success',
+        message: '登录成功',
+      })
+      this.$router.push('/')
     },
     async register() {
-      const res = await this.$http.post("/register", this.model);
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("username", res.data.username);
+      const res = await this.$http.post('/register', this.model)
+      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('username', res.data.username)
       this.$message({
-        type: "success",
-        message: "注册成功"
-      });
-      this.$router.push("/login");
-    }
-  }
-};
+        type: 'success',
+        message: '注册成功',
+      })
+      this.$router.push('/login')
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>

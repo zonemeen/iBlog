@@ -4,7 +4,8 @@
       <el-menu router :default-active="$route.path">
         <el-submenu index="1">
           <template slot="title">
-            <i class="el-icon-message"></i>内容管理
+            <i class="el-icon-message"></i>
+            内容管理
           </template>
           <el-menu-item-group>
             <template slot="title">分类</template>
@@ -36,7 +37,8 @@
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
-            <i class="el-icon-message"></i>系统设置
+            <i class="el-icon-message"></i>
+            系统设置
           </template>
           <el-menu-item-group>
             <template slot="title">管理员</template>
@@ -48,7 +50,7 @@
     </el-aside>
     <el-container>
       <el-header style="text-align: right; font-size: 12px">
-        <span>{{username}}</span>
+        <span>{{ username }}</span>
         <el-dropdown>
           <i class="el-icon-setting" style="margin-left: 10px"></i>
           <el-dropdown-menu slot="dropdown">
@@ -66,7 +68,7 @@
   </el-container>
 </template>
 
-<style>
+<style lang="scss" scoped>
 .el-header {
   background-color: #69a8e7;
   color: #333;
@@ -82,17 +84,17 @@
 export default {
   data() {
     return {
-      username: ""
-    };
+      username: '',
+    }
   },
   methods: {
     logout() {
-      localStorage.clear();
-      this.$router.push("/login");
-    }
+      localStorage.clear()
+      this.$router.push('/login')
+    },
   },
   created() {
-    this.username = localStorage.getItem("username") || "";
-  }
-};
+    this.username = localStorage.getItem('username') || ''
+  },
+}
 </script>

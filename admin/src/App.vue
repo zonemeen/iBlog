@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
 html,
 body {
   margin: 0;

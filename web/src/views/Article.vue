@@ -5,8 +5,10 @@
       <div class="page">
         <div class="text-green fs-xxxxl mt-11">{{ model.title }}</div>
         <div class="text-grey-2 d-flex fs-sm my-4">
-          <p class="mr-4">{{ model.createdAt | date("YYYY-MM-DD HH:mm:ss") }}</p>
-          <p class="mr-4">字数 {{model.body.length}}</p>
+          <p class="mr-4">
+            {{ model.createdAt | date('YYYY-MM-DD HH:mm:ss') }}
+          </p>
+          <p class="mr-4">字数 {{ model.body.length }}</p>
           <p>评论 {{ Comments.length }}</p>
         </div>
         <div>
@@ -17,7 +19,8 @@
           >
             <span>
               <i class="iconfont icon-tag1"></i>
-            </span>&nbsp;
+            </span>
+            &nbsp;
             <span class>{{ model.categories[0].name }}</span>
           </router-link>
         </div>
@@ -38,7 +41,9 @@
               :key="item.id"
               :style="{ paddingLeft: `${item.indent}em` }"
               @click="scrollTo(item.id)"
-            >{{ item.text }}</div>
+            >
+              {{ item.text }}
+            </div>
           </div>
         </div>
       </div>
@@ -73,13 +78,13 @@
 </template>
 
 <script>
-import marked from "marked";
-import hljs from "highlight.js";
-import "highlight.js/styles/tomorrow-night-eighties.css";
-import { addLineAndCopy } from "../plugins/lineAndCopy";
-import Toc from "../plugins/Toc.js";
+import marked from 'marked'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/tomorrow-night-eighties.css'
+import { addLineAndCopy } from '../plugins/lineAndCopy'
+import Toc from '../plugins/Toc.js'
 
-const renderer = new marked.Renderer();
+const renderer = new marked.Renderer()
 marked.setOptions({
   renderer: renderer,
   gfm: true,
@@ -89,74 +94,74 @@ marked.setOptions({
   sanitize: false,
   smartLists: true,
   smartypants: false,
-  highlight: function(code, lang) {
+  highlight: function (code, lang) {
     if (lang && hljs.getLanguage(lang)) {
-      return hljs.highlight(lang, code, true).value;
+      return hljs.highlight(lang, code, true).value
     } else {
-      return hljs.highlightAuto(code).value;
+      return hljs.highlightAuto(code).value
     }
-  }
-});
+  },
+})
 
 export default {
   props: {
-    id: { required: true }
+    id: { required: true },
   },
   data() {
     return {
       model: null,
       Comments: [],
       articleToc: [],
-      parentComments: []
-    };
+      parentComments: [],
+    }
   },
   watch: {
-    id: "fetch"
+    id: 'fetch',
   },
   methods: {
     async fetch() {
-      const res = await this.$http.get(`articles/list/${this.id}`);
-      this.model = res.data;
-      let tocData = Toc(marked(res.data.body));
-      this.model.body = tocData.article;
-      this.articleToc = tocData.toc;
+      const res = await this.$http.get(`articles/list/${this.id}`)
+      this.model = res.data
+      let tocData = Toc(marked(res.data.body))
+      this.model.body = tocData.article
+      this.articleToc = tocData.toc
       this.$nextTick(() => {
-        addLineAndCopy();
+        addLineAndCopy()
         // this.addCodeSupport()
-      });
+      })
     },
     scrollTo(id) {
       // 绑定 toc 点击事件
-      let node = document.querySelector('[data-id="' + id + '"]');
+      let node = document.querySelector('[data-id="' + id + '"]')
       if (!node) {
-        return;
+        return
       }
       node.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest"
-      });
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'nearest',
+      })
     },
     async getBlogsComments() {
-      const res = await this.$http.get(`/comments/${this.id}`);
-      const blogsComments = res.data;
+      const res = await this.$http.get(`/comments/${this.id}`)
+      const blogsComments = res.data
       this.parentComments = blogsComments.filter(
-        v => v.parent == "5ec884e3fe28d35475b43fb3"
-      );
-      this.parentComments.forEach(c => {
-        return (c.children = blogsComments.filter(v => v.parent == c._id));
-      });
-      this.Comments = res.data;
-    }
+        (v) => v.parent == '5ec884e3fe28d35475b43fb3'
+      )
+      this.parentComments.forEach((c) => {
+        return (c.children = blogsComments.filter((v) => v.parent == c._id))
+      })
+      this.Comments = res.data
+    },
   },
   mounted() {
-    this.fetch();
-    this.getBlogsComments();
-  }
-};
+    this.fetch()
+    this.getBlogsComments()
+  },
+}
 </script>
 <style lang="scss" scoped>
-@import "../assets/scss/_variables.scss";
+@import '../assets/scss/variables';
 
 #content {
   line-height: 1.8;
@@ -170,8 +175,8 @@ export default {
 }
 
 .post-tags:hover {
-  background-color: map-get($colors, "border");
-  color: map-get($colors, "grey");
+  background-color: map-get($colors, 'border');
+  color: map-get($colors, 'grey');
 }
 
 .left {
@@ -184,7 +189,7 @@ export default {
   margin-top: 205px;
   .menu-title {
     padding: 6px 0;
-    color: map-get($colors, "green-1");
+    color: map-get($colors, 'green-1');
     &:hover {
       text-decoration: underline;
     }

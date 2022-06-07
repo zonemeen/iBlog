@@ -15,7 +15,9 @@
       <el-table-column label="操作" width="90">
         <template slot-scope="scope">
           <el-button type="text" size="small">回复</el-button>
-          <el-button type="text" size="small" @click="deleteHandle(scope.row)">删除</el-button>
+          <el-button type="text" size="small" @click="deleteHandle(scope.row)">
+            删除
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -26,41 +28,38 @@ export default {
   data() {
     return {
       tableData: [],
-      title: ""
-    };
+      title: '',
+    }
   },
   created() {
-    this.getList();
+    this.getList()
   },
   methods: {
     async getList() {
-      let res = await this.$http.get("/rest/messages");
-      this.tableData = res.data;
+      let res = await this.$http.get('/rest/messages')
+      this.tableData = res.data
     },
     deleteHandle(data) {
-      this.$confirm(`是否确定要删除留言: ${data.content} ?`, "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning"
+      this.$confirm(`是否确定要删除留言: ${data.content} ?`, '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
       })
         .then(async () => {
-          await this.$http.delete(`/rest/messages/${data._id}`);
-          this.getList();
+          await this.$http.delete(`/rest/messages/${data._id}`)
+          this.getList()
           this.$message({
-            type: "success",
-            message: "删除成功!"
-          });
+            type: 'success',
+            message: '删除成功!',
+          })
         })
         .catch(() => {
           this.$message({
-            type: "info",
-            message: "已取消删除"
-          });
-        });
-    }
-  }
-};
+            type: 'info',
+            message: '已取消删除',
+          })
+        })
+    },
+  },
+}
 </script>
-
-<style lang="scss" scoped>
-</style>
