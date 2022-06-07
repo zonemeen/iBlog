@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import marked from 'marked'
+import { marked } from 'marked'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/tomorrow-night-eighties.css'
 import { addLineAndCopy } from '../plugins/lineAndCopy'
