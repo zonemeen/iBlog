@@ -1,7 +1,15 @@
 <template>
   <div class="link d-flex my-6 content">
-    <div class="link-item show m-4 p-4 bg-postcolor bdr" v-for="item in model" :key="item.name">
-      <el-tooltip placement="right-end" effect="light" popper-class="text-grey-2 fs-lg">
+    <div
+      class="link-item show m-4 p-4 bg-postcolor bdr"
+      v-for="item in model"
+      :key="item.name"
+    >
+      <el-tooltip
+        placement="right-end"
+        effect="light"
+        popper-class="text-grey-2 fs-lg"
+      >
         <div slot="content" class="text-green">{{ item.site }}</div>
         <a class="hand" :href="item.site" target="_blank">
           <div class="ai-center d-flex">
@@ -9,14 +17,14 @@
               <img class="link-img" :src="item.icon" />
             </span>
             <span class="fs-lg text-green pl-5 link-font text-ellipsis">
-              {{
-              item.name
-              }}
+              {{ item.name }}
             </span>
           </div>
         </a>
       </el-tooltip>
-      <div class="fs-xs text-grey-1 mt-3 text-ellipsis">{{ item.description }}</div>
+      <div class="fs-xs text-grey-1 mt-3 text-ellipsis">
+        {{ item.description }}
+      </div>
     </div>
   </div>
 </template>
@@ -25,19 +33,19 @@
 export default {
   data() {
     return {
-      model: []
-    };
+      model: [],
+    }
   },
   methods: {
     async fetchLinks() {
-      const res = await this.$http.get("links/list");
-      this.model = res.data;
-    }
+      const res = await this.$http.get('links/list')
+      this.model = res.data
+    },
   },
   mounted() {
-    this.fetchLinks();
-  }
-};
+    this.fetchLinks()
+  },
+}
 </script>
 
 <style lang="scss" scpoed>

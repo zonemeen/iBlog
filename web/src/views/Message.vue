@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import commentConfig from '@/commentConfig'
 export default {
   data() {
     return {
@@ -62,7 +63,7 @@ export default {
       let res = await this.$http.get('messages')
       let blogsComments = res.data
       this.parentComments = blogsComments.filter(
-        (v) => v.parent === '5ec884e3fe28d35475b43fb3'
+        (v) => v.parent === commentConfig.topParentId
       )
       this.parentComments.forEach((c) => {
         return (c.children = blogsComments.filter((v) => v.parent === c._id))

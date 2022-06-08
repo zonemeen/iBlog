@@ -72,6 +72,7 @@
 import { mapState, mapMutations } from 'vuex'
 import VEmojiPicker from 'v-emoji-picker'
 import formInput from './formInput'
+import commentConfig from '@/commentConfig'
 export default {
   props: {
     model: String,
@@ -146,20 +147,20 @@ export default {
         return this.$message.warning('你好，请发言')
       }
       this.btnLoading = true
+      console.log(this.userInfo)
       this.messageObj.nickName = this.userInfo.nickName
       this.messageObj.avatarImg = this.userInfo.avatarImg
       this.messageObj.userId = this.userInfo._id
       this.messageObj.parent =
-        this.type == 'children' ? this.parentId : '5ec884e3fe28d35475b43fb3'
+        this.type === 'children' ? this.parentId : commentConfig.topParentId
       this.messageObj.byAiteName =
-        this.type == 'children' ? this.nickName : 'miqilin'
-      let url = this.model == 'comments' ? '/comments' : '/messages'
+        this.type === 'children' ? this.nickName : commentConfig.topNickName
+      let url = this.model === 'comments' ? '/comments' : '/messages'
       await this.$http.post(url, this.messageObj)
       this.$emit('toResponse')
       this.$message.success('发布成功')
-
       this.btnLoading = false
-      if (this.userInfo.nickName == 'miqilin博主') {
+      if (this.userInfo.nickName === commentConfig.topNickName) {
         let byAiteObj = await this.$http.get(`users/${this.byAiteUserId}`)
         let replyObj = {
           recipient: byAiteObj.data.email,

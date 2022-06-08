@@ -81,8 +81,9 @@
 import { marked } from 'marked'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/tomorrow-night-eighties.css'
-import { addLineAndCopy } from '../plugins/lineAndCopy'
+import { addLineAndCopy } from '@/plugins/lineAndCopy'
 import Toc from '../plugins/Toc.js'
+import commentConfig from '@/commentConfig'
 
 const renderer = new marked.Renderer()
 marked.setOptions({
@@ -146,7 +147,7 @@ export default {
       const res = await this.$http.get(`/comments/${this.id}`)
       const blogsComments = res.data
       this.parentComments = blogsComments.filter(
-        (v) => v.parent === '5ec884e3fe28d35475b43fb3'
+        (v) => v.parent === commentConfig.topParentId
       )
       this.parentComments.forEach((c) => {
         return (c.children = blogsComments.filter((v) => v.parent === c._id))
