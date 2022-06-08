@@ -1,6 +1,6 @@
 <template>
   <div class="comment-list">
-    <div v-if="commentsList.length == 0" class="text-center">
+    <div v-if="commentsList.length === 0" class="text-center">
       <p class="fs-xxl text-grey-1">快来抢个沙发吧！</p>
     </div>
     <div
@@ -22,7 +22,7 @@
               <strong
                 class="reply pl-4"
                 @click="replyHandle(item, index, false)"
-                v-if="item.userId != userInfo._id"
+                v-if="item.userId !== userInfo._id"
               >
                 {{ showReply ? '回复' : '回复' }}
               </strong>
@@ -53,10 +53,10 @@
                       <strong
                         class="reply pl-4"
                         @click="replyHandle(item, index, c)"
-                        v-if="c.userId != userInfo._id"
+                        v-if="c.userId !== userInfo._id"
                       >
                         {{
-                          showReply && commentIndex == index ? '回复' : '回复'
+                          showReply && commentIndex === index ? '回复' : '回复'
                         }}
                       </strong>
                     </span>
@@ -151,6 +151,11 @@ export default {
   },
   methods: {
     replyHandle(item, index, c) {
+      this.userInfo = (localStorage.userInfo &&
+        JSON.parse(localStorage.userInfo)) || { _id: '' }
+      if (!this.userInfo._id) {
+        return this.$message.warning('请先点击留言头像设置账号')
+      }
       this.placeholder = c ? c.nickName : item.nickName
       this.commentIndex = index
       this.parentId = item._id

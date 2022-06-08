@@ -20,11 +20,11 @@
           v-model="messageObj.content"
           :placeholder="placeholder"
         ></el-input>
-        <div class="mt-3 d-flex jc-between position-emoji">
-          <button @blur="showEmoji = false" class="bg-postcolor btn-none">
+        <div class="mt-4 d-flex jc-between position-emoji">
+          <div>
             <i
               class="iconfont icon-Smile hand"
-              @click="
+              @click.stop="
                 showBtn = true
                 showEmoji = !showEmoji
               "
@@ -39,15 +39,17 @@
               :pack="packData"
               @select="selectEmoji"
             />
-          </button>
-          <el-button
-            type="primary"
-            size="small"
-            :loading="btnLoading"
-            @click="fabuHandle"
-          >
-            发布
-          </el-button>
+          </div>
+          <div>
+            <el-button
+              type="primary"
+              size="small"
+              :loading="btnLoading"
+              @click="fabuHandle"
+            >
+              发布
+            </el-button>
+          </div>
         </div>
       </div>
     </div>
@@ -129,6 +131,7 @@ export default {
     this.userInfo = localStorage.userInfo
       ? JSON.parse(localStorage.userInfo)
       : this.userInfo
+    window.addEventListener('click', () => (this.showEmoji = false))
   },
   computed: {
     ...mapState(['map_user_info']),
@@ -137,6 +140,7 @@ export default {
     ...mapMutations(['map_set_user_info']),
     lookUserInfo() {
       this.userForm = this.userInfo
+      if (this.userInfo._id) return
       this.dialogVisible = true
     },
     async fabuHandle() {
@@ -147,7 +151,6 @@ export default {
         return this.$message.warning('你好，请发言')
       }
       this.btnLoading = true
-      console.log(this.userInfo)
       this.messageObj.nickName = this.userInfo.nickName
       this.messageObj.avatarImg = this.userInfo.avatarImg
       this.messageObj.userId = this.userInfo._id

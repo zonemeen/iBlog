@@ -118,7 +118,6 @@ module.exports = (app) => {
   })
 
   app.post('/admin/api/email', async (req, res) => {
-    console.log(req.body)
     sendEmail(req.body)
     res.send({
       ok: 'ok',

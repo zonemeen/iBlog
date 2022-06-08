@@ -98,14 +98,12 @@ export default {
         })
     },
     handleSelectionChange(val) {
-      console.log(val)
       this.multipleSelection = val.map((v) => {
         return { email: v.email, subject: v.nickName }
       })
-      console.log(this.multipleSelection)
     },
     async sendEmail() {
-      if (this.multipleSelection.length == 0) {
+      if (this.multipleSelection.length === 0) {
         return this.$message.warning('请选一个')
       }
       this.dialogVisible = true
@@ -121,7 +119,6 @@ export default {
         promiseArr.push(this.$http.post('/email', replyObj))
       })
       Promise.all(promiseArr).then((res) => {
-        console.log(res)
         this.dialogVisible = false
       })
       // .catch(err => {

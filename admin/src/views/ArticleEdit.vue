@@ -95,7 +95,6 @@ export default {
       const formData = new FormData()
       formData.append('file', $file)
       this.$http.post('upload', formData).then((res) => {
-        console.log(res)
         this.$refs.mavon.$img2Url(pos, res.data.url)
       })
     },
