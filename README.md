@@ -80,9 +80,14 @@ http://localhost:8080 打开前台本地页面；http://localhost:8088 打开后
 - 博客留言页面 UI
 - 博客留言页面接口实现
 
-这里需要注意一点，评论页面回复他人评论采用的是你的QQ邮箱进行同步通知，需要在 `server/plugins/sendEmail.js` 中进行邮箱配置，如何获取QQ邮箱授权码见下图（在QQ邮箱的设置-账户页面）。
+### 配置注意点
+
+1. 评论页面回复他人评论采用的是你的QQ邮箱进行同步通知，需要在 `server/plugins/sendEmail.js` 中进行邮箱配置，如何获取QQ邮箱授权码见下图（在QQ邮箱的设置-账户页面）。
 
 ![](https://miqilin-blog.oss-cn-shenzhen.aliyuncs.com/qq-shouquanma.png)
+
+2. 评论主账户的配置（主账户用于邮箱回复，所以评论建立的账户邮箱要和上一步QQ邮箱授权码的邮箱为同一个），同时需要在 `web/src/commentConfig.js` 中进行评论账户的设置（注意`topNickName`需要和评论建立的主账号昵称一致，`topParentId`可从后台页面获取），主账户被清除的话要重新进行配置。
+3. 关于后台的图片上传：默认是上传到本地，这种方式的话对于服务器要求比较高，自然前端的加载速度会受影响，可以选择用阿里云的oss进行上传及储存，需要将 `server/routes/admin/index.js` 中关于阿里云oss图片上传的代码注释解除，同时将本地图片上传的代码注释掉，最后将你的阿里云oss配置填入即可。
 
 ### 项目打包部署
 
