@@ -63,9 +63,9 @@
         </el-checkbox>
       </el-form-item>-->
     </el-form>
-    <el-button type="primary" class="width-100" @click="saveForm('userForm')"
-      >提交</el-button
-    >
+    <el-button type="primary" class="width-100" @click="saveForm('userForm')">
+      提交
+    </el-button>
   </div>
 </template>
 
@@ -74,7 +74,7 @@ import {
   // validateUrl,
   validateEmail,
   validateQQEmail,
-} from "../plugins/validate";
+} from '../plugins/validate'
 export default {
   props: {
     isUpload: { type: Boolean, default: false },
@@ -83,89 +83,83 @@ export default {
   data() {
     return {
       userForm: {
-        nickName: "",
-        email: "",
-        qqEmail: "",
-        url: "",
-        description: "",
-        avatarImg: "",
+        nickName: '',
+        email: '',
+        qqEmail: '',
+        url: '',
+        description: '',
+        avatarImg: '',
         isRead: false,
       },
       userRules: {
         nickName: {
           required: true,
-          message: "必填，且不超过10个字符",
-          trigger: "change",
+          message: '必填，且不超过10个字符',
+          trigger: 'change',
         },
-        email: { required: true, validator: validateEmail, trigger: "change" },
+        email: { required: true, validator: validateEmail, trigger: 'change' },
         qqEmail: {
           required: true,
           validator: validateQQEmail,
-          trigger: "change",
+          trigger: 'change',
         },
-        url: { required: true, message: "必填", trigger: "change" },
+        url: { required: true, message: '必填', trigger: 'change' },
         description: {
           required: true,
-          message: "必填，且不超过30个字符",
-          trigger: "change",
+          message: '必填，且不超过30个字符',
+          trigger: 'change',
         },
         avatarImg: {
           required: true,
-          message: "必填，且仅限jpg/png, 不大于200KB",
-          trigger: "change",
+          message: '必填，且仅限jpg/png, 不大于200KB',
+          trigger: 'change',
         },
         // isRead: { required: false, message: "必填", trigger: "change" }
       },
-    };
+    }
   },
   watch: {
     isUpload(newV) {
-      if (newV) {
-        this.userRules.description.required = true;
-        this.userRules.avatarImg.required = true;
-        this.userRules.email.required = true;
-      } else {
-        this.userRules.description.required = false;
-        this.userRules.avatarImg.required = false;
-        this.userRules.qqEmail.required = false;
-        this.userRules.url.required = false;
-      }
+      this.setUserRules(newV)
     },
   },
   created() {
-    if (this.isUpload) {
-      this.userRules.description.required = true;
-      this.userRules.avatarImg.required = true;
-      this.userRules.email.required = true;
-    } else {
-      this.userRules.description.required = false;
-      this.userRules.avatarImg.required = false;
-      this.userRules.qqEmail.required = false;
-      this.userRules.url.required = false;
-    }
-    this.userForm = this.toForm ? this.toForm : this.userForm;
+    this.userForm = this.toForm ? this.toForm : this.userForm
+    this.setUserRules(this.isUpload)
   },
   methods: {
     saveForm(formName) {
       this.$refs[formName].validate(async (valid) => {
-        this.userForm.email = this.userForm.qqEmail;
+        this.userForm.email = this.userForm.qqEmail
         if (valid) {
-          this.$emit("toRequest", this.userForm);
+          this.$emit('toRequest', this.userForm)
         } else {
-          return false;
+          return false
         }
-      });
+      })
+    },
+    setUserRules(isUpload) {
+      if (isUpload) {
+        this.userRules.description.required = true
+        this.userRules.avatarImg.required = true
+        this.userRules.email.required = true
+        return
+      }
+      this.userRules.description.required = false
+      this.userRules.avatarImg.required = false
+      this.userRules.qqEmail.required = false
+      this.userRules.url.required = false
     },
     beforeAvatarUpload(file) {
-      const isJPG = file.type === "image/jpeg" || file.type === "image/png";
-      const isLt2M = file.size / 1024 / 1024 < 0.2;
+      const isJPG = file.type === 'image/jpeg' || file.type === 'image/png'
+      const isLt2M = file.size / 1024 / 1024 < 0.2
       if (!isJPG) {
-        this.$message.error("上传头像图片只能是 JPG/PNG 格式!");
+        this.$message.error('上传头像图片只能是 JPG/PNG 格式!')
       }
       if (!isLt2M) {
-        this.$message.error("上传头像图片大小不能超过 200KB!");
+        this.$message.error('上传头像图片大小不能超过 200KB!')
       }
-      return isJPG && isLt2M;
+      return isJPG && isLt2M
     },
     readInfo() {
       // console.log(this.$parent)
@@ -173,7 +167,7 @@ export default {
       // console.log(this.$parent.turnAnima)
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

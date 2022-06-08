@@ -84,7 +84,7 @@ export default {
       })
         .then(async () => {
           await this.$http.delete(`/rest/users/${data._id}`)
-          this.getList()
+          await this.getList()
           this.$message({
             type: 'success',
             message: '删除成功!',

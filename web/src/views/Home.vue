@@ -25,16 +25,22 @@
               tag="span"
               :to="`/article/list/${article._id}`"
               class="fs-xxl jc-center d-flex flex-wrap hand text-grey-1"
-            >{{ article.title }}</router-link>
+            >
+              {{ article.title }}
+            </router-link>
             <div class="d-flex mt-4 p-7 text-grey-1">
               <i class="iconfont icon-riqi2 pr-2"></i>
-              <span class="fs-sm">{{ article.createdAt | date("YYYY-MM-DD") }}</span>
+              <span class="fs-sm">
+                {{ article.createdAt | date('YYYY-MM-DD') }}
+              </span>
               <i class="iconfont icon-sort pl-9"></i>
               <router-link
                 tag="span"
                 :to="`/tags`"
                 class="fs-sm pl-2 mr-6 hand"
-              >{{ article.categories[0].name }}</router-link>
+              >
+                {{ article.categories[0].name }}
+              </router-link>
               <i class="iconfont icon-love text-red hand"></i>
             </div>
           </div>
@@ -43,7 +49,10 @@
     </div>
     <div class="my-10" v-if="articles.length > 0">
       <div class="page-navigator d-flex jc-center">
-        <div :class="{ current: 1 == pagination.currentPage }" class="mx-4 hand fs-md">
+        <div
+          :class="{ current: 1 == pagination.currentPage }"
+          class="mx-4 hand fs-md"
+        >
           <a @click="goToPage(1)" data-hover="首页">
             <span class="text-grey-1">首页</span>
           </a>
@@ -59,7 +68,13 @@
           v-for="article in pagination.totalPage"
           :key="article"
         >
-          <a @click="goToPage(article)" :data-hover="article" class="text-grey-1">{{ article }}</a>
+          <a
+            @click="goToPage(article)"
+            :data-hover="article"
+            class="text-grey-1"
+          >
+            {{ article }}
+          </a>
         </div>
 
         <div class="mx-4 hand fs-md">
@@ -76,7 +91,9 @@
           </a>
         </div>
         <div class="current mx-4 fs-md">
-          <span class="text-grey-1">第{{ pagination.currentPage }}页 / 共{{ pagination.totalPage }}页</span>
+          <span class="text-grey-1">
+            第{{ pagination.currentPage }}页 / 共{{ pagination.totalPage }}页
+          </span>
         </div>
       </div>
     </div>
@@ -84,55 +101,55 @@
 </template>
 
 <script>
-import $ from "jquery";
+import $ from 'jquery'
 export default {
   data() {
     return {
       articles: [],
       pagination: {
         totalPage: 1,
-        currentPage: 1
-      }
-    };
+        currentPage: 1,
+      },
+    }
   },
   methods: {
     async fetchData() {
       const res = await this.$http.get(
         `/articles/${this.pagination.currentPage}`
-      );
-      this.articles = res.data.list;
-      this.pagination.totalPage = res.data.totalPage;
-      this.pagination.currentPage = res.data.currentPage;
+      )
+      this.articles = res.data.list
+      this.pagination.totalPage = res.data.totalPage
+      this.pagination.currentPage = res.data.currentPage
     },
     async goToPage(pageNum) {
-      this.pagination.currentPage = pageNum;
-      this.fetchData();
+      this.pagination.currentPage = pageNum
+      this.fetchData()
     },
     prev() {
       if (this.pagination.currentPage == 1) {
-        return;
+        return
       }
-      this.pagination.currentPage--;
-      this.fetchData();
+      this.pagination.currentPage--
+      this.fetchData()
     },
     next() {
       if (this.pagination.currentPage == this.pagination.totalPage) {
-        return;
+        return
       }
-      this.pagination.currentPage++;
-      this.fetchData();
+      this.pagination.currentPage++
+      this.fetchData()
     },
     downPage() {
-      $("html,body").animate(
-        { scrollTop: $("#header").outerHeight() - 56 },
+      $('html,body').animate(
+        { scrollTop: $('#header').outerHeight() - 56 },
         500
-      );
-    }
+      )
+    },
   },
   mounted() {
-    this.fetchData();
-  }
-};
+    this.fetchData()
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -146,7 +163,7 @@ export default {
   overflow: hidden;
   .shouye-text {
     font-size: 32px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     width: 13em;
     white-space: nowrap;
     animation: typing 2.5s steps(13, end), infinite;
@@ -154,7 +171,7 @@ export default {
   }
   .line-down {
     font-size: 32px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     animation: shine 0.5s linear infinite alternate;
   }
   .arrow-down {

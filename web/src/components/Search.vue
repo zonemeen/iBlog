@@ -20,7 +20,7 @@
           class="search-input bdr w-100 fs-xxxl"
           placeholder="标题关键词"
           @keyup.enter="Search"
-          style="height: 40px;"
+          style="height: 40px"
         />
       </div>
       <ul v-for="blog in filterBlogs" :key="blog._id">
@@ -29,8 +29,10 @@
           class="hand fs-xxxl pt-3"
           :class="isInput ? `show-list` : ''"
           :to="`/article/list/${blog._id}`"
-          style="display: none;"
-        >{{blog.title}}</router-link>
+          style="display: none"
+        >
+          {{ blog.title }}
+        </router-link>
       </ul>
     </el-dialog>
   </div>
@@ -42,56 +44,56 @@ export default {
     return {
       isInput: false,
       dialogVisible: false,
-      search: "",
+      search: '',
       blog: [],
-      blogs: []
-    };
+      blogs: [],
+    }
   },
   mounted() {
-    window.addEventListener("input", this.inputListener);
-    this.fetchArticles();
+    window.addEventListener('input', this.inputListener)
+    this.fetchArticles()
   },
   beforeDestroy() {
-    window.removeEventListener("input", this.inputListener);
+    window.removeEventListener('input', this.inputListener)
   },
   watch: {
-    $route: function(to, from) {
-      this.dialogVisible = false;
-    }
+    $route() {
+      this.dialogVisible = false
+    },
   },
   computed: {
-    filterBlogs: function() {
-      return this.blogs.filter(blog => {
-        return blog.title.match(this.search);
-      });
-    }
+    filterBlogs: function () {
+      return this.blogs.filter((blog) => {
+        return blog.title.match(this.search)
+      })
+    },
   },
   methods: {
     async fetchArticles() {
-      const res = await this.$http.get("articles/list");
-      this.blogs = res.data;
+      const res = await this.$http.get('articles/list')
+      this.blogs = res.data
     },
     inputListener() {
-      const inputTitle = document.getElementsByClassName("search-input")[0]
-        .value;
-      this.isInput = inputTitle || "";
-    }
+      const inputTitle =
+        document.getElementsByClassName('search-input')[0].value
+      this.isInput = inputTitle || ''
+    },
   },
   created() {
-    this.fetchArticles();
-  }
-};
+    this.fetchArticles()
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/style.scss";
+@import '../assets/scss/style.scss';
 
 .nav-item.active {
-  color: map-get($colors, "red");
+  color: map-get($colors, 'red');
 }
 
 .nav-item:hover {
-  color: map-get($colors, "red");
+  color: map-get($colors, 'red');
 }
 .show-list {
   display: block !important;

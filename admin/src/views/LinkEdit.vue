@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ id ? "编辑" : "新增" }}友链</h1>
+    <h1>{{ id ? '编辑' : '新增' }}友链</h1>
     <el-form label-width="120px" @submit.native.prevent="save">
       <el-form-item label="网站名称">
         <el-input v-model="model.name"></el-input>
@@ -17,7 +17,7 @@
           :action="uploadUrl"
           :headers="getAuthHeaders()"
           :show-file-list="false"
-          :on-success="res => $set(model, 'icon', res.url)"
+          :on-success="(res) => $set(model, 'icon', res.url)"
         >
           <img v-if="model.icon" :src="model.icon" class="avatar" />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -33,34 +33,34 @@
 <script>
 export default {
   props: {
-    id: {}
+    id: {},
   },
   data() {
     return {
-      model: {}
-    };
+      model: {},
+    }
   },
   methods: {
     async save() {
       if (this.id) {
-        await this.$http.put(`rest/links/${this.id}`, this.model);
+        await this.$http.put(`rest/links/${this.id}`, this.model)
       } else {
-        await this.$http.post("rest/links", this.model);
+        await this.$http.post('rest/links', this.model)
       }
-      this.$router.push("/links/list");
+      this.$router.push('/links/list')
       this.$message({
-        type: "success",
-        message: "保存成功"
-      });
+        type: 'success',
+        message: '保存成功',
+      })
     },
     async fetch() {
-      const res = await this.$http.get(`rest/links/${this.id}`);
+      const res = await this.$http.get(`rest/links/${this.id}`)
       //this.model = res.data
-      this.model = Object.assign({}, this.model, res.data);
-    }
+      this.model = Object.assign({}, this.model, res.data)
+    },
   },
   created() {
-    this.id && this.fetch();
-  }
-};
+    this.id && this.fetch()
+  },
+}
 </script>

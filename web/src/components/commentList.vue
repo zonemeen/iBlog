@@ -23,8 +23,9 @@
                 class="reply pl-4"
                 @click="replyHandle(item, index, false)"
                 v-if="item.userId != userInfo._id"
-                >{{ showReply ? "回复" : "回复" }}</strong
               >
+                {{ showReply ? '回复' : '回复' }}
+              </strong>
             </span>
           </div>
           <div class="py-4 text-grey-2">{{ item.content }}</div>
@@ -55,7 +56,7 @@
                         v-if="c.userId != userInfo._id"
                       >
                         {{
-                          showReply && commentIndex == index ? "回复" : "回复"
+                          showReply && commentIndex == index ? '回复' : '回复'
                         }}
                       </strong>
                     </span>
@@ -111,8 +112,8 @@
 </template>
 
 <script>
-import dayjs from "dayjs";
-import { mapState } from "vuex";
+import dayjs from 'dayjs'
+import { mapState } from 'vuex'
 export default {
   props: {
     blogsId: String,
@@ -121,62 +122,57 @@ export default {
   },
   data() {
     return {
-      placeholder: "",
+      placeholder: '',
       userInfo: (localStorage.userInfo &&
-        JSON.parse(localStorage.userInfo)) || { _id: "" },
+        JSON.parse(localStorage.userInfo)) || { _id: '' },
       showReply: false,
       dialog: false,
       loading: false,
-      parentId: "",
-      byAiteName: "",
-      byAiteUserId: "",
+      parentId: '',
+      byAiteName: '',
+      byAiteUserId: '',
       commentIndex: -1,
       total: 31,
       pageNum: 1,
       pageSize: 10,
       clientWidth: 10000,
-    };
+    }
   },
   created() {
-    this.clientWidth = document.body.clientWidth;
+    this.clientWidth = document.body.clientWidth
   },
   filters: {
     formatDate(val) {
-      return dayjs(val).format("YYYY-MM-DD HH:MM:ss");
+      return dayjs(val).format('YYYY-MM-DD HH:MM:ss')
     },
   },
   computed: {
-    ...mapState(["map_user_info"]),
+    ...mapState(['map_user_info']),
   },
   methods: {
     replyHandle(item, index, c) {
-      this.placeholder = c ? c.nickName : item.nickName;
-      this.commentIndex = index;
-      // this.showReply = !this.showReply
-      this.parentId = item._id;
-      this.byAiteName = c ? c.nickName : item.nickName;
-      this.byAiteUserId = c ? c.userId : item.userId;
-
+      this.placeholder = c ? c.nickName : item.nickName
+      this.commentIndex = index
+      this.parentId = item._id
+      this.byAiteName = c ? c.nickName : item.nickName
+      this.byAiteUserId = c ? c.userId : item.userId
       // 如果设备屏幕宽度<=375, 回复框使用弹出el-drawer
       if (this.clientWidth <= 450) {
-        this.dialog = true;
-      } else {
-        this.showReply = true;
+        this.dialog = true
+        return
       }
+      this.showReply = true
     },
     hideReply() {
-      this.commentIndex = -1;
-      this.dialog = false;
-      this.$emit("getCommentList");
-    },
-    handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
+      this.commentIndex = -1
+      this.dialog = false
+      this.$emit('getCommentList')
     },
     handleClose() {
-      this.dialog = false;
+      this.dialog = false
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

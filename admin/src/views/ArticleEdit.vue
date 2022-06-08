@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ id ? "编辑" : "新建" }}文章</h1>
+    <h1>{{ id ? '编辑' : '新建' }}文章</h1>
     <el-form label-width="120px" @submit.native.prevent="save">
       <el-form-item label="所属分类">
         <el-select v-model="model.categories" multiple>
@@ -21,7 +21,7 @@
           :action="uploadUrl"
           :headers="getAuthHeaders()"
           :show-file-list="false"
-          :on-success="res => $set(model, 'icon', res.url)"
+          :on-success="(res) => $set(model, 'icon', res.url)"
         >
           <img v-if="model.icon" :src="model.icon" class="avatar" />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -46,43 +46,43 @@
 </template>
 
 <script>
-import { mavonEditor } from "mavon-editor";
-import "mavon-editor/dist/css/index.css";
+import { mavonEditor } from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 export default {
-  name: "Create",
+  name: 'Create',
   components: {
-    mavonEditor
+    mavonEditor,
   },
   props: {
-    id: {}
+    id: {},
   },
   data() {
     return {
       model: {},
       categories: [],
-      body: ""
-    };
+      body: '',
+    }
   },
   methods: {
     async save() {
       if (this.id) {
-        await this.$http.put(`rest/articles/${this.id}`, this.model);
+        await this.$http.put(`rest/articles/${this.id}`, this.model)
       } else {
-        await this.$http.post("rest/articles", this.model);
+        await this.$http.post('rest/articles', this.model)
       }
-      this.$router.push("/articles/list");
+      this.$router.push('/articles/list')
       this.$message({
-        type: "success",
-        message: "保存成功"
-      });
+        type: 'success',
+        message: '保存成功',
+      })
     },
     async fetch() {
-      const res = await this.$http.get(`rest/articles/${this.id}`);
-      this.model = res.data;
+      const res = await this.$http.get(`rest/articles/${this.id}`)
+      this.model = res.data
     },
     async fetchCategories() {
-      const res = await this.$http.get("rest/categories");
-      this.categories = res.data;
+      const res = await this.$http.get('rest/categories')
+      this.categories = res.data
     },
     // async handleImageAdded(file, Editor, cursorLocation, resetUploader) {
     //   const formData = new FormData();
@@ -92,17 +92,17 @@ export default {
     //   resetUploader();
     // }
     $imgAdd(pos, $file) {
-      const formData = new FormData();
-      formData.append("file", $file);
-      this.$http.post("upload", formData).then(res => {
-        console.log(res);
-        this.$refs.mavon.$img2Url(pos, res.data.url);
-      });
-    }
+      const formData = new FormData()
+      formData.append('file', $file)
+      this.$http.post('upload', formData).then((res) => {
+        console.log(res)
+        this.$refs.mavon.$img2Url(pos, res.data.url)
+      })
+    },
   },
   created() {
-    this.fetchCategories();
-    this.id && this.fetch();
-  }
-};
+    this.fetchCategories()
+    this.id && this.fetch()
+  },
+}
 </script>

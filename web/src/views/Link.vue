@@ -23,7 +23,9 @@
           <p>• 原创博客优先，技术类博客优先，设计、视觉类博客优先</p>
           <p>• 经常过来访问和评论，眼熟的</p>
         </div>
-        <p class="text-grey-2 my-6">备注：默认申请友情链接均为内页（当前页面）</p>
+        <p class="text-grey-2 my-6">
+          备注：默认申请友情链接均为内页（当前页面）
+        </p>
         <div class="py-4 mb-5">
           <span class="fs-xxl text-green">#</span>
           &nbsp;
@@ -35,23 +37,25 @@
           <p>• 网站地址：https://amberzqx.com</p>
           <p>• 描述：我劝你要多喝热水哈哈哈</p>
         </div>
-        <p class="my-9 text-grey-2">暂时先这样，同时欢迎互换友链，到留言页留言即可。 ^_^</p>
+        <p class="my-9 text-grey-2">
+          暂时先这样，同时欢迎互换友链，到留言页留言即可。 ^_^
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import linkItem from "../components/linkItem.vue";
+import linkItem from '../components/linkItem.vue'
 
 export default {
   components: {
-    linkItem
+    linkItem,
   },
   data() {
-    return {};
-  }
-};
+    return {}
+  },
+}
 </script>
 
 <style lang="scss" scpoed>

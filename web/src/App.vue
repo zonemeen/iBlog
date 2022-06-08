@@ -12,9 +12,9 @@ export default {
   name: 'app',
   methods: {
     love() {
-      !(function (e, t, a) {
+      !(function (e, t) {
         function r() {
-          for (var e = 0; e < s.length; e++)
+          for (let e = 0; e < s.length; e++)
             s[e].alpha <= 0
               ? (t.body.removeChild(s[e].el), s.splice(e, 1))
               : (s[e].y--,
@@ -37,13 +37,13 @@ export default {
           requestAnimationFrame(r)
         }
         function n() {
-          var t = 'function' == typeof e.onclick && e.onclick
+          let t = 'function' == typeof e.onclick && e.onclick
           e.onclick = function (e) {
             t && t(), o(e)
           }
         }
         function o(e) {
-          var a = t.createElement('div')
+          let a = t.createElement('div')
           ;(a.className = 'heart'),
             s.push({
               el: a,
@@ -56,7 +56,7 @@ export default {
             t.body.appendChild(a)
         }
         function i(e) {
-          var a = t.createElement('style')
+          let a = t.createElement('style')
           a.type = 'text/css'
           try {
             a.appendChild(t.createTextNode(e))
@@ -76,7 +76,7 @@ export default {
             ')'
           )
         }
-        var s = []
+        let s = []
         ;(e.requestAnimationFrame =
           e.requestAnimationFrame ||
           e.webkitRequestAnimationFrame ||

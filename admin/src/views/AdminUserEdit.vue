@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>{{ id ? "编辑" : "新建" }}管理员</h1>
+    <h1>{{ id ? '编辑' : '新建' }}管理员</h1>
     <el-form label-width="120px" @submit.native.prevent="save">
       <el-form-item label="用户名">
         <el-input v-model="model.username"></el-input>
@@ -18,33 +18,33 @@
 <script>
 export default {
   props: {
-    id: {}
+    id: {},
   },
   data() {
     return {
-      model: {}
-    };
+      model: {},
+    }
   },
   methods: {
     async save() {
       if (this.id) {
-        await this.$http.put(`rest/admin_users/${this.id}`, this.model);
+        await this.$http.put(`rest/admin_users/${this.id}`, this.model)
       } else {
-        await this.$http.post("rest/admin_users", this.model);
+        await this.$http.post('rest/admin_users', this.model)
       }
-      this.$router.push("/admin_users/list");
+      this.$router.push('/admin_users/list')
       this.$message({
-        type: "success",
-        message: "保存成功"
-      });
+        type: 'success',
+        message: '保存成功',
+      })
     },
     async fetch() {
-      const res = await this.$http.get(`rest/admin_users/${this.id}`);
-      this.model = res.data;
-    }
+      const res = await this.$http.get(`rest/admin_users/${this.id}`)
+      this.model = res.data
+    },
   },
   created() {
-    this.id && this.fetch();
-  }
-};
+    this.id && this.fetch()
+  },
+}
 </script>

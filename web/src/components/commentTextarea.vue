@@ -175,11 +175,6 @@ export default {
         'QQ号码',
         userForm.email.replace('@qq.com', '')
       )
-      console.log(userForm.email.replace('@qq.com', ''))
-      console.log(
-        this.qqUrl.replace('QQ号码', userForm.email.replace('@qq.com', ''))
-      )
-      console.log(userForm.avatarImg)
       let res
       if (this.userInfo._id) {
         res = await this.$http.put(`users/${this.userInfo._id}`, userForm)

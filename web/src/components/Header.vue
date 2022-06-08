@@ -1,5 +1,8 @@
 <template>
-  <header class="head nav d-flex jc-around ai-center" :class="isScrolling ? `mini` : ''">
+  <header
+    class="head nav d-flex jc-around ai-center"
+    :class="isScrolling ? `mini` : ''"
+  >
     <div class="hand">
       <router-link tag="div" to="/">
         <img
@@ -18,7 +21,9 @@
         :key="item.text"
         active-class="active"
         class="nav-item px-5 icon"
-      >{{ item.text }}</router-link>
+      >
+        {{ item.text }}
+      </router-link>
       <div class="play pl-5">
         <i
           v-show="!isPlay"
@@ -77,10 +82,10 @@
 </template>
 
 <script>
-import Search from "../components/Search.vue";
+import Search from '../components/Search.vue'
 export default {
   components: {
-    Search
+    Search,
   },
   data() {
     return {
@@ -88,21 +93,21 @@ export default {
       isPlay: false,
       isScrolling: false,
       items: [
-        { text: "首页", link: "/" },
-        { text: "归档", link: "/archives" },
-        { text: "标签", link: "/tags" },
-        { text: "友链", link: "/links" },
-        { text: "留言", link: "/message" },
-        { text: "关于", link: "/about" }
-      ]
-    };
+        { text: '首页', link: '/' },
+        { text: '归档', link: '/archives' },
+        { text: '标签', link: '/tags' },
+        { text: '友链', link: '/links' },
+        { text: '留言', link: '/message' },
+        { text: '关于', link: '/about' },
+      ],
+    }
   },
   mounted() {
-    this.ajustNavigation();
-    window.addEventListener("scroll", this.ajustNavigation);
+    this.ajustNavigation()
+    window.addEventListener('scroll', this.ajustNavigation)
   },
   beforeDestroy() {
-    window.removeEventListener("scroll", this.ajustNavigation);
+    window.removeEventListener('scroll', this.ajustNavigation)
   },
   methods: {
     ajustNavigation() {
@@ -110,30 +115,30 @@ export default {
         window.pageYOffset ||
         document.documentElement.scrollTop ||
         document.body.scrollTop ||
-        0;
-      this.isScrolling = scrollTop > 0;
+        0
+      this.isScrolling = scrollTop > 0
     },
     playMusic(play) {
-      this.isPlay = !this.isPlay;
+      this.isPlay = !this.isPlay
       if (play) {
-        this.$refs.music.play();
-      } else {
-        this.$refs.music.pause();
+        this.$refs.music.play()
+        return
       }
-    }
-  }
-};
+      this.$refs.music.pause()
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/style.scss";
+@import '../assets/scss/style.scss';
 
 .nav-item.active {
-  color: map-get($colors, "red");
+  color: map-get($colors, 'red');
 }
 
 .nav-item:hover {
-  color: map-get($colors, "red");
+  color: map-get($colors, 'red');
 }
 
 .head {
@@ -156,7 +161,7 @@ export default {
 }
 
 .mini {
-  background-color: map-get($colors, "navcolor");
+  background-color: map-get($colors, 'navcolor');
   height: 56px;
   transition: 0.5s ease-in-out;
 }

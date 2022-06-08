@@ -30,7 +30,10 @@
               placeholder="输入留言内容"
             ></comment-textarea>
           </div>
-          <div :class="{ 'message-box': parentComments.length > 0 }" class="my-9">
+          <div
+            :class="{ 'message-box': parentComments.length > 0 }"
+            class="my-9"
+          >
             <comment-list
               model="messages"
               @getCommentList="getMessagesList"
@@ -48,25 +51,25 @@
 export default {
   data() {
     return {
-      parentComments: []
-    };
+      parentComments: [],
+    }
   },
   mounted() {
-    this.getMessagesList();
+    this.getMessagesList()
   },
   methods: {
     async getMessagesList() {
-      let res = await this.$http.get("messages");
-      let blogsComments = res.data;
+      let res = await this.$http.get('messages')
+      let blogsComments = res.data
       this.parentComments = blogsComments.filter(
-        v => v.parent == "5ec884e3fe28d35475b43fb3"
-      );
-      this.parentComments.forEach(c => {
-        return (c.children = blogsComments.filter(v => v.parent == c._id));
-      });
-    }
-  }
-};
+        (v) => v.parent === '5ec884e3fe28d35475b43fb3'
+      )
+      this.parentComments.forEach((c) => {
+        return (c.children = blogsComments.filter((v) => v.parent === c._id))
+      })
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
