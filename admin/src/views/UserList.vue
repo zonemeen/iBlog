@@ -118,7 +118,7 @@ export default {
         }
         promiseArr.push(this.$http.post('/email', replyObj))
       })
-      Promise.all(promiseArr).then((res) => {
+      Promise.all(promiseArr).then(() => {
         this.dialogVisible = false
       })
       // .catch(err => {
